@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Perplexity abstract",
+  "version": "1.0",
+  "description": "A Firefox extension that opens an abstract of current page on a new tab.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-script.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "imigueldiaz@gmail.com"
+    }
+  }
+}
