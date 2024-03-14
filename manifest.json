@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Perplexity abstract",
-  "version": "1.0",
+  "name": "Perplexity Abstract creator",
+  "version": "0.1",
   "description": "A Firefox extension that opens an abstract of current page on a new tab.",
   "permissions": [
     "activeTab",
