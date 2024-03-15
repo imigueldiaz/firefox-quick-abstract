@@ -23,7 +23,27 @@ function fetchTabContent() {
     .then((tabs) => {
       chrome.scripting.executeScript({
         target: {tabId: tabs[0].id},
-        func: () => document.body.innerText
+        func: () => {
+          // Attempt to select the main content of the page
+          const mainContentSelectors = ['article', 'main', '.post', '#content', ".entry", "#entry"];
+          let mainContent;
+          for (let selector of mainContentSelectors) {
+            mainContent = document.querySelector(selector);
+            if (mainContent) break;
+          }
+          // Fallback to using the whole body if no main content is found
+          if (!mainContent) mainContent = document.body;
+
+          // Remove known ad, header and footer selectors
+          const adAndFooterSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header']
+          adAndFooterSelectors.forEach(selector => {
+            const elements = mainContent.querySelectorAll(selector);
+            elements.forEach(el => el.remove());
+          });
+
+          // Return the cleaned text
+          return mainContent.innerText || mainContent.textContent;
+        }
       }, (injectionResults) => {
         if (browser.runtime.lastError) {
           reject(new Error(browser.runtime.lastError.message));
@@ -34,7 +54,6 @@ function fetchTabContent() {
     }).catch(reject);
   });
 }
-
 
 function triggerAPI() {
   getConfiguration().then(config => {
