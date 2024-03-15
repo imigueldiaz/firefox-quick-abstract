@@ -1,10 +1,9 @@
-/* options.css */
 body {
   background-color: #1e1e1e;
   color: #c5c6c7;
   font-family: Arial, sans-serif;
-  width: 360px; /* Adjust width as needed */
-  height: 500px; /* Adjust height as needed */
+  width: 400px; /* Adjust width as needed */
+  height: 450px; /* Adjust height as needed */
   margin: 0;
   padding: 10px;
   box-sizing: border-box;
