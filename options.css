@@ -1,7 +1,7 @@
 body {
   background-color: #1e1e1e;
   color: #c5c6c7;
-  font-family: Arial, sans-serif;
+  font-family: "Noto Color Emoji", Arial, sans-serif;
   width: 400px; /* Adjust width as needed */
   height: 450px; /* Adjust height as needed */
   margin: 0;
@@ -13,6 +13,7 @@ body {
 
 textarea {
   flex-grow: 1; /* Makes the textarea fill available space */
+  margin: 0 auto;
   margin-top: 10px;
   padding: 10px;
   background-color: #2d2d2d;
@@ -20,12 +21,29 @@ textarea {
   border-radius: 4px;
   color: #c5c6c7;
   resize: none;
-  width: 100%
+  width: 95%;
+  text-align: justify;
+}
+
+.disclaimer {
+  background-color: #ffffcc;
+  border: 1px solid #ffcc00;
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 4px
+}
+
+.disclaimer p {
+  margin: 0;
+  font-size: 13px;
+  color: #ff6600;
+  text-align: justify;
 }
 
 
+
 form {
-  max-width: 400px;
+  max-width: 380px;
   margin: 0 auto;
 }
 
@@ -39,7 +57,7 @@ input[type="number"],
 button {
   width: 100%;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   background-color: #2d2d2d;
   border: 1px solid #3c3c3c;
   border-radius: 4px;
