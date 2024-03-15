@@ -29,13 +29,14 @@ function fetchTabContent() {
           let mainContent;
           for (let selector of mainContentSelectors) {
             mainContent = document.querySelector(selector);
-            if (mainContent) break;
+            if (mainContent) 
+              break;
           }
           // Fallback to using the whole body if no main content is found
           if (!mainContent) mainContent = document.body;
 
-          // Remove known ad, header and footer selectors
-          const adAndFooterSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header']
+          // Remove known ad, header, lists, toc, and footer selectors
+          const adAndFooterSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header', 'ul', 'ol', '.toc', '#toc']
           adAndFooterSelectors.forEach(selector => {
             const elements = mainContent.querySelectorAll(selector);
             elements.forEach(el => el.remove());
@@ -65,17 +66,28 @@ function triggerAPI() {
         temperature: config.temperature,
         content: content
       }).then(response => {
-        // Handle the response from the API call
-        console.log(response.data);
-        // Extract the 'content' from the response and update the textarea
-        const assistantMessageContent = response.data.choices[0].message.content;
-        document.getElementById('apiResponse').textContent = assistantMessageContent;
+        // Check if the response contains a data object with an error
+        if (response.data && response.data.error) {
+          console.error('API Error:', response.data.error.message);
+          // Display the error message to the user
+          document.getElementById('apiResponse').textContent = 'API Error: ' + response.data.error.message;
+        } else {
+          // Handle the successful response from the API call
+          console.log(response.data);
+          // Extract the 'content' from the response and update the textarea
+          const assistantMessageContent = response.data.choices[0].message.content;
+          document.getElementById('apiResponse').textContent = assistantMessageContent;
+        }
       }).catch(error => {
+        // Handle errors in sending the message to the background script
         console.error(`Error in sending message to background script: ${error}`);
+        document.getElementById('apiResponse').textContent = 'Error: ' + error.message;
       });
     });
   });
 }
+
+
 
 // Example: Call triggerAPI when a button is clicked
 document.getElementById('resume').addEventListener('click', triggerAPI);
