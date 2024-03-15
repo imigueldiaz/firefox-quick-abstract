@@ -3,7 +3,7 @@
 A Firefox extension that generates a professional abstract and keywords for the current tab's content using the Perplexity AI API.
 
 
-> **Disclaimer**: _TThis is an alpha version extension created for self-learning purposes. It is not a professional, full-featured extension. Maintenance and updates will be provided as possible during the developer's limited free time._
+> **Disclaimer**: _This is an alpha version extension created for self-learning purposes. It is not a professional, full-featured extension. Maintenance and updates will be provided as possible during the developer's limited free time._
 
 ## Features
 
@@ -47,7 +47,7 @@ You can change these settings on the options page.
 - `background.js`: Background script for handling API requests and responses
 - `options.html`: Options page for configuring API key, model, and temperature
 - `options.js`: JavaScript for handling options page interactions and storage
-- `options.css`: Stylesheet for the options page
+- `style.css`: Stylesheet for the extension
 - `icons/`: Directory containing the extension icons in various sizes
 
 ## Dependencies
