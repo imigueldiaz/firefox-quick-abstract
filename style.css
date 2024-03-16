@@ -1,78 +1,39 @@
 body {
-  background-color: #1e1e1e;
-  color: #c5c6c7;
-  font-family: "Noto Color Emoji", Arial, sans-serif;
-  width: 400px; /* Adjust width as needed */
-  height: 450px; /* Adjust height as needed */
+  background-color: #ffffff; /* White background for a clean look */
+  color: #333333; /* Dark grey text for readability */
+  font-family: 'Times', serif; /* Serif font for body text */
+  width: 400px;
+  height: 450px;
   margin: 0;
-  padding: 10px;
+  padding: 20px; /* Increased padding for a more spacious layout */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
-textarea {
-  flex-grow: 1; /* Makes the textarea fill available space */
-  margin: 0 auto;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #2d2d2d;
-  border: 1px solid #3c3c3c;
+#apiResponse {
+  margin: 5px auto;
+  padding: 10px; /* Increased padding for better text presentation */
+  background-color: #f8f8f8; /* Light grey background for contrast */
+  border: 1px solid #dddddd; /* Lighter border for a subtle look */
   border-radius: 4px;
-  color: #c5c6c7;
-  resize: none;
+  color: #333333; /* Dark text for contrast */
+  height: 330px;
   width: 95%;
-  text-align: justify;
+  text-align: justify-all;
+  overflow-y: auto;
 }
 
-.disclaimer {
-  background-color: #ffffcc;
-  border: 1px solid #ffcc00;
-  padding: 8px;
-  margin-bottom: 5px;
-  border-radius: 4px
-}
-
-.disclaimer p {
-  margin: 0;
-  font-size: 13px;
-  color: #ff6600;
-  text-align: justify;
-}
-
-
-
-form {
-  max-width: 380px;
-  margin: 0 auto;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-input[type="text"],
-input[type="number"],
-button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 5px;
-  background-color: #2d2d2d;
-  border: 1px solid #3c3c3c;
-  border-radius: 4px;
-  color: #c5c6c7;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  outline: none;
-  border-color: #569cd6;
+.button-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
-  background-color: #007acc;
-  color: white;
+  width: calc(50% - 5px); /* Adjust for margin */
+  padding: 10px; /* Consistent padding for better touch interaction */
+  background-color: #007acc; /* Blue for a professional look */
+  color: white; /* White text for contrast */
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -84,4 +45,65 @@ button:hover {
 
 button:active {
   background-color: #003d73;
+}
+
+button:first-child {
+  margin-right: 10px;
+}
+
+form {
+  max-width: 380px;
+  margin: 20px auto; /* Increased margin for centered appearance */
+}
+
+label {
+  display: block;
+  margin-bottom: 10px; /* Increased margin for better separation */
+  color: #333333; /* Dark text for readability */
+  font-size: 12pt; /* Consistent font size with body text */
+}
+
+input[type="text"],
+input[type="number"],
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px; /* Increased margin for better separation */
+  background-color: #f8f8f8; /* Light grey background for input fields */
+  border: 1px solid #dddddd; /* Light border for a subtle look */
+  border-radius: 4px;
+  color: #333333; /* Dark text for readability */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #569cd6; /* Blue border for focus indication */
+}
+
+.abstract {
+  background-color: #f8f8f8; /* Consistent with other elements */
+  color: #333333; /* Dark text for readability */
+  padding: 10px; /* Increased padding for better text presentation */
+  margin-bottom: 10px; /* Increased margin for visual separation */
+  border-radius: 4px;
+  border: 0; /* No border for a clean look */
+  
+  text-align: justify;
+}
+
+.keyword {
+  display: inline-block;
+  background-color: #007acc; /* Blue for emphasis */
+  color: white; /* White text for contrast */
+  padding: 3px;
+  margin: 3px;
+  border-radius: 4px;
+  font-size: 10pt; /* Slightly smaller for differentiation */
+  transition: background-color 0.3s ease;
+  font-style: italic; /* Italics for emphasis */
+}
+
+.keyword:hover {
+  background-color: #005fa3; /* Darker on hover for interaction feedback */
 }

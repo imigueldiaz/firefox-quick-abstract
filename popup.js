@@ -19,40 +19,63 @@ function getConfiguration() {
 
 function fetchTabContent() {
   return new Promise((resolve, reject) => {
-    browser.tabs.query({active: true, currentWindow: true})
-    .then((tabs) => {
-      chrome.scripting.executeScript({
-        target: {tabId: tabs[0].id},
-        func: () => {
-          // Attempt to select the main content of the page
-          const mainContentSelectors = ['article', 'main', '.post', '#content', ".entry", "#entry"];
-          let mainContent;
-          for (let selector of mainContentSelectors) {
-            mainContent = document.querySelector(selector);
-            if (mainContent) 
-              break;
+    browser.tabs.query({ active: true, currentWindow: true })
+      .then((tabs) => {
+        chrome.scripting.executeScript({
+          target: { tabId: tabs[0].id },
+          func: () => {
+            // Attempt to select the main content of the page
+            const mainContentSelectors = ['article', 'main', '.main', '#main', '.post', '#content', '.entry', '#entry'];
+            let mainContent;
+            for (let selector of mainContentSelectors) {
+              mainContent = document.querySelector(selector);
+              if (mainContent) break;
+            }
+
+            // Fallback to using the whole body if no main content is found
+            if (!mainContent) mainContent = document.body;
+
+            // Remove known ad, header, lists, toc, footer, and navigation selectors
+            const unwantedSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header', 'ul', 'ol', '.toc', '#toc', 'nav'];
+            unwantedSelectors.forEach(selector => {
+              const elements = mainContent.querySelectorAll(selector);
+              elements.forEach(el => el.remove());
+            });
+
+            // Remove right and left menus or divs with non-pertinent content
+            const rightMenuSelectors = ['.right-menu', '.right-sidebar', '.right-column', 'aside'];
+            const leftMenuSelectors = ['.left-menu', '.left-sidebar', '.left-column'];
+            rightMenuSelectors.forEach(selector => {
+              const elements = document.querySelectorAll(selector);
+              elements.forEach(el => el.remove());
+            });
+            leftMenuSelectors.forEach(selector => {
+              const elements = document.querySelectorAll(selector);
+              elements.forEach(el => el.remove());
+            });
+
+            // Remove script and style tags
+            const scriptAndStyleTags = mainContent.querySelectorAll('script, style');
+            scriptAndStyleTags.forEach(el => el.remove());
+
+            // Remove empty paragraphs and line breaks
+            const emptyElements = mainContent.querySelectorAll('p:empty, br');
+            emptyElements.forEach(el => el.remove());
+           
+            // Normalize whitespace and trim the content
+            const cleanedText = mainContent.innerText.replace(/\s+/g, ' ').trim();
+
+            // Return the cleaned text
+            return cleanedText;
           }
-          // Fallback to using the whole body if no main content is found
-          if (!mainContent) mainContent = document.body;
-
-          // Remove known ad, header, lists, toc, and footer selectors
-          const adAndFooterSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header', 'ul', 'ol', '.toc', '#toc']
-          adAndFooterSelectors.forEach(selector => {
-            const elements = mainContent.querySelectorAll(selector);
-            elements.forEach(el => el.remove());
-          });
-
-          // Return the cleaned text
-          return mainContent.innerText || mainContent.textContent;
-        }
-      }, (injectionResults) => {
-        if (browser.runtime.lastError) {
-          reject(new Error(browser.runtime.lastError.message));
-        } else {
-          resolve(injectionResults[0].result);
-        }
-      });
-    }).catch(reject);
+        }, (injectionResults) => {
+          if (browser.runtime.lastError) {
+            reject(new Error(browser.runtime.lastError.message));
+          } else {
+            resolve(injectionResults[0].result);
+          }
+        });
+      }).catch(reject);
   });
 }
 
@@ -76,7 +99,7 @@ function triggerAPI() {
           console.log(response.data);
           // Extract the 'content' from the response and update the textarea
           const assistantMessageContent = response.data.choices[0].message.content;
-          document.getElementById('apiResponse').textContent = assistantMessageContent;
+          document.getElementById('apiResponse').innerHTML = assistantMessageContent;
         }
       }).catch(error => {
         // Handle errors in sending the message to the background script
@@ -87,17 +110,4 @@ function triggerAPI() {
   });
 }
 
-
-
-// Example: Call triggerAPI when a button is clicked
 document.getElementById('resume').addEventListener('click', triggerAPI);
-
-
-
-
-// Example: Call triggerAPI when a button is clicked
-    document.getElementById('resume').addEventListener('click', triggerAPI);
-
-
-
-
