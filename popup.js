@@ -80,6 +80,9 @@ function fetchTabContent() {
 }
 
 function triggerAPI() {
+  document.getElementById('apiResponse').style.display = 'none';
+  document.getElementById('spinner').style.display = 'block';
+
   getConfiguration().then(config => {
     fetchTabContent().then(content => {
       browser.runtime.sendMessage({
@@ -98,8 +101,10 @@ function triggerAPI() {
           // Handle the successful response from the API call
           console.log(response.data);
           // Extract the 'content' from the response and update the textarea
-          const assistantMessageContent = response.data.choices[0].message.content;
-          document.getElementById('apiResponse').innerHTML = assistantMessageContent;
+          const apiResponse = document.getElementById('apiResponse');
+          document.getElementById('apiResponse').style.display = 'block';
+          document.getElementById('spinner').style.display = 'none';
+          apiResponse.innerHTML = response.data.choices[0].message.content;
           requestAnimationFrame(() => {
           adjustPopupHeight(); // Adjust the height of the popup based on the content
         });

@@ -9,7 +9,7 @@ Instructions:
    - Accurately and concisely summarize the key information 
    - Be well-written, precise and easy to understand
    - Contain the most important points without extraneous details
-   - Be formated as various easily readable paragraphs of plain text  each formatted as <p class="abstractp">{paragraph text}</p> without markdown or special characters.
+   - Be formated as various easily readable paragraphs of plain text  each formatted as <p class="abstractp">{paragraph text}</p> WITHOUT MARKDOWN OR SPECIAL CHARACTERS.
 4. Extract the most relevant keywords from the text that capture the main topics and themes.
 5. Format the output as follows, including the abstract and keywords:
 <div class="abstract" lang="{ISO code of the detected language}">{abstract}</div>
@@ -21,7 +21,7 @@ Additional Suggestions:
 - Choose 3-5 keywords that are specific, descriptive and capture the main topics. Avoid vague or overly broad keywords.
 - Ensure proper grammar, spelling and punctuation in the abstract.
 - Do not include any information in the abstract that is not covered in the webpage text.
-- Remember, the abstract MUST be in the same language as the webpage content.
+- Remember, the abstract MUST be in the same language as the webpage content and the content MUST BE WITHOUT MARKDOWN OR SPECIAL CHARACTERS.
 
 Begin!`;
 

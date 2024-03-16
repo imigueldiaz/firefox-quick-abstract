@@ -4,11 +4,11 @@ body {
   font-family: 'Times', serif; /* Serif font for body text */
   width: 550px;
   margin: 0;
-  padding: 10px; /* Increased padding for a more spacious layout */
+  padding: 5px; /* Increased padding for a more spacious layout */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  transition: height 2s ease; 
+  transition: height 2s ease-in-out;
 }
 
 #apiResponse {
@@ -99,9 +99,19 @@ input[type="number"]:focus {
   hyphens: auto;
 }
 
+.keywords {
+  display: flex; /* Use flex to create a flex container */
+  flex-wrap: wrap; /* Allow keywords to wrap onto multiple lines */
+  justify-content: start; /* Align items to the start of the container */
+  align-items: center; /* Center items along the cross axis */
+  gap: 3px; /* Add space between items */
+}
+
 
 .keyword {
-  display: inline-block;
+  display: inline-flex; /* Use inline-flex to allow keywords to flow like text */
+  justify-content: center; /* Center items along the main axis */
+  align-items: center; /* Center items along the cross axis */
   background-color: rgba(0, 0, 230, 0.3); /* Blue for emphasis */
   color: white; /* White text for contrast */
   padding: 5px;
@@ -112,6 +122,41 @@ input[type="number"]:focus {
   font-style: italic; /* Italics for emphasis */
 }
 
+
 .keyword:hover {
   background-color: rgba(0, 0, 120, 0.3); /* Darker on hover for interaction feedback */
 }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#responseContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100px
+}
+
+
+#spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+#initialText {
+  display: block; /* Ensure the span behaves like a block element for centering */
+  text-align: center; /* Center the text horizontally */
+  font-weight: bold; /* Make the text bold */
+  color: #007acc; /* Use a noticeable color */
+  margin: 10px 0; /* Add some margin for spacing */
+  font-size: 1.2em; /* Larger font size for emphasis */
+}
+
+
