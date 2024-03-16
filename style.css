@@ -1,26 +1,26 @@
 body {
-  background-color: #ffffff; /* White background for a clean look */
+  background-color: #fefefe; /* White background for a clean look */
   color: #333333; /* Dark grey text for readability */
   font-family: 'Times', serif; /* Serif font for body text */
-  width: 400px;
-  height: 450px;
+  width: 550px;
   margin: 0;
-  padding: 20px; /* Increased padding for a more spacious layout */
+  padding: 10px; /* Increased padding for a more spacious layout */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  transition: height 2s ease; 
 }
 
 #apiResponse {
-  margin: 5px auto;
+  margin: 3px auto;
   padding: 10px; /* Increased padding for better text presentation */
   background-color: #f8f8f8; /* Light grey background for contrast */
   border: 1px solid #dddddd; /* Lighter border for a subtle look */
   border-radius: 4px;
   color: #333333; /* Dark text for contrast */
-  height: 330px;
+  min-height: 100px;
   width: 95%;
-  text-align: justify-all;
+  text-align: left;
   overflow-y: auto;
 }
 
@@ -36,15 +36,17 @@ button {
   color: white; /* White text for contrast */
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 button:hover {
   background-color: #005fa3;
+  color: white;
 }
 
 button:active {
   background-color: #003d73;
+  color: white
 }
 
 button:first-child {
@@ -88,22 +90,28 @@ input[type="number"]:focus {
   margin-bottom: 10px; /* Increased margin for visual separation */
   border-radius: 4px;
   border: 0; /* No border for a clean look */
-  
-  text-align: justify;
 }
+
+.abstract {
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  hyphens: auto;
+}
+
 
 .keyword {
   display: inline-block;
-  background-color: #007acc; /* Blue for emphasis */
+  background-color: rgba(0, 0, 230, 0.3); /* Blue for emphasis */
   color: white; /* White text for contrast */
-  padding: 3px;
+  padding: 5px;
   margin: 3px;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 10pt; /* Slightly smaller for differentiation */
   transition: background-color 0.3s ease;
   font-style: italic; /* Italics for emphasis */
 }
 
 .keyword:hover {
-  background-color: #005fa3; /* Darker on hover for interaction feedback */
+  background-color: rgba(0, 0, 120, 0.3); /* Darker on hover for interaction feedback */
 }

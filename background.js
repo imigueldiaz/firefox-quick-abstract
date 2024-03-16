@@ -9,15 +9,15 @@ Instructions:
    - Accurately and concisely summarize the key information 
    - Be well-written, precise and easy to understand
    - Contain the most important points without extraneous details
-   - Be formated as a single paragraphs of plain text with no HTML, or markdown or special characters.
+   - Be formated as various easily readable paragraphs of plain text  each formatted as <p class="abstractp">{paragraph text}</p> without markdown or special characters.
 4. Extract the most relevant keywords from the text that capture the main topics and themes.
 5. Format the output as follows, including the abstract and keywords:
-<div class="abstract">{abstract}</div>
+<div class="abstract" lang="{ISO code of the detected language}">{abstract}</div>
 <div class="keywords">{foreach keyword in keywords: <span class="keyword">{keyword}</span> }</div>
 
 Additional Suggestions:
 - If the webpage text is long, focus the abstract on the most important sections or ideas. Don't try to cover everything.
-- Aim for an abstract length of 100-200 words in most cases. Use your judgment based on the webpage length and density of information.
+- Aim for an abstract length of 100-150 words in most cases. Use your judgment based on the webpage length and density of information.
 - Choose 3-5 keywords that are specific, descriptive and capture the main topics. Avoid vague or overly broad keywords.
 - Ensure proper grammar, spelling and punctuation in the abstract.
 - Do not include any information in the abstract that is not covered in the webpage text.
