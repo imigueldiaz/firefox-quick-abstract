@@ -1,9 +1,14 @@
-body#popup {
+body {
   background-color: #FFFFFF; /* Photon white background */
   color: #0C0C0D; /* Photon grey-90 for text */
-  font-family: 'Times', serif; /* Serif font for body text */
-  width: 550px;
+  font-family: 'Segoe UI Regular', sans-serif; /* Serif font for body text */
   margin: 0;
+  font-size: 15px/150%; /* Consistent font size and line height */
+}
+
+body#popup {
+  
+  width: 550px;
   padding: 5px; /* Increased padding for a more spacious layout */
   box-sizing: border-box;
   display: flex;
