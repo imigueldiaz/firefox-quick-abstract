@@ -4,19 +4,19 @@
   <title>Popup</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="popup">
   <div id="responseContainer">
-    <div id="apiResponse"><span id="initialText">Tap 'Summarize' to Unleash Your Abstract's Potential!</span></div>
+    <div id="apiResponse" aria-live="polite" ><span id="initialText">Tap 'Summarize' to Unleash Your Abstract's Potential!</span></div>
     <div id="spinner" style="display:none;">
     </div>
   </div>
 
   <div class="button-container">
-    <button id="openOptions">
+    <button id="openOptions" aria-haspopuup="dialog" alt="Settings">
       <img src="icons/settings.svg" alt="Settings" width="20" height="20">
 
     Settings</button>
-    <button id="resume" class="ok">
+    <button id="resume" class="ok" aria-controls="responseContainer" aria-expanded="false" alt="Summarize">
       <img src="icons/resume.svg" alt="Summarize" width="20" height="20">
       
     Summarize</button>

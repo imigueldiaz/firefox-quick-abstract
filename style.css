@@ -1,6 +1,6 @@
-body {
-  background-color: #fefefe; /* White background for a clean look */
-  color: #333333; /* Dark grey text for readability */
+body#popup {
+  background-color: #FFFFFF; /* Photon white background */
+  color: #0C0C0D; /* Photon grey-90 for text */
   font-family: 'Times', serif; /* Serif font for body text */
   width: 550px;
   margin: 0;
@@ -14,10 +14,10 @@ body {
 #apiResponse {
   margin: 3px auto;
   padding: 10px; /* Increased padding for better text presentation */
-  background-color: #f8f8f8; /* Light grey background for contrast */
-  border: 1px solid #dddddd; /* Lighter border for a subtle look */
+  background-color: #F5F5F5; /* Photon grey-10 for contrast */
+  border: 1px solid #D7D7DB; /* Photon grey-40 for border */
   border-radius: 4px;
-  color: #333333; /* Dark text for contrast */
+  color: #0C0C0D; /* Photon grey-90 for text */
   min-height: 100px;
   width: 95%;
   text-align: left;
@@ -32,8 +32,8 @@ body {
 button {
   width: calc(50% - 5px); /* Adjust for margin */
   padding: 10px; /* Consistent padding for better touch interaction */
-  background-color: #f8f8f8;
-  color: black;
+  background-color: #F5F5F5; /* Photon grey-10 */
+  color: #0C0C0D; /* Photon grey-90 */
   border: none;
   cursor: pointer;
   transition: background-color 0.5s ease;
@@ -46,33 +46,31 @@ button img {
 }
 
 button:hover {
-  background-color: #005fa3;
-  color: white;
+  background-color: #0A84FF; /* Photon blue-50 */
+  color: #FFFFFF; /* Photon white */
 }
 
 button:active {
-  background-color: #003d73;
-  color: white
+  background-color: #0060DF; /* Photon blue-60 */
+  color: #FFFFFF; /* Photon white */
 }
 
 button.ok {
-  background-color: #4CAF50; /* Green */
-  color: white;
+  background-color: #30D158; /* Photon green-50 */
+  color: #FFFFFF; /* Photon white */
   border: none;
   cursor: pointer;
   transition: background-color 1s ease;
 }
 button.ok:hover {
-  background-color: #45a049;
+  background-color: #00C853; /* Photon green-60 */
 }
 button.ok:active {
-  background-color: #3c8e41;
+  background-color: #008F39; /* Photon green-70 */
 }
- button.ok img {
+button.ok img {
   filter: invert(100%);
 }
-
-
 
 button:first-child {
   margin-right: 10px;
@@ -86,27 +84,42 @@ form {
 label {
   display: block;
   margin-bottom: 10px; /* Increased margin for better separation */
-  color: #333333; /* Dark text for readability */
+  color: #0C0C0D; /* Photon grey-90 for text */
   font-size: 12pt; /* Consistent font size with body text */
+  font-weight: bold; /* Bold text for emphasis */
+}
+
+fieldset {
+  padding: 20px; /* Increased padding for better text presentation */
+  margin-bottom: 20px; /* Increased margin for better separation */
+  background-color: #F5F5F5; /* Photon grey-10 for contrast */
+  border: 1px solid #D7D7DB; /* Photon grey-40 for border */
+  border-radius: 4px;
+  color: #0C0C0D; /* Photon grey-90 for text */
+}
+
+legend {
+  font-size: 14pt; /* Larger font size for emphasis */
+  font-weight: bold; /* Bold text for emphasis */
+  color: #0C0C0D; /* Photon grey-90 for text */
 }
 
 input[type="text"],
-input[type="number"] {
-  width: 100%;
+input[type="number"],
+input[type="password"] {
+  width: 95%;
   padding: 10px;
   margin-bottom: 10px; /* Increased margin for better separation */
-  background-color: #f8f8f8; /* Light grey background for input fields */
-  border: 1px solid #dddddd; /* Light border for a subtle look */
+  background-color: #FFFFFF; /* Photon white for input fields */
+  border: 1px solid #D7D7DB; /* Photon grey-40 for border */
   border-radius: 4px;
-  color: #333333; /* Dark text for readability */
+  color: #0C0C0D; /* Photon grey-90 for text */
   outline: none;
-  border-color: #569cd6; /* Blue border for focus indication */
 }
 
-
 .abstract {
-  background-color: #f8f8f8; /* Consistent with other elements */
-  color: #333333; /* Dark text for readability */
+  background-color: #F5F5F5; /* Photon grey-10 */
+  color: #0C0C0D; /* Photon grey-90 for text */
   padding: 10px; /* Increased padding for better text presentation */
   margin-bottom: 10px; /* Increased margin for visual separation */
   border-radius: 4px;
@@ -120,7 +133,6 @@ input[type="number"] {
   margin: .5em auto; /* Add margin for spacing */
 }
 
-
 .keywords {
   display: flex; /* Use flex to create a flex container */
   flex-wrap: wrap; /* Allow keywords to wrap onto multiple lines */
@@ -129,24 +141,18 @@ input[type="number"] {
   gap: 3px; /* Add space between items */
 }
 
-
 .keyword {
   display: inline-flex; /* Use inline-flex to allow keywords to flow like text */
   justify-content: center; /* Center items along the main axis */
   align-items: center; /* Center items along the cross axis */
-  background-color: rgba(0, 0, 230, 0.3); /* Blue for emphasis */
-  color: white; /* White text for contrast */
+  background-color: #D7D7DB; /* Photon grey-40 with opacity */
+  color: #0C0C0D; /* Photon grey-90 */
   padding: 5px;
-  margin: 3px;
-  border-radius: 3px;
-  font-size: 10pt; /* Slightly smaller for differentiation */
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  font-size: 11px; /* Slightly smaller for differentiation */
   font-style: italic; /* Italics for emphasis */
-}
-
-
-.keyword:hover {
-  background-color: rgba(0, 0, 120, 0.3); /* Darker on hover for interaction feedback */
+  border: 1px solid #B1B1B3; /* Photon grey-50 for border */
+  text-transform: capitalize;
 }
 
 @keyframes spin {
@@ -162,10 +168,9 @@ input[type="number"] {
   min-height: 100px
 }
 
-
 #spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border: 4px solid #F5F5F5; /* Photon grey-10 */
+  border-top: 4px solid #0A84FF; /* Photon blue-50 */
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -176,9 +181,7 @@ input[type="number"] {
   display: block; /* Ensure the span behaves like a block element for centering */
   text-align: center; /* Center the text horizontally */
   font-weight: bold; /* Make the text bold */
-  color: #007acc; /* Use a noticeable color */
+  color: #0A84FF; /* Photon blue-50 */
   margin: 10px 0; /* Add some margin for spacing */
   font-size: 1.2em; /* Larger font size for emphasis */
 }
-
-
