@@ -1,9 +1,18 @@
-// Description: This script is used to call the Perplexity API and return the response to the content script.
-function callPerplexityAPI(apiKey, model, temperature, content) {
+/**
+ * @param {string} apiKey
+ * @param {string} model
+ * @param {number} temperature
+ * @param {string} content
+ * @param {string} language
+ * @returns {Promise<any>}
+ * Call the Perplexity API with the provided parameters.
+ * Return a promise that resolves with the API response.
+ */
+function callPerplexityAPI(apiKey, model, temperature, content, language) {
   const systemPrompt = `You are an AI assistant that generates concise, high-quality abstracts and keywords for webpage content.
 
 Instructions:
-1. Analyze the provided webpage text and identify the main topics, key points and overall meaning. 
+1. Analyze the provided webpage text and identify the main topics, key points and overall meaning. Take account of the language of the webpage. The ISO code of the language should be detected and if it is not it will be '${language}'.
 2. Generate an abstract in the SAME LANGUAGE as the webpage content. This is crucial. If the webpage is in Spanish, the abstract MUST be in Spanish. If the webpage is in French, the abstract MUST be in French, and so on.
 3. The abstract should:
    - Accurately and concisely summarize the key information 
@@ -11,7 +20,7 @@ Instructions:
    - Contain the most important points without extraneous details
    - Be formated as various easily readable paragraphs of plain text  each formatted as <p class="abstractp">{paragraph text}</p> WITHOUT MARKDOWN OR SPECIAL CHARACTERS.
 4. Extract the most relevant keywords from the text that capture the main topics and themes.
-5. Format the output as follows, including the abstract and keywords:
+5. Format the output as follows, including the abstract and keywords, the final output MUST BE a valid HTML node with NO MARKDOWN at all:
 <div class="abstract" lang="{ISO code of the detected language}">{abstract}</div>
 <div class="keywords">{foreach keyword in keywords: <span class="keyword">{keyword}</span> }</div>
 
@@ -25,8 +34,7 @@ Additional Suggestions:
 
 Begin!`;
 
-
-
+  // Set the options for the fetch call
   const options = {
     method: 'POST',
     headers: {
@@ -49,8 +57,7 @@ Begin!`;
     .catch(err => console.error(err));
 }
 
-
-
+// Listen for messages from the popup
 browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'CALL_API') {
     callPerplexityAPI(message.apiKey, message.model, message.temperature, message.content).then(response => {

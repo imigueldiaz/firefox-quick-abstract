@@ -1,3 +1,10 @@
+const MAX_WORDS = 14000;
+
+/**
+ * Add event listeners to the popup's elements
+ * to trigger the API call and open the options page
+ * when the corresponding buttons are clicked.
+ */
 document.getElementById('openOptions').addEventListener('click', function() {
   if (browser.runtime.openOptionsPage) {
     // New way to open options pages, if supported (Firefox 42+).
@@ -8,6 +15,18 @@ document.getElementById('openOptions').addEventListener('click', function() {
   }
 });
 
+
+/**
+ * Get the configuration from the storage
+ * to use the API key, model, and temperature
+ * for the API call.
+ * @returns {Promise} A promise that resolves with the configuration object.
+ * The configuration object contains the API key, model, and temperature.
+ * The default values are used if the configuration is not set.
+ * The default API key is 'pplx-xxxxxxxxxxx'.
+ * The default model is 'sonar-medium-chat'. 
+ * The default temperature is 1.
+ */
 function getConfiguration() {
   return browser.storage.sync.get({
     apiKey: 'pplx-xxxxxxxxxxx', // Default API key
@@ -16,6 +35,12 @@ function getConfiguration() {
   });
 }
 
+/**
+ * Fetch the main content of the active tab
+ * and clean it to remove unwanted elements
+ * such as ads, headers, and navigation.
+ * @returns {Promise} A promise that resolves with the cleaned text content of the main element of the page.
+ */
 
 function fetchTabContent() {
   return new Promise((resolve, reject) => {
@@ -24,8 +49,14 @@ function fetchTabContent() {
       chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
         func: () => {
+           // First, check if the user has selected any text
+          const selection = window.getSelection().toString().trim();
+          if (selection) {
+            // If there's a selection, return it directly
+            return selection;
+          }
             // Attempt to select the main content of the page
-          const mainContentSelectors = ['article', 'main', '.main', '#main', '.post', '#content', '.entry', '#entry'];
+          const mainContentSelectors = ['article', 'main', '.main', '#main', '.post', '#content', '.entry', '#entry', 'section'];
           let mainContent;
           for (let selector of mainContentSelectors) {
             mainContent = document.querySelector(selector);
@@ -36,31 +67,18 @@ function fetchTabContent() {
           if (!mainContent) mainContent = document.body;
 
             // Remove known ad, header, lists, toc, footer, and navigation selectors
-          const unwantedSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header', 'ul', 'ol', '.toc', '#toc', 'nav'];
+          const unwantedSelectors = 
+          ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', 'figure', 'figurecaption',
+           '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header', 'ul', 'ol', '.toc', '#toc', 'nav',
+           '.right-menu', '.right-sidebar', '.right-column', 'aside', '.left-menu', '.left-sidebar', '.left-column', '.navigation', '.menu', '#menu']
           unwantedSelectors.forEach(selector => {
             const elements = mainContent.querySelectorAll(selector);
             elements.forEach(el => el.remove());
           });
 
-            // Remove right and left menus or divs with non-pertinent content
-          const rightMenuSelectors = ['.right-menu', '.right-sidebar', '.right-column', 'aside'];
-          const leftMenuSelectors = ['.left-menu', '.left-sidebar', '.left-column'];
-          rightMenuSelectors.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(el => el.remove());
-          });
-          leftMenuSelectors.forEach(selector => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(el => el.remove());
-          });
-
-            // Remove script and style tags
-          const scriptAndStyleTags = mainContent.querySelectorAll('script, style');
+            // Remove script and style tags, empty paragraphs and line breaks
+          const scriptAndStyleTags = mainContent.querySelectorAll('script, style, p:empty, br');
           scriptAndStyleTags.forEach(el => el.remove());
-
-            // Remove empty paragraphs and line breaks
-          const emptyElements = mainContent.querySelectorAll('p:empty, br');
-          emptyElements.forEach(el => el.remove());
 
             // Normalize whitespace and trim the content
           const cleanedText = mainContent.innerText.replace(/\s+/g, ' ').trim();
@@ -79,32 +97,69 @@ function fetchTabContent() {
   });
 }
 
+/**
+ * Trigger the API call with the configuration
+ * and the cleaned content of the active tab.
+ * Display the response in the popup.
+ * If the content is too long, display an error message.
+ * If the API key is the default value, display a message to the user.
+ * If the API response contains an error, display the error message.
+ * @returns {Promise} A promise that resolves when the API call is complete.
+ */
 function triggerAPI() {
-  document.getElementById('apiResponse').style.display = 'none';
-  document.getElementById('spinner').style.display = 'block';
+
+  // Get the response and spinner elements
+  const responseDiv = document.getElementById('apiResponse');
+  const spinner = document.getElementById('spinner');
+  const lang = document.documentElement.lang;
 
   getConfiguration().then(config => {
+
+    // Check if the API key is the default value
+    if (!config.apiKey || config.apiKey === 'pplx-xxxxxxxxxxx') {
+      responseDiv.textContent = 'Please enter your Perplexity API key in the options page.';
+      return;
+    }
+
+    responseDiv.style.display = 'none';
+    spinner.style.display = 'block';
+
     fetchTabContent().then(content => {
+
+      // Check if the content is too long to send to the API
+      if (content.length > MAX_WORDS) {
+        responseDiv.textContent = `The content is too long (${content.length} words) to send to the API.`;
+        responseDiv.style.display = 'block';
+        spinner.style.display = 'none';
+        return;
+      }
+
       browser.runtime.sendMessage({
         type: 'CALL_API',
         apiKey: config.apiKey,
         model: config.model,
         temperature: config.temperature,
-        content: content
+        content: content,
+        language: lang || 'en'
       }).then(response => {
         // Check if the response contains a data object with an error
         if (response.data && response.data.error) {
           console.error('API Error:', response.data.error.message);
           // Display the error message to the user
-          document.getElementById('apiResponse').textContent = 'API Error: ' + response.data.error.message;
+          responseDiv.textContent = 'API Error: ' + response.data.error.message;
         } else {
           // Handle the successful response from the API call
-          console.log(response.data);
           // Extract the 'content' from the response and update the textarea
-          const apiResponse = document.getElementById('apiResponse');
-          document.getElementById('apiResponse').style.display = 'block';
-          document.getElementById('spinner').style.display = 'none';
-          apiResponse.innerHTML = response.data.choices[0].message.content;
+          responseDiv.style.display = 'block';
+          spinner.style.display = 'none';
+
+          let content = response.data.choices[0]?.message?.content || "API response is empty. Please check the content of the page.";
+
+          if (content.includes('```')) {
+            content = cleanMarkdown(content);
+          }
+
+          apiResponse.innerHTML = content;
           requestAnimationFrame(() => {
           adjustPopupHeight(); // Adjust the height of the popup based on the content
         });
@@ -117,6 +172,16 @@ function triggerAPI() {
     });
   });
 }
+
+// Ocassionally, the API response includes markdown code blocks that we want to clean
+function cleanMarkdown(content) {
+  // Remove markdown code blocks
+  // the text is surrounded by ``` and the language is specified after the first ```
+  // we only want to remove the initial ``` and the language, and the final ```
+  const codeBlockRegex = /```(?:\w+)?/g;
+  return content.replace(codeBlockRegex, '');
+}
+
 
 function adjustPopupHeight() {
   // Calculate the total height of all elements that should be included in the popup's height

@@ -32,11 +32,17 @@ body {
 button {
   width: calc(50% - 5px); /* Adjust for margin */
   padding: 10px; /* Consistent padding for better touch interaction */
-  background-color: #007acc; /* Blue for a professional look */
-  color: white; /* White text for contrast */
+  background-color: #f8f8f8;
+  color: black;
   border: none;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  display: flex;        /* Use flexbox layout */
+  align-items: center;  /* Align items vertically in the center */
+  justify-content: center; /* Center items horizontally */
+}
+button img {
+  margin-right: 5px; /* Add some space between the image and the text */
 }
 
 button:hover {
@@ -48,6 +54,25 @@ button:active {
   background-color: #003d73;
   color: white
 }
+
+button.ok {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 1s ease;
+}
+button.ok:hover {
+  background-color: #45a049;
+}
+button.ok:active {
+  background-color: #3c8e41;
+}
+ button.ok img {
+  filter: invert(100%);
+}
+
+
 
 button:first-child {
   margin-right: 10px;
@@ -66,8 +91,7 @@ label {
 }
 
 input[type="text"],
-input[type="number"],
-button {
+input[type="number"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px; /* Increased margin for better separation */
@@ -75,13 +99,10 @@ button {
   border: 1px solid #dddddd; /* Light border for a subtle look */
   border-radius: 4px;
   color: #333333; /* Dark text for readability */
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
   outline: none;
   border-color: #569cd6; /* Blue border for focus indication */
 }
+
 
 .abstract {
   background-color: #f8f8f8; /* Consistent with other elements */
@@ -90,14 +111,15 @@ input[type="number"]:focus {
   margin-bottom: 10px; /* Increased margin for visual separation */
   border-radius: 4px;
   border: 0; /* No border for a clean look */
-}
-
-.abstract {
-  margin: 0;
-  padding: 0;
   text-align: justify;
   hyphens: auto;
 }
+
+.abstract p {
+  text-indent: 30px; /* Indent first line of each paragraph by 30px */
+  margin: .5em auto; /* Add margin for spacing */
+}
+
 
 .keywords {
   display: flex; /* Use flex to create a flex container */

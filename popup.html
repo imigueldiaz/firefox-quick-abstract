@@ -6,15 +6,20 @@
 </head>
 <body>
   <div id="responseContainer">
-    <div id="apiResponse"><span id="initialText">Please press the 'Resume' button to craft a suitable abstract.</span></div>
+    <div id="apiResponse"><span id="initialText">Tap 'Summarize' to Unleash Your Abstract's Potential!</span></div>
     <div id="spinner" style="display:none;">
-      <!-- Spinner HTML here -->
     </div>
   </div>
 
   <div class="button-container">
-    <button id="openOptions">Settings</button>
-    <button id="resume">Resume</button>
+    <button id="openOptions">
+      <img src="icons/settings.svg" alt="Settings" width="20" height="20">
+
+    Settings</button>
+    <button id="resume" class="ok">
+      <img src="icons/resume.svg" alt="Summarize" width="20" height="20">
+      
+    Summarize</button>
   </div>
 
   <script src="popup.js"></script>
