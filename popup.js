@@ -28,12 +28,20 @@ document.getElementById('openOptions').addEventListener('click', function() {
  * The default temperature is 1.
  */
 function getConfiguration() {
-  return browser.storage.sync.get({
+  return browser.storage.local.get({
     apiKey: 'pplx-xxxxxxxxxxx', // Default API key
     model: 'sonar-medium-chat', // Default model
     temperature: 1 // Default temperature
+  }).catch(error => {
+    console.error(`Error getting configuration: ${error}`);
+    return {
+      apiKey: 'pplx-xxxxxxxxxxx', // Default API key
+      model: 'sonar-medium-chat', // Default model
+      temperature: 1 // Default temperature
+    };
   });
 }
+
 
 /**
  * Fetch the main content of the active tab
@@ -80,8 +88,8 @@ function fetchTabContent() {
           const scriptAndStyleTags = mainContent.querySelectorAll('script, style, p:empty, br');
           scriptAndStyleTags.forEach(el => el.remove());
 
-            // Normalize whitespace and trim the content
-          const cleanedText = mainContent.innerText.replace(/\s+/g, ' ').trim();
+            // Clean the text content of the main element
+          const cleanedText = DOMPurify.sanitize(mainContent.innerText).replace(/\s+/g, ' ').trim();
 
             // Return the cleaned text
           return cleanedText;
@@ -93,7 +101,10 @@ function fetchTabContent() {
           resolve(injectionResults[0].result);
         }
       });
-    }).catch(reject);
+    }).catch(error => {
+      console.error(`Error getting active tab: ${error}`);
+      reject(new Error(error.message));
+    });
   });
 }
 
@@ -159,7 +170,9 @@ function triggerAPI() {
             content = cleanMarkdown(content);
           }
 
-          apiResponse.innerHTML = content;
+          // Sanitize the content before inserting it into the DOM
+          const sanitizedContent = DOMPurify.sanitize(content);
+          apiResponse.innerHTML = sanitizedContent;
           requestAnimationFrame(() => {
           adjustPopupHeight(); // Adjust the height of the popup based on the content
         });

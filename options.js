@@ -12,7 +12,7 @@
 
 function saveOptions(e) {
   e.preventDefault(); // Prevent the form from submitting normally
-  browser.storage.sync.set({
+  browser.storage.local.set({
     apiKey: document.querySelector("#apiKey").value,
     model: document.querySelector("#model").value,
     temperature: parseFloat(document.querySelector("#temperature").value)
@@ -40,7 +40,7 @@ function restoreOptions() {
     console.log(`Error: ${error}`);
   }
 
-  let getting = browser.storage.sync.get(["apiKey", "model", "temperature"]);
+  let getting = browser.storage.local.get(["apiKey", "model", "temperature"]);
   getting.then(setCurrentChoice, onError);
 }
 
