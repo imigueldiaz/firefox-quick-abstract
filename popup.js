@@ -53,60 +53,67 @@ function getConfiguration() {
 function fetchTabContent() {
   return new Promise((resolve, reject) => {
     browser.tabs.query({ active: true, currentWindow: true })
-    .then((tabs) => {
-      browser.scripting.executeScript({
-        target: { tabId: tabs[0].id },
-        func: () => {
-           // First, check if the user has selected any text
-          const selection = window.getSelection().toString().trim();
-          if (selection) {
-            // If there's a selection, return it directly
-            return selection;
-          }
+      .then((tabs) => {
+        browser.scripting.executeScript({
+          target: { tabId: tabs[0].id },
+          func: () => {
+            // First, check if the user has selected any text
+            const selection = window.getSelection().toString().trim();
+            if (selection) {
+              // If there's a selection, return it directly
+              console.log('User selection:', selection);
+              return selection;
+            }
+
             // Attempt to select the main content of the page
-          const mainContentSelectors = ['article', 'main', '.main', '#main', '.post', '#content', '.entry', '#entry', 'section'];
-          let mainContent;
-          for (let selector of mainContentSelectors) {
-            mainContent = document.querySelector(selector);
-            if (mainContent) break;
-          }
+            const mainContentSelectors = ['article', 'main', '.main', '#main', '.post', '#content', '.entry', '#entry', 'section'];
+            let mainContent;
+            for (let selector of mainContentSelectors) {
+              mainContent = document.querySelector(selector);
+              if (mainContent) break;
+            }
 
             // Fallback to using the whole body if no main content is found
-          if (!mainContent) mainContent = document.body;
+            if (!mainContent) mainContent = document.body;
+
+            console.log('Main content:', mainContent);
 
             // Remove known ad, header, lists, toc, footer, and navigation selectors
-          const unwantedSelectors = 
-          ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', 'figure', 'figurecaption',
-           '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header', 'ul', 'ol', '.toc', '#toc', 'nav',
-           '.right-menu', '.right-sidebar', '.right-column', 'aside', '.left-menu', '.left-sidebar', '.left-column', '.navigation', '.menu', '#menu']
-          unwantedSelectors.forEach(selector => {
-            const elements = mainContent.querySelectorAll(selector);
-            elements.forEach(el => el.remove());
-          });
+            const unwantedSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement', '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', 'figure', 'figurecaption', '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header', 'ul', 'ol', '.toc', '#toc', 'nav', '.right-menu', '.right-sidebar', '.right-column', 'aside', '.left-menu', '.left-sidebar', '.left-column', '.navigation', '.menu', '#menu'];
+            unwantedSelectors.forEach(selector => {
+              const elements = mainContent.querySelectorAll(selector);
+              elements.forEach(el => el.remove());
+            });
 
             // Remove script and style tags, empty paragraphs and line breaks
-          const scriptAndStyleTags = mainContent.querySelectorAll('script, style, p:empty, br');
-          scriptAndStyleTags.forEach(el => el.remove());
+            const scriptAndStyleTags = mainContent.querySelectorAll('script, style, p:empty, br');
+            scriptAndStyleTags.forEach(el => el.remove());
 
             // Clean the text content of the main element
-          const cleanedText = DOMPurify.sanitize(mainContent.innerText).replace(/\s+/g, ' ').trim();
+            const cleanedText = DOMPurify.sanitize(mainContent.innerText).replace(/\s+/g, ' ').trim();
 
-            // Return the cleaned text
-          return cleanedText;
-        }
-      }, (injectionResults) => {
-        if (browser.runtime.lastError) {
-          reject(new Error(browser.runtime.lastError.message));
-        } else {
-          resolve(injectionResults[0].result);
-        }
+            return cleanedText;
+          }
+        }, (injectionResults) => {
+          if (browser.runtime.lastError) {
+            reject(new Error(browser.runtime.lastError.message));
+          } else {
+            const result = injectionResults[0].result;
+            if (typeof result === 'string') {
+              resolve(result);
+            } else {
+              console.error('Unexpected result type from content script:', result);
+              reject(new Error('Unexpected result type from content script'));
+            }
+          }
+        });
+      }).catch(error => {
+        console.error(`Error getting active tab: ${error}`);
+        reject(new Error(error.message));
       });
-    }).catch(error => {
-      console.error(`Error getting active tab: ${error}`);
-      reject(new Error(error.message));
-    });
   });
 }
+
 
 /**
  * Trigger the API call with the configuration
@@ -215,5 +222,17 @@ function adjustPopupHeight() {
   document.body.style.height = `${totalHeight}px`;
 }
 
-
 document.getElementById('resume').addEventListener('click', triggerAPI);
+
+document.addEventListener("DOMContentLoaded", function() { 
+
+  // Set the focus on the resume button
+  document.getElementById('resume').focus();
+
+  // Set the text of the buttons and the title of the popup
+  document.getElementById('openOptions').textContent = browser.i18n.getMessage('settingsLabel');
+  document.getElementById('resume').textContent = browser.i18n.getMessage('summarizeLabel');
+  document.getElementById('initialText').textContent = browser.i18n.getMessage('initialText');
+  document.title = browser.i18n.getMessage('extensionName');
+
+});
