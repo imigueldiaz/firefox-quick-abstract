@@ -2,13 +2,12 @@
 
 A Firefox extension that generates a professional abstract and keywords for the current tab's content using the Perplexity AI API.
 
-
 > **Disclaimer**: _This is an alpha version extension created for self-learning purposes. It is not a professional, full-featured extension. Maintenance and updates will be provided as possible during the developer's limited free time._
 
 ## Features
 
 - Fetches the text content of the active tab
-- Sends the content to the Perplexity API for abstract and keyword generation 
+- Sends the content to the Perplexity API for abstract and keyword generation
 - Displays the generated abstract and keywords in the extension popup
 - Allows customization of API key, model, and temperature through the options page
 
@@ -54,7 +53,44 @@ You can change these settings on the options page.
 
 This extension relies on the Perplexity AI API. You need to sign up for an API key at [https://www.perplexity.ai/](https://www.perplexity.ai/) to use this extension.
 
-## License
+## Internationalization (i18n)
 
-This project is open-source and available under the [MIT License](LICENSE).
+This extension now supports internationalization, allowing users to interact with it in their preferred language. The following languages are currently supported:
+
+- English (default)
+- Spanish
+- French
+
+### Language Files
+
+The language-specific message files are located in the `_locales` directory, organized by locale code. Each locale directory contains a `messages.json` file that defines the localized strings for that language.
+
+Example:
+- `_locales/en/messages.json`: English messages
+- `_locales/es/messages.json`: Spanish messages
+- `_locales/fr/messages.json`: French messages
+
+### Using Localized Strings
+
+The extension uses the `browser.i18n` API to retrieve localized strings in the JavaScript code. The `getMessage()` function is used to get the localized string for a given message ID.
+
+Example:
+```javascript
+const localizedString = browser.i18n.getMessage('messageId');
+```
+To use localized strings in HTML files, you can use the __MSG_messageId__ syntax in the HTML attributes or content. Example:
+```html
+<button title="__MSG_buttonTitle__">Click me</button>
+```
+### Adding New Languages
+To add support for a new language, follow these steps:
+
+    * Create a new directory in the _locales directory with the locale code of the language (e.g., de for German).
+    * Create a messages.json file inside the new locale directory.
+    * Add the localized strings for the new language in the messages.json file, following the same format as the existing language files.
+    * Update the list of supported languages in the README.md file.
+
+With the i18n support, the Perplexity Abstract Creator extension can now reach a wider audience and provide a localized user experience.
+### License
+This project is open-source and available under the MIT License. Feel free to use, modify, and distribute the code as you see fit.
 
