@@ -85,12 +85,13 @@ To use localized strings in HTML files, you can use the __MSG_messageId__ syntax
 ### Adding New Languages
 To add support for a new language, follow these steps:
 
-    * Create a new directory in the _locales directory with the locale code of the language (e.g., de for German).
-    * Create a messages.json file inside the new locale directory.
-    * Add the localized strings for the new language in the messages.json file, following the same format as the existing language files.
-    * Update the list of supported languages in the README.md file.
+1. Create a new directory in the \_locales directory with the locale code of the language (e.g., 'de' for German).
+2. Create a messages.json file inside the new locale directory.
+3. Add the localized strings for the new language in the messages.json file, following the same format as the existing language files.
+4. Update the list of supported languages in the README.md file.
 
 With the i18n support, the Perplexity Abstract Creator extension can now reach a wider audience and provide a localized user experience.
+
 ### License
 This project is open-source and available under the MIT License. Feel free to use, modify, and distribute the code as you see fit.
 
