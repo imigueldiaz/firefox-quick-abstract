@@ -37,7 +37,7 @@ function restoreOptions() {
   }
 
   function onError(error) {
-    console.log(`Error: ${error}`);
+    console.log(browser.i18n.getMessage('errorLabel') + `: ${error}`);
   }
 
   let getting = browser.storage.local.get(["apiKey", "model", "temperature"]);
@@ -46,4 +46,15 @@ function restoreOptions() {
 
 // Add event listeners to the popup's elements
 document.addEventListener("DOMContentLoaded", restoreOptions);
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector("#apiKey").focus();
+  document.getElementById('api-settings').textContent = browser.i18n.getMessage('apiSettingsLabel');
+  document.getElementById('apiKeyLabel').textContent = browser.i18n.getMessage('apiKeyLabel');
+  document.getElementById('modelLabel').textContent = browser.i18n.getMessage('modelLabel');
+  document.getElementById('tempLabel').textContent = browser.i18n.getMessage('temperatureLabel');
+  document.getElementById('save').innerText = browser.i18n.getMessage('saveLabel');
+  window.title = browser.i18n.getMessage('extensionName');
+});
+
+
 document.querySelector("#options-form").addEventListener("submit", saveOptions);

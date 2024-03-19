@@ -1,0 +1,80 @@
+{
+  "extensionName": {
+    "message": "Creador de Resúmenes de Perplexity",
+    "description": "Nombre de la extensión."
+  },
+  "extensionDescription": {
+    "message": "Una extensión de Firefox que genera un resumen profesional y palabras clave para el contenido de la pestaña actual utilizando la API de Perplexity AI.",
+    "description": "Descripción de la extensión."
+  },
+  "initialText": {
+    "message": "¡Pulsa 'Resumir' para liberar el potencial de tu resumen!",
+    "description": "Texto inicial mostrado en la ventana emergente."
+  },
+  "settingsLabel": {
+    "message": "Ajustes",
+    "description": "Etiqueta para el botón de ajustes."
+  },
+  "summarizeLabel": {
+    "message": "Resumir",
+    "description": "Etiqueta para el botón de resumir."
+  },
+  "apiKeyLabel": {
+    "message": "Clave API de Perplexity:",
+    "description": "Etiqueta para el campo de entrada de la clave API."
+  },
+  "modelLabel": {
+    "message": "Modelo:",
+    "description": "Etiqueta para el campo de entrada del modelo."
+  },
+  "temperatureLabel": {
+    "message": "Temperatura:",
+    "description": "Etiqueta para el campo de entrada de la temperatura."
+  },
+  "saveLabel": {
+    "message": "Guardar",
+    "description": "Etiqueta para el botón de guardar."
+  },
+  "apiSettingsLabel": {
+    "message": "Ajustes de la API",
+    "description": "Etiqueta para el conjunto de campos de ajustes de la API."
+  },
+  "abstractRoleDescription": {
+    "message": "Resumen",
+    "description": "Etiqueta ARIA para la sección de resumen."
+  },
+  "keywordRoleDescription": {
+    "message": "Palabra clave",
+    "description": "Etiqueta ARIA para cada palabra clave."
+  },
+  "loadingLabel": {
+    "message": "Cargando",
+    "description": "Etiqueta ARIA para el indicador de carga."
+  },
+  "responseRoleDescription": {
+    "message": "Respuesta de la API",
+    "description": "Etiqueta ARIA para el contenedor de respuesta de la API."
+  },
+  "apiErrorMessage": {
+    "message": "Error de API: ",
+    "description": "Prefijo del mensaje de error para errores de la API."
+  },
+  "apiKeyErrorMessage": {
+    "message": "Por favor, introduce tu clave API de Perplexity en la página de opciones.",
+    "description": "Mensaje de error cuando la clave API no está configurada."
+  },
+  "contentTooLongErrorMessage": {
+    "message": "El contenido es demasiado largo ($length$ palabras) para enviarlo a la API.",
+    "description": "Mensaje de error cuando el contenido es demasiado largo.",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "15000"
+      }
+    }
+  },
+  "emptyResponseErrorMessage": {
+    "message": "La respuesta de la API está vacía. Por favor, comprueba el contenido de la página.",
+    "description": "Mensaje de error cuando la respuesta de la API está vacía."
+  }
+}
