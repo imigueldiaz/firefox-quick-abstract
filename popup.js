@@ -54,7 +54,7 @@ function fetchTabContent() {
   return new Promise((resolve, reject) => {
     browser.tabs.query({ active: true, currentWindow: true })
     .then((tabs) => {
-      chrome.scripting.executeScript({
+      browser.scripting.executeScript({
         target: { tabId: tabs[0].id },
         func: () => {
            // First, check if the user has selected any text
@@ -128,7 +128,7 @@ function triggerAPI() {
 
     // Check if the API key is the default value
     if (!config.apiKey || config.apiKey === 'pplx-xxxxxxxxxxx') {
-      responseDiv.textContent = 'Please enter your Perplexity API key in the options page.';
+      responseDiv.textContent = browser.i18n.getMessage('apiKeyErrorMessage');
       return;
     }
 
@@ -139,7 +139,7 @@ function triggerAPI() {
 
       // Check if the content is too long to send to the API
       if (content.length > MAX_WORDS) {
-        responseDiv.textContent = `The content is too long (${content.length} words) to send to the API.`;
+        responseDiv.textContent = browser.i18n.getMessage('contentTooLongErrorMessage', [content.length]);
         responseDiv.style.display = 'block';
         spinner.style.display = 'none';
         return;

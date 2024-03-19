@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Popup</title>
+  <title>__MSG_extensionName__</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body id="popup">
   <div id="responseContainer">
-    <div id="apiResponse" aria-live="polite" ><span id="initialText">Tap 'Summarize' to Unleash Your Abstract's Potential!</span></div>
+    <div id="apiResponse" aria-live="polite" ><span id="initialText">__MSG_initialText__</span></div>
     <div id="spinner" style="display:none;">
     </div>
   </div>
 
   <div class="button-container">
-    <button id="openOptions" aria-haspopuup="dialog" alt="Settings">
-      <img src="icons/settings.svg" alt="Settings" width="20" height="20">
-
-    Settings</button>
-    <button id="resume" class="ok" aria-controls="responseContainer" aria-expanded="false" alt="Summarize">
-      <img src="icons/resume.svg" alt="Summarize" width="20" height="20">
-      
-    Summarize</button>
+    <button id="openOptions" aria-haspopup="dialog" alt="__MSG_settingsLabel__">
+      <img src="icons/settings.svg" alt="__MSG_settingsLabel__" width="20" height="20">
+      __MSG_settingsLabel__
+    </button>
+    <button id="resume" class="ok" aria-controls="responseContainer" aria-expanded="false" alt="__MSG_summarizeLabel__">
+      <img src="icons/resume.svg" alt="__MSG_summarizeLabel__" width="20" height="20">
+      __MSG_summarizeLabel__
+    </button>
   </div>
 
   <script src="lib/purify.min.js"></script>

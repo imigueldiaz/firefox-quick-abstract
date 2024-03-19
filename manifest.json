@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Perplexity Abstract creator",
+  "name": "__MSG_extensionName__",
   "version": "0.1",
-  "description": "A Firefox extension that opens an abstract of the current page in a new tab. Please note: This is an alpha version extension created for self-learning purposes, not a professional, full-featured extension. Maintenance and updates will be provided as possible during the developer's limited free time.",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "permissions": [
     "activeTab",
     "storage",
@@ -21,14 +22,8 @@
     "page": "options.html",
     "open_in_tab": true
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["lib/purify.min.js"]
-    }
-  ],
   "background": {
-    "scripts": ["lib/purify.min.js","background.js"]
+    "scripts": ["background.js"]
   },
   "browser_specific_settings": {
     "gecko": {
@@ -37,6 +32,12 @@
   },
   "content_security_policy": {
     "extension_pages": "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://api.perplexity.ai;"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["_locales/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 
 }

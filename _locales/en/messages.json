@@ -1,0 +1,80 @@
+{
+  "extensionName": {
+    "message": "Perplexity Abstract Creator",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "A Firefox extension that generates a professional abstract and keywords for the current tab's content using the Perplexity AI API.",
+    "description": "Description of the extension."
+  },
+  "initialText": {
+    "message": "Tap 'Summarize' to Unleash Your Abstract's Potential!",
+    "description": "Initial text displayed in the popup."
+  },
+  "settingsLabel": {
+    "message": "Settings",
+    "description": "Label for the settings button."
+  },
+  "summarizeLabel": {
+    "message": "Summarize",
+    "description": "Label for the summarize button."
+  },
+  "apiKeyLabel": {
+    "message": "Perplexity API Key:",
+    "description": "Label for the API key input field."
+  },
+  "modelLabel": {
+    "message": "Model:",
+    "description": "Label for the model input field."
+  },
+  "temperatureLabel": {
+    "message": "Temperature:",
+    "description": "Label for the temperature input field."
+  },
+  "saveLabel": {
+    "message": "Save",
+    "description": "Label for the save button."
+  },
+  "apiSettingsLabel": {
+    "message": "API Settings",
+    "description": "Label for the API settings fieldset."
+  },
+  "abstractRoleDescription": {
+    "message": "Abstract",
+    "description": "ARIA label for the abstract section."
+  },
+  "keywordRoleDescription": {
+    "message": "Keyword",
+    "description": "ARIA label for each keyword."
+  },
+  "loadingLabel": {
+    "message": "Loading",
+    "description": "ARIA label for the loading spinner."
+  },
+  "responseRoleDescription": {
+    "message": "API response",
+    "description": "ARIA label for the API response container."
+  },
+  "apiErrorMessage": {
+    "message": "API Error: ",
+    "description": "Error message prefix for API errors."
+  },
+  "apiKeyErrorMessage": {
+    "message": "Please enter your Perplexity API key in the options page.",
+    "description": "Error message when the API key is not set."
+  },
+  "contentTooLongErrorMessage": {
+    "message": "The content is too long ($length$ words) to send to the API.",
+    "description": "Error message when the content is too long.",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "15000"
+      }
+    }
+  },
+  "emptyResponseErrorMessage": {
+    "message": "API response is empty. Please check the content of the page.",
+    "description": "Error message when the API response is empty."
+  }
+}

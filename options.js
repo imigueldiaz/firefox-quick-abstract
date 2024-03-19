@@ -37,7 +37,7 @@ function restoreOptions() {
   }
 
   function onError(error) {
-    console.log(`Error: ${error}`);
+    console.log(browser.i18n.getMessage('errorLabel') + `: ${error}`);
   }
 
   let getting = browser.storage.local.get(["apiKey", "model", "temperature"]);
