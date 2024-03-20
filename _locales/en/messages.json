@@ -76,5 +76,26 @@
   "emptyResponseErrorMessage": {
     "message": "API response is empty. Please check the content of the page.",
     "description": "Error message when the API response is empty."
+  },
+  "noAuthorLabel": {
+    "message": "No author",
+    "description": "Label for the author when it is not available."
+  },
+  "apaCitationLabel": {
+    "message": "APA Citation",
+    "description": "Label for the APA citation."
+  },
+  "retrievedLabel": {
+    "message": "Retrieved",
+    "description": "Label for the retrieved date."
+  },
+  "fromLabel": {
+    "message": "from",
+    "description": "Label for the from text in the citation."
+  },
+  "noUrlLabel": {
+    "message": "user selection",
+    "description": "Label for the URL when it is not available."
   }
+
 }

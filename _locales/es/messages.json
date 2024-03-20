@@ -76,5 +76,25 @@
   "emptyResponseErrorMessage": {
     "message": "La respuesta de la API está vacía. Por favor, comprueba el contenido de la página.",
     "description": "Mensaje de error cuando la respuesta de la API está vacía."
+  },
+  "noAuthorLabel": {
+    "message": "Anónimo",
+    "description": "Etiqueta para el autor si no se puede encontrar."
+  },
+  "apaCitationLabel": {
+    "message": "Cita APA",
+    "description": "Etiqueta para el formato de cita APA."
+  },
+  "retrievedLabel": {
+    "message": "Recuperado",
+    "description": "Etiqueta para la fecha de recuperación."
+  },
+  "fromLabel": {
+    "message": "de",
+    "description": "Etiqueta para 'de'."
+  },
+  "noUrlLabel": {
+    "message": "Selección de usuario",
+    "description": "Etiqueta para la URL si no se puede encontrar."
   }
 }

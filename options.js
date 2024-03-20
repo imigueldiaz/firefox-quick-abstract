@@ -36,6 +36,12 @@ function restoreOptions() {
     document.querySelector("#temperature").value = result.temperature || 1;
   }
 
+/**
+ * Log an error if the options were not restored
+ * @param {Error} error - The error that occurred
+ * @returns {void}
+ * */
+
   function onError(error) {
     console.log(browser.i18n.getMessage('errorLabel') + `: ${error}`);
   }
@@ -46,6 +52,8 @@ function restoreOptions() {
 
 // Add event listeners to the popup's elements
 document.addEventListener("DOMContentLoaded", restoreOptions);
+
+
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelector("#apiKey").focus();
   document.getElementById('api-settings').textContent = browser.i18n.getMessage('apiSettingsLabel');

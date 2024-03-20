@@ -76,5 +76,25 @@
   "emptyResponseErrorMessage": {
     "message": "La réponse de l'API est vide. Veuillez vérifier le contenu de la page.",
     "description": "Message d'erreur lorsque la réponse de l'API est vide."
+  },
+  "noAuthorLabel": {
+    "message": "Auteur inconnu",
+    "description": "Libellé pour un auteur inconnu."
+  },
+  "apaCitationLabel": {
+    "message": "Citation APA",
+    "description": "Libellé pour la citation APA."
+  },
+  "retrievedLabel": {
+    "message": "Récupéré le",
+    "description": "Libellé pour la date de récupération."
+  },
+  "fromLabel": {
+    "message": "de",
+    "description": "Libellé pour 'de'."
+  },
+  "noUrlLabel": {
+    "message": "Selection de user",
+    "description": "Libellé pour aucune URL."
   }
 }
