@@ -188,13 +188,13 @@ button:first-child {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: #F0F0F4;
-  color: #0C0C0D;
-  padding: 4px 8px;
-  border-radius: 4px;
+/*  background-color: #F0F0F4;*/
+  color: #0e0e0e;
+  padding: 4px;
+  border-radius: 8px;
   font-size: 11px;
   font-style: italic;
-  border: 1px solid #D7D7DB;
+  border: 1px solid #eaeaea;
   text-transform: capitalize;
   /* Add ARIA role for keyword list item */
   role: "listitem";
