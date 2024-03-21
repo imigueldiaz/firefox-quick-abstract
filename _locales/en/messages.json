@@ -96,6 +96,17 @@
   "noUrlLabel": {
     "message": "user selection",
     "description": "Label for the URL when it is not available."
+  },
+  "copyMarkdownLabel": {
+    "message": "Copy Markdown",
+    "description": "Label for the copy Markdown button."
+  },
+  "copyHtmlLabel": {
+    "message": "Copy HTML",
+    "description": "Label for the copy HTML button."
+  },
+  "copyTextLabel": {
+    "message": "Copy Text",
+    "description": "Label for the copy text button."
   }
-
 }
