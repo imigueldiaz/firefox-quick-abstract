@@ -46,13 +46,12 @@ body#popup {
 
 #button-container button {
  padding: 2px;
- width: calc(50% - 10px);
  margin: 0 2px;
 }
 
 button {
-  width: calc(50% - 10px);
-  padding: 5px;
+  width: calc(30% - 10px);
+  padding: 3px;
   background-color: #FFFFFF;
   color: #0C0C0D;
   border: 1px solid #D7D7DB;
@@ -71,19 +70,18 @@ button {
 }
 
 button img {
-  margin-right: 8px;
   /* Add alternative text for button image */
   alt: "Button icon";
-  height: 40px;
-  width: 40px;
+  height: 20px;
+  width: 20px;
   filter: none; /* Remove if you have any filter applied */
   margin: 0; /* Ensure no additional margin is applied */
+  margin-right: 5px;
 }
 
 #button-container button img {
-  width: 20px; /* Specify the width */
-  height: 20px; /* Specify the height */
-  object-fit: contain; /* Ensure the image scales correctly within the dimensions */
+ 
+  object-fit: contain!important; /* Ensure the image scales correctly within the dimensions */
 }
 
 
