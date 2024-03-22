@@ -360,9 +360,56 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('resume').focus();
   
   // Set the text of the buttons and the title of the popup
-  document.getElementById('openOptions').textContent = browser.i18n.getMessage('settingsLabel');
-  document.getElementById('resume').textContent = browser.i18n.getMessage('summarizeLabel');
-  document.getElementById('initialText').textContent = browser.i18n.getMessage('initialText');
+  document.querySelector('#openOptions .button-text').textContent = browser.i18n.getMessage('settingsLabel');
+  document.querySelector('#copyMarkdown .button-text').textContent = browser.i18n.getMessage('copyMarkdownLabel');
+  document.querySelector('#copyHtml .button-text').textContent = browser.i18n.getMessage('copyHtmlLabel');
+  document.querySelector('#copyText .button-text').textContent = browser.i18n.getMessage('copyTextLabel');
+  document.querySelector('#resume .button-text').textContent = browser.i18n.getMessage('summarizeLabel');
+
+  document.getElementById('initialText').innerText = browser.i18n.getMessage('initialText');
   document.title = browser.i18n.getMessage('extensionName');
   
 });
+
+// Add event listeners for copy buttons
+document.getElementById('copyHtml').addEventListener('click', copyHtml);
+document.getElementById('copyMarkdown').addEventListener('click', copyMarkdown);
+document.getElementById('copyText').addEventListener('click', copyText);
+
+// Function to copy the content as HTML
+function copyHtml() {
+  // const abstractHtml = document.querySelector('.abstract').outerHTML;
+  // const keywordsHtml = document.querySelector('.keywords').outerHTML;
+  // const citationHtml = document.querySelector('.citation').outerHTML;
+  // const fullHtml = `${abstractHtml}\n${keywordsHtml}\n${citationHtml}`;
+  const fullHtml = document.getElementById('apiResponse').innerHTML;
+  copyToClipboard(fullHtml);
+}
+
+// Function to copy the content as Markdown
+function copyMarkdown() {
+  const abstractText = document.querySelector('.abstract').innerText;
+  const keywordsText = Array.from(document.querySelectorAll('.keyword')).map(keyword => `- ${keyword.innerText}`).join('\n');
+  const citationText = document.querySelector('.citation').innerText;
+  const markdownText = `## Abstract\n\n${abstractText}\n\n## Keywords\n\n${keywordsText}\n\n## Citation\n\n${citationText}`;
+  copyToClipboard(markdownText);
+}
+
+// Function to copy the content as plain text
+function copyText() {
+  const abstractText = document.querySelector('.abstract').innerText;
+  const keywordsText = Array.from(document.querySelectorAll('.keyword')).map(keyword => keyword.innerText).join(', ');
+  const citationText = document.querySelector('.citation').innerText;
+  const plainText = `Abstract:\n${abstractText}\n\nKeywords: ${keywordsText}\n\nCitation:\n${citationText}`;
+  copyToClipboard(plainText);
+}
+
+// Function to copy text to clipboard
+function copyToClipboard(text) {
+  const tempTextarea = document.createElement('textarea');
+  tempTextarea.value = text;
+  document.body.appendChild(tempTextarea);
+  tempTextarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextarea);
+}

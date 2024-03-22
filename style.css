@@ -34,38 +34,58 @@ body#popup {
   aria-atomic: "true";
 }
 
-.button-container {
+#button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
+  margin-top: 5px auto;
   /* Add ARIA role for button group */
   role: "group";
   /* Add ARIA label for button group */
   aria-label: "Action buttons";
 }
 
+#button-container button {
+ padding: 2px;
+ width: calc(50% - 10px);
+ margin: 0 2px;
+}
+
 button {
-  width: calc(50% - 8px);
-  padding: 8px;
+  width: calc(50% - 10px);
+  padding: 5px;
   background-color: #FFFFFF;
   color: #0C0C0D;
   border: 1px solid #D7D7DB;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.5s ease;
+  align-items: center;
+  justify-content: left;
+  font-size: 11px;
+  /* Add ARIA role for button */
+  role: "button";
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  /* Add ARIA role for button */
-  role: "button";
+  gap: 8px; /* Adjust the space between the image and the text */
 }
 
 button img {
   margin-right: 8px;
   /* Add alternative text for button image */
   alt: "Button icon";
+  height: 40px;
+  width: 40px;
+  filter: none; /* Remove if you have any filter applied */
+  margin: 0; /* Ensure no additional margin is applied */
 }
+
+#button-container button img {
+  width: 20px; /* Specify the width */
+  height: 20px; /* Specify the height */
+  object-fit: contain; /* Ensure the image scales correctly within the dimensions */
+}
+
 
 button:hover {
   background-color: #0A84FF;
@@ -96,12 +116,13 @@ button.ok:active {
   border-color: #008F39;
 }
 
-button.ok img {
+button.ok img, button:active img, button:hover img {
   filter: invert(100%);
 }
 
-button:first-child {
-  margin-right: 16px;
+button:focus {
+  outline: 0;
+  font-weight: bold;
 }
 
 #options-form {
@@ -190,15 +211,15 @@ button:first-child {
   justify-content: center;
   align-items: center;
 /*  background-color: #F0F0F4;*/
-  color: #0e0e0e;
-  padding: 4px;
-  border-radius: 8px;
-  font-size: 11px;
-  font-style: italic;
-  border: 1px solid #eaeaea;
-  text-transform: capitalize;
-  /* Add ARIA role for keyword list item */
-  role: "listitem";
+color: #0e0e0e;
+padding: 4px;
+border-radius: 8px;
+font-size: 11px;
+font-style: italic;
+border: 1px solid #eaeaea;
+text-transform: capitalize;
+/* Add ARIA role for keyword list item */
+role: "listitem";
 }
 
 @keyframes spin {
@@ -212,10 +233,10 @@ button:first-child {
   align-items: center;
   height: 100%;
 /*   min-height: 100px; */
-  /* Add ARIA role for response container */
-  role: "region";
-  /* Add ARIA label for response container */
-  aria-label: "API response";
+/* Add ARIA role for response container */
+role: "region";
+/* Add ARIA label for response container */
+aria-label: "API response";
 }
 
 #spinner {
@@ -249,10 +270,10 @@ button:first-child {
 }
 
 .citation a {
- 
+
  color: #666;
-  font-weight: bold;
-  text-decoration: none;
+ font-weight: bold;
+ text-decoration: none;
 
 }
 

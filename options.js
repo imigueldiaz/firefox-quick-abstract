@@ -60,7 +60,8 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('apiKeyLabel').textContent = browser.i18n.getMessage('apiKeyLabel');
   document.getElementById('modelLabel').textContent = browser.i18n.getMessage('modelLabel');
   document.getElementById('tempLabel').textContent = browser.i18n.getMessage('temperatureLabel');
-  document.getElementById('save').innerText = browser.i18n.getMessage('saveLabel');
+  document.querySelector('#save .button-text').textContent = browser.i18n.getMessage('saveLabel');
+
   window.title = browser.i18n.getMessage('extensionName');
 });
 

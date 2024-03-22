@@ -9,6 +9,7 @@ A Firefox extension that generates a professional abstract and keywords for the 
 - Sends the content to the Perplexity API for abstract and keyword generation 
 - Displays the generated abstract and keywords in the extension popup
 - Generates an APA citation for the webpage based on the title, author, and publication date
+- **New:** Allows copying the generated abstract, keywords, and citation in Markdown, HTML, or plain text format with the click of a button
 - Allows customization of API key, model, and temperature through the options page
 
 ## Installation
@@ -24,7 +25,8 @@ A Firefox extension that generates a professional abstract and keywords for the 
 2. Click on the extension icon in the Firefox toolbar
 3. Click the "Resume" button in the popup to fetch the page content and send it to the Perplexity API
 4. The generated abstract, keywords, and APA citation will be displayed in the popup textarea
-5. To change settings like your API key, model, or temperature, click the "Settings" button to open the options page
+5. **New:** Click on the "Copy Markdown", "Copy HTML", or "Copy Text" button to copy the generated content in the desired format
+6. To change settings like your API key, model, or temperature, click the "Settings" button to open the options page
 
 ## Configuration
 The extension uses the following default configuration:

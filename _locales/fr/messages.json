@@ -96,5 +96,17 @@
   "noUrlLabel": {
     "message": "Selection de user",
     "description": "Libellé pour aucune URL."
+  },
+  "copyMarkdownLabel": {
+    "message": "Copier Markdown",
+    "description": "Libellé pour le bouton de copie en Markdown."
+  },
+  "copyHtmlLabel": {
+    "message": "Copier HTML",
+    "description": "Libellé pour le bouton de copie en HTML."
+  },
+  "copyTextLabel": {
+    "message": "Copier texte brut",
+    "description": "Libellé pour le bouton de copie en texte brut."
   }
 }

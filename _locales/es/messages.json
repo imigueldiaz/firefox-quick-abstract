@@ -96,5 +96,17 @@
   "noUrlLabel": {
     "message": "Selección de usuario",
     "description": "Etiqueta para la URL si no se puede encontrar."
+  },
+  "copyMarkdownLabel": {
+    "message": "Copiar Markdown",
+    "description": "Etiqueta para el botón de copiar como Markdown."
+  },
+  "copyHtmlLabel": {
+    "message": "Copiar HTML",
+    "description": "Etiqueta para el botón de copiar como HTML."
+  },
+  "copyTextLabel": {
+    "message": "Copiar texto",
+    "description": "Etiqueta para el botón de copiar como texto."
   }
 }
