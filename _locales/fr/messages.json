@@ -108,5 +108,9 @@
   "copyTextLabel": {
     "message": "Copier texte brut",
     "description": "Libellé pour le bouton de copie en texte brut."
+  },
+  "saveSuccessMessage": {
+    "message": "Paramètres enregistrés avec succès.",
+    "description": "Message de succès pour l'enregistrement des paramètres."
   }
 }
