@@ -108,5 +108,10 @@
   "copyTextLabel": {
     "message": "Copy Text",
     "description": "Label for the copy text button."
-  }
+  },
+  "saveSuccessMessage": {
+  "message": "Settings saved successfully!",
+  "description": "Message shown when settings are saved successfully"
+}
+
 }

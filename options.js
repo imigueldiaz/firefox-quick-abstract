@@ -18,9 +18,20 @@ function saveOptions(e) {
     temperature: parseFloat(document.querySelector("#temperature").value)
   }).then(() => {
     console.log("Settings saved");
+    showInfoBadge();
   }, (error) => {
     console.error(`Error saving settings: ${error}`);
   });
+}
+
+function showInfoBadge() {
+  const infoBadge = document.getElementById('saveSuccess');
+  infoBadge.textContent = browser.i18n.getMessage('saveSuccessMessage');
+  infoBadge.style.opacity = '1';
+  setTimeout(() => {
+    infoBadge.style.opacity = '0';
+    setTimeout(() => infoBadge.remove(), 500);
+  }, 2000);
 }
 
 /**

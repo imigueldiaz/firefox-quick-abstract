@@ -279,3 +279,14 @@ aria-label: "API response";
   margin: 0;
   text-align: left;
 }
+.info-badge {
+  background-color: #30D158;
+  color: #FFFFFF; 
+  padding: 10px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  text-align: center;
+  margin-top: 10px;
+}
+

@@ -108,5 +108,9 @@
   "copyTextLabel": {
     "message": "Copiar texto",
     "description": "Etiqueta para el botón de copiar como texto."
+  },
+  "saveSuccessMessage": {
+    "message": "Ajustes guardados correctamente.",
+    "description": "Mensaje de éxito para guardar ajustes."
   }
 }
