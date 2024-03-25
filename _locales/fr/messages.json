@@ -112,5 +112,9 @@
   "saveSuccessMessage": {
     "message": "Paramètres enregistrés avec succès.",
     "description": "Message de succès pour l'enregistrement des paramètres."
+  },
+  "saveErrorMessage": {
+    "message": "Erreur lors de l'enregistrement des paramètres.",
+    "description": "Message d'erreur pour l'enregistrement des paramètres."
   }
 }

@@ -112,5 +112,9 @@
   "saveSuccessMessage": {
     "message": "Ajustes guardados correctamente.",
     "description": "Mensaje de éxito para guardar ajustes."
+  },
+  "saveErrorMessage": {
+    "message": "Error al guardar los ajustes.",
+    "description": "Mensaje de error para guardar ajustes."
   }
 }
