@@ -289,4 +289,15 @@ aria-label: "API response";
   text-align: center;
   margin-top: 10px;
 }
+.error-badge {
+  background-color: #FF453A;
+  color: #FFFFFF; 
+  padding: 10px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  text-align: center;
+  margin-top: 10px;
+}
+
 

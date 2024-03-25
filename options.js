@@ -21,6 +21,7 @@ function saveOptions(e) {
     showInfoBadge();
   }, (error) => {
     console.error(`Error saving settings: ${error}`);
+    showErrorBadge();
   });
 }
 
@@ -30,6 +31,16 @@ function showInfoBadge() {
   infoBadge.style.opacity = '1';
   setTimeout(() => {
     infoBadge.style.opacity = '0';
+    setTimeout(() => infoBadge.remove(), 500);
+  }, 2000);
+}
+
+function showErrorBadge() {
+  const errorBadge = document.getElementById('saveError');
+  errorBadge.textContent = browser.i18n.getMessage('saveErrorMessage');
+  errorBadge.style.opacity = '1';
+  setTimeout(() => {
+    errorBadge.style.opacity = '0';
     setTimeout(() => infoBadge.remove(), 500);
   }, 2000);
 }

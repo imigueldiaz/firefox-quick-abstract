@@ -112,6 +112,10 @@
   "saveSuccessMessage": {
   "message": "Settings saved successfully!",
   "description": "Message shown when settings are saved successfully"
+},
+"saveErrorMessage": {
+  "message": "An error occurred while saving settings.",
+  "description": "Message shown when an error occurs while saving settings"
 }
 
 }
