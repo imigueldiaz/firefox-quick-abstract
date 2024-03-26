@@ -259,7 +259,7 @@ const sanitizedContent = DOMPurify.sanitize(content);
     apiResponse.appendChild(citationElement);
 
   // Call adjustPopupHeight after updating the content
-    adjustPopupHeight();
+    //adjustPopupHeight();
   });
 
 }

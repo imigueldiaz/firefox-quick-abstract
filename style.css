@@ -9,17 +9,17 @@ body {
 
 body#popup {
   width: 550px;
-  padding: 10px;
+  padding: 5px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: auto; /* Change to auto instead of a fixed height */
+  height: 600px;
 }
 
 
 #apiResponse {
-  margin: 8px auto;
-  padding: 16px;
+  margin: 5px auto;
+  padding: 10px;
   background-color: #FFFFFF;
   border: 1px solid #D7D7DB;
   border-radius: 4px;
@@ -53,7 +53,7 @@ button {
   width: calc(30% - 10px);
   padding: 3px;
   background-color: #FFFFFF;
-  color: #0C0C0D;
+  color: #0C0C0C;
   border: 1px solid #D7D7DB;
   border-radius: 4px;
   cursor: pointer;
@@ -72,8 +72,8 @@ button {
 button img {
   /* Add alternative text for button image */
   alt: "Button icon";
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   filter: none; /* Remove if you have any filter applied */
   margin: 0; /* Ensure no additional margin is applied */
   margin-right: 5px;
@@ -88,7 +88,6 @@ button.ok {
   background-color: #0A84FF;
   color: #FFFFFF;
   border-color: #0A84FF;
-  transition: background-color 1s ease;
 }
 
 
@@ -155,7 +154,7 @@ button:focus {
   background-color: #FFFFFF;
   color: #0C0C0D;
   padding: 16px;
-  margin-bottom: 16px;
+  margin: 5px auto;
   border-radius: 4px;
   border: 0;
   text-align: justify;
@@ -165,11 +164,15 @@ button:focus {
   role: "region";
   /* Add ARIA label for abstract section */
   aria-label: "Abstract";
+  max-height: 350px;
+  min-height:  350px;
+  
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .abstract p {
   text-indent: 30px;
-  margin: 0.5em auto;
+  margin: 0.3em auto;
 }
 
 .keywords {
@@ -207,12 +210,12 @@ role: "listitem";
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-/*   min-height: 100px; */
-/* Add ARIA role for response container */
-role: "region";
-/* Add ARIA label for response container */
-aria-label: "API response";
+  role: "region";
+  /* Add ARIA label for response container */
+  aria-label: "API response";
+  max-height: 550px;
+  min-height: 550px;
+  overflow-y: hidden;
 }
 
 #spinner {
