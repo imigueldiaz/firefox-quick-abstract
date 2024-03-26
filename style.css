@@ -84,37 +84,15 @@ button img {
   object-fit: contain!important; /* Ensure the image scales correctly within the dimensions */
 }
 
-
-button:hover {
+button.ok {
   background-color: #0A84FF;
   color: #FFFFFF;
   border-color: #0A84FF;
-}
-
-button:active {
-  background-color: #0060DF;
-  color: #FFFFFF;
-  border-color: #0060DF;
-}
-
-button.ok {
-  background-color: #30D158;
-  color: #FFFFFF;
-  border-color: #30D158;
   transition: background-color 1s ease;
 }
 
-button.ok:hover {
-  background-color: #00C853;
-  border-color: #00C853;
-}
 
-button.ok:active {
-  background-color: #008F39;
-  border-color: #008F39;
-}
-
-button.ok img, button:active img, button:hover img {
+button.ok img{
   filter: invert(100%);
 }
 
