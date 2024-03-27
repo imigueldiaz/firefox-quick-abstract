@@ -116,5 +116,9 @@
   "saveErrorMessage": {
     "message": "Erreur lors de l'enregistrement des paramètres.",
     "description": "Message d'erreur pour l'enregistrement des paramètres."
+  },
+  "startHereLabel": {
+    "message": "Commencez ici",
+    "description": "Libellé pour le lien de démarrage."
   }
 }

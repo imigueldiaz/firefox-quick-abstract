@@ -116,5 +116,9 @@
   "saveErrorMessage": {
     "message": "Error al guardar los ajustes.",
     "description": "Mensaje de error para guardar ajustes."
+  },
+  "startHereLabel": {
+    "message": "Empieza aquí",
+    "description": "Etiqueta para el enlace de inicio."
   }
 }

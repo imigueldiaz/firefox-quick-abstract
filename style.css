@@ -5,26 +5,28 @@ body {
   margin: 0;
   font-size: 13px;
   line-height: 1.5;
+  width: 550px;
+  height: 600px;
+
+
 }
 
 body#popup {
-  width: 550px;
   padding: 5px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 600px;
 }
 
 
 #apiResponse {
   margin: 5px auto;
-  padding: 10px;
+  padding: 5px;
   background-color: #FFFFFF;
-  border: 1px solid #D7D7DB;
+  border: 0px solid #D7D7DB;
   border-radius: 4px;
   color: #0C0C0D;
-  min-height: 100px;
+  
   width: 95%;
   text-align: left;
   overflow-y: auto;
@@ -91,7 +93,7 @@ button.ok {
 }
 
 
-button.ok img{
+button.ok img, button.active img {
   filter: invert(100%);
 }
 
@@ -101,12 +103,13 @@ button:focus {
 }
 
 #options-form {
-  max-width: 380px;
+
   margin: 16px auto;
   /* Add ARIA role for form */
   role: "form";
   /* Add ARIA label for form */
   aria-label: "Extension settings form";
+  height: 100%;
 }
 
 #options-form label {
@@ -153,7 +156,7 @@ button:focus {
 .abstract {
   background-color: #FFFFFF;
   color: #0C0C0D;
-  padding: 16px;
+  padding: 10px;
   margin: 5px auto;
   border-radius: 4px;
   border: 0;
@@ -166,7 +169,6 @@ button:focus {
   aria-label: "Abstract";
   max-height: 320px;
   min-height:  320px;
-  
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -180,7 +182,7 @@ button:focus {
   flex-wrap: wrap;
   justify-content: start;
   align-items: center;
-  gap: 8px;
+  gap: 3px;
   /* Add ARIA role for keyword list */
   role: "list";
 }
@@ -213,9 +215,11 @@ role: "listitem";
   role: "region";
   /* Add ARIA label for response container */
   aria-label: "API response";
-  max-height: 550px;
-  min-height: 550px;
+  max-height: 500px;
+  min-height: 500px;
   overflow-y: hidden;
+  margin: 0 auto;
+  margin-bottom: 5px;
 }
 
 #spinner {
@@ -241,11 +245,10 @@ role: "listitem";
 }
 
 .citation {
-  margin-top: 5px;
   padding: 5px;
   background-color: #fafafa;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 .citation a {
@@ -279,6 +282,31 @@ role: "listitem";
   transition: opacity 0.5s ease-in-out;
   text-align: center;
   margin-top: 10px;
+}
+
+#tabs {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #D7D7DB
+}
+
+.tabLink {
+  padding: 5px auto;
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+}
+
+.tabLink.active {
+  background-color: #0a84ff;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.tabContent {
+  padding: 10px;
+  padding-bottom: 0;
 }
 
 

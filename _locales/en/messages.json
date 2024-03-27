@@ -116,6 +116,10 @@
 "saveErrorMessage": {
   "message": "An error occurred while saving settings.",
   "description": "Message shown when an error occurs while saving settings"
+},
+"startHereLabel": {
+  "message": "Start Here",
+  "description": "Label for the start here button."
 }
 
 }

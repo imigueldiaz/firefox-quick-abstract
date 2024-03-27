@@ -5,15 +5,7 @@ const MAX_WORDS = 14000;
 * to trigger the API call and open the options page
 * when the corresponding buttons are clicked.
 */
-document.getElementById('openOptions').addEventListener('click', function() {
-  if (browser.runtime.openOptionsPage) {
-    // New way to open options pages, if supported (Firefox 42+).
-    browser.runtime.openOptionsPage();
-  } else {
-    // Reasonable fallback.
-    window.open(browser.runtime.getURL('options.html'));
-  }
-});
+
 
 /**
 * Get the configuration from the storage
@@ -360,7 +352,9 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('resume').focus();
   
   // Set the text of the buttons and the title of the popup
-  document.querySelector('#openOptions .button-text').textContent = browser.i18n.getMessage('settingsLabel');
+  document.querySelector('#popupTab .button-text').textContent = browser.i18n.getMessage('startHereLabel');
+  document.querySelector('#optionsTab .button-text').textContent = browser.i18n.getMessage('settingsLabel');
+
   document.querySelector('#copyMarkdown .button-text').textContent = browser.i18n.getMessage('copyMarkdownLabel');
   document.querySelector('#copyHtml .button-text').textContent = browser.i18n.getMessage('copyHtmlLabel');
   document.querySelector('#copyText .button-text').textContent = browser.i18n.getMessage('copyTextLabel');
