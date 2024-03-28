@@ -76,19 +76,23 @@ function restoreOptions() {
   getting.then(setCurrentChoice, onError);
 }
 
-// Add event listeners to the popup's elements
-document.addEventListener("DOMContentLoaded", restoreOptions);
-
-
 document.addEventListener("DOMContentLoaded", function() {
+  // Restore options
+  restoreOptions();
+
+  // Set focus on the API key input
   document.querySelector("#apiKey").focus();
+
+  // Localize the popup's elements
   document.getElementById('api-settings').textContent = browser.i18n.getMessage('apiSettingsLabel');
   document.getElementById('apiKeyLabel').textContent = browser.i18n.getMessage('apiKeyLabel');
   document.getElementById('modelLabel').textContent = browser.i18n.getMessage('modelLabel');
   document.getElementById('tempLabel').textContent = browser.i18n.getMessage('temperatureLabel');
   document.querySelector('#save .button-text').textContent = browser.i18n.getMessage('saveLabel');
 
+  // Set the window title
   window.title = browser.i18n.getMessage('extensionName');
 });
 
+// Listen for the form to be submitted and save the options
 document.querySelector("#options-form").addEventListener("submit", saveOptions);
