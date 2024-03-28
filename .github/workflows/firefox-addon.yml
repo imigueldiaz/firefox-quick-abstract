@@ -85,23 +85,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload signed XPI as a release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ${{ steps.find-xpi.outputs.xpi_name }}
-          tag_name: ${{ steps.extract-version.outputs.version }}
-          name: Release ${{ steps.extract-version.outputs.version }}
-          draft: false
-          prerelease: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Upload signed XPI as quick_abstract-version
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.find-xpi.outputs.xpi_name }}
           name: quick_abstract-${{ steps.extract-version.outputs.version }}
           tag_name: ${{ steps.extract-version.outputs.version }}
+          asset_name: quick_abstract-${{ steps.extract-version.outputs.version }}.xpi
+          draft: false
+          prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -109,7 +101,10 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: ${{ steps.find-xpi.outputs.xpi_name }}
-          name: quick_abstract-latest.xpi
+          name: quick_abstract-latest
           tag_name: ${{ steps.extract-version.outputs.version }}
+          asset_name: quick_abstract-latest.xpi
+          draft: false
+          prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
