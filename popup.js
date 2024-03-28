@@ -327,21 +327,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelector('#resume .button-text').textContent = browser.i18n.getMessage('summarizeLabel');
   document.title = browser.i18n.getMessage('extensionName');
 
-  let initialText = browser.i18n.getMessage('initialText');
-
-  getConfiguration()
-  .then(config => {
-    // Check if the API key is the default value
-    if (!config.apiKey || config.apiKey === 'pplx-xxxxxxxxxxx') {
-      initialText = browser.i18n.getMessage('apiKeyErrorMessage');
-    }
-    document.getElementById('initialText').innerText = initialText;
-  })
-  .catch(error => {
-    console.error(`Error getting configuration: ${error}`);
-    document.getElementById('initialText').innerText = initialText;
-  });
-
+  loadInitialText();
 
 });
 
@@ -384,3 +370,23 @@ function copyToClipboard(text) {
   document.execCommand('copy');
   document.body.removeChild(tempTextarea);
 }
+
+function loadInitialText() {
+  let initialText = browser.i18n.getMessage('initialText');
+
+  getConfiguration()
+  .then(config => {
+    // Check if the API key is the default value
+    if (!config.apiKey || config.apiKey === 'pplx-xxxxxxxxxxx') {
+      initialText = browser.i18n.getMessage('apiKeyErrorMessage');
+    }
+    document.getElementById('initialText').innerText = initialText;
+  })
+  .catch(error => {
+    console.error(`Error getting configuration: ${error}`);
+    document.getElementById('initialText').innerText = initialText;
+  });
+
+}
+
+document.querySelector("#popupTab").addEventListener("click", loadInitialText);

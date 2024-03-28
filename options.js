@@ -91,5 +91,4 @@ document.addEventListener("DOMContentLoaded", function() {
   window.title = browser.i18n.getMessage('extensionName');
 });
 
-
 document.querySelector("#options-form").addEventListener("submit", saveOptions);
