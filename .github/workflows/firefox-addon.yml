@@ -39,7 +39,7 @@ jobs:
           echo "::set-output name=version::$VERSION_PART"
         
       - name: Configure Git
-        run:
+        run: |
           git config --global user.email "imigueldiaz@gmail.com"
           git config --global user.name "Ignacio de Miguel Díaz"
         
