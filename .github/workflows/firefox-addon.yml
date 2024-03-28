@@ -30,23 +30,39 @@ jobs:
       - name: Find signed XPI file name
         id: find-xpi
         run: echo "::set-output name=xpi_name::$(ls ./artifacts/*.xpi)"
+
+      - name: Extract version for tag and release name
+        id: extract-version
+        run: |
+          XPI_NAME="${{ steps.find-xpi.outputs.xpi_name }}"
+          VERSION_PART=$(echo "$XPI_NAME" | cut -d '-' -f 2)
+          echo "::set-output name=version::$VERSION_PART"
+        
+      - name: Configure Git
+        run:
+          git config --global user.email "imigueldiaz@gmail.com"
+          git config --global user.name "Ignacio de Miguel Díaz"
         
       - name: Create Tag
         run: |
-          TAG_NAME="v$(date +'%Y.%m.%d.%H.%M.%S')"
+          VERSION="${{ steps.extract-version.outputs.version }}"
+          TAG_NAME="v$VERSION"
           echo "Creating tag $TAG_NAME"
+          git config --global user.email "imigueldiaz@gmail.com"
+          git config --global user.name "Ignacio de Miguel Díaz"
           git tag -a $TAG_NAME -m "Release version $TAG_NAME"
           git push origin $TAG_NAME
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Upload signed XPI as a release
         uses: softprops/action-gh-release@v1
 
         with:
           files: ${{ steps.find-xpi.outputs.xpi_name }}
-          tag_name: ${{ steps.create-tag.outputs.TAG_NAME }}
-          name: Release ${{ steps.create-tag.outputs.TAG_NAME }}
+          tag_name: ${{ steps.extract-version.outputs.version }}
+          name: Release ${{ steps.extract-version.outputs.version }}
           draft: false
           prerelease: true
         env:
