@@ -81,12 +81,11 @@ button {
 }
 
 @media (prefers-color-scheme: dark)  {
-  body {background-color: rgb(42, 42, 46); color: rgb(249, 249, 250);
-
-    button {background-color: #0A84FF; color: #FFFFFF; border-color: #0A84FF;}
-    button.ok img, button.active img {filter: invert(100%);}
-    input[type="password"],
-    input[type="text"],
-    input[type="number"] {background-color: rgb(72, 72, 72); color: rgb(249, 249, 250);}
-    fieldset {border: 1px solid #D7D7DB; padding: 10px}
-  }
+  body {background-color: rgb(42, 42, 46); color: rgb(249, 249, 250)};
+  button {background-color: #0A84FF; color: #FFFFFF; border-color: #0A84FF;}
+  button.ok img, button.active img {filter: invert(100%);}
+  input[type="password"],
+  input[type="text"],
+  input[type="number"] {background-color: rgb(72, 72, 72); color: rgb(249, 249, 250);}
+  fieldset {border: 1px solid #D7D7DB; padding: 10px}
+}

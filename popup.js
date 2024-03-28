@@ -246,7 +246,7 @@ function triggerAPI() {
           generateAPACitation(pageTitle, author, publicationDate).then((citation) => {
             const citationElement = document.createElement('div');
             citationElement.classList.add('citation');
-            citationElement.innerHTML = citation;
+            citationElement.innerHTML = DOMPurify.sanitize(citation);
             apiResponse.appendChild(citationElement);
 
           });

@@ -1,0 +1,28 @@
+name: 'Firefox Add-on'
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: trmcnvn/firefox-addon@v1
+        with:
+          uuid: 'imigueldiaz@gmail.com'
+          manifest: 'manifest.json'
+          src: '/'
+          dist: 'dist/'
+          package: 'true'
+      - name: 'Sign Add-on'
+        env:
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: |
+          npm install -g web-ext
+          web-ext sign --source-dir dist/ --api-key $AMO_JWT_ISSUER --api-secret $AMO_JWT_SECRET
+      - uses: actions/upload-artifact@v3
+        with:
+          name: addon
+          path: dist/
