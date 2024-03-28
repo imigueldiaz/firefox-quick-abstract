@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Créateur de Résumés Perplexity",
+    "message": "Résumé Rapide",
     "description": "Nom de l'extension."
   },
   "extensionDescription": {
@@ -8,7 +8,7 @@
     "description": "Description de l'extension."
   },
   "initialText": {
-    "message": "Appuyez sur 'Résumer' pour libérer le potentiel de votre résumé !",
+    "message": "Cliquez sur 'Résumer' pour générer un résumé concis, des mots-clés et une citation APA.",
     "description": "Texte initial affiché dans la fenêtre contextuelle."
   },
   "settingsLabel": {

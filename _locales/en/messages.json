@@ -1,6 +1,6 @@
 {
   "extensionName": {
-    "message": "Perplexity Abstract Creator",
+    "message": "Quick abstract",
     "description": "Name of the extension."
   },
   "extensionDescription": {
@@ -8,7 +8,7 @@
     "description": "Description of the extension."
   },
   "initialText": {
-    "message": "Tap 'Summarize' to Unleash Your Abstract's Potential!",
+    "message": "Click 'Summarize' to generate a concise abstract, keywords, and APA citation.",
     "description": "Initial text displayed in the popup."
   },
   "settingsLabel": {

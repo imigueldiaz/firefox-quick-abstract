@@ -18,51 +18,54 @@
   <div id="tabContent">
     <div id="popupContent" class="tabContent" role="tabpanel" aria-labelledby="popupTab">
       <div id="responseContainer">
-        <div id="apiResponse" aria-live="polite"><span id="initialText"></span></div>
-        <div id="spinner" aria-hidden="true" style="display:none;"></div>
-      </div>
-      <div id="button-container">
-        <button id="copyMarkdown">
-          <img src="icons/copy-md.svg" alt="Copy markdown icon"/>
-          <span class="button-text"></span>
-        </button>
-        <button id="copyHtml">
-          <img src="icons/copy-html.svg" alt="Copy HTML icon"/>
-          <span class="button-text"></span>
-        </button>
-        <button id="copyText">
-          <img src="icons/copy.svg" alt="Copy text icon"/>
-          <span class="button-text"></span>
-        </button>
-        <button id="resume" class="ok" aria-controls="responseContainer" aria-expanded="false">
-          <img src="icons/resume.svg" alt="Resume icon"/>
-          <span class="button-text"></span>
-        </button>
-      </div>
-    </div>
-    <div id="optionsContent" class="tabContent" role="tabpanel" aria-labelledby="optionsTab" style="display: none;">
-      <form id="options-form">
-        <fieldset role="group" aria-labelledby="api-settings">
-          <legend id="api-settings"></legend>
-          <label for="apiKey" id="apiKeyLabel"></label>
-          <input type="password" id="apiKey" name="apiKey" value="pplx-xxxxxxxxxxx" aria-required="true"><br><br>
-          <label for="model" id="modelLabel"></label>
-          <input type="text" id="model" name="model" value="sonar-medium-chat" aria-required="true"><br><br>
-          <label for="temperature" id="tempLabel"></label>
-          <input type="number" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="true"><br><br>
-          <button type="submit" class="ok" id="save">
+        <div id="apiResponse" aria-live="polite">
+
+          <img src="icons/icon.png" id="logo" width="256" height="256" />
+          <span id="initialText"></span></div>
+          <div id="spinner" aria-hidden="true" style="display:none;"></div>
+        </div>
+        <div id="button-container">
+          <button id="copyMarkdown">
+            <img src="icons/copy-md.svg" alt="Copy markdown icon"/>
             <span class="button-text"></span>
-            <img src="icons/save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
           </button>
-        </fieldset>
-        <div id="saveSuccess" class="info-badge" role="status"></div>
-        <div id="saveError" class="error-badge" role="alert"></div>
-      </form>
+          <button id="copyHtml">
+            <img src="icons/copy-html.svg" alt="Copy HTML icon"/>
+            <span class="button-text"></span>
+          </button>
+          <button id="copyText">
+            <img src="icons/copy.svg" alt="Copy text icon"/>
+            <span class="button-text"></span>
+          </button>
+          <button id="resume" class="ok" aria-controls="responseContainer" aria-expanded="false">
+            <img src="icons/resume.svg" alt="Resume icon"/>
+            <span class="button-text"></span>
+          </button>
+        </div>
+      </div>
+      <div id="optionsContent" class="tabContent" role="tabpanel" aria-labelledby="optionsTab" style="display: none;">
+        <form id="options-form">
+          <fieldset role="group" aria-labelledby="api-settings">
+            <legend id="api-settings"></legend>
+            <label for="apiKey" id="apiKeyLabel"></label>
+            <input type="password" id="apiKey" name="apiKey" value="pplx-xxxxxxxxxxx" aria-required="true"><br><br>
+            <label for="model" id="modelLabel"></label>
+            <input type="text" id="model" name="model" value="sonar-medium-chat" aria-required="true"><br><br>
+            <label for="temperature" id="tempLabel"></label>
+            <input type="number" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="true"><br><br>
+            <button type="submit" class="ok" id="save">
+              <span class="button-text"></span>
+              <img src="icons/save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
+            </button>
+          </fieldset>
+          <div id="saveSuccess" class="info-badge" role="status"></div>
+          <div id="saveError" class="error-badge" role="alert"></div>
+        </form>
+      </div>
     </div>
-  </div>
-  <script type="text/javascript" src="lib/purify.min.js"></script>
-  <script type="text/javascript" src="extension.js"></script>
-  <script type="text/javascript" src="popup.js"></script>
-  <script type="text/javascript" src="options.js"></script>
-</body>
-</html>
+    <script type="text/javascript" src="lib/purify.min.js"></script>
+    <script type="text/javascript" src="extension.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+    <script type="text/javascript" src="options.js"></script>
+  </body>
+  </html>

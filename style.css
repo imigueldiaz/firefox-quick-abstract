@@ -44,20 +44,19 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.5s ease;
-  align-items: center;
+  align-items: left;
   justify-content: left;
   font-size: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px; 
+  gap: 0; 
 }
 button img {
   height: 30px;
   width: 30px;
   filter: none; 
   margin: 0; 
-  margin-right: 5px;
 }
 #button-container button img {
   object-fit: contain!important; 
@@ -74,6 +73,18 @@ button:focus {
   outline: 0;
   font-weight: bold;
 }
+button:active {
+  background-color: #eaeaea;
+}
+button:hover {
+  background-color: #E5E5EA;
+}
+
+button.ok:hover {
+  background-color: #009AFF;
+  border-color: #009AFF;
+}
+
 #options-form {
   margin: 16px auto;
   height: 100%;
@@ -142,13 +153,13 @@ button:focus {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-color: #0e0e0e;
-padding: 4px;
-border-radius: 8px;
-font-size: 11px;
-font-style: italic;
-border: 1px solid #eaeaea;
-text-transform: capitalize;
+  color: #0e0e0e;
+  padding: 4px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-style: italic;
+  border: 1px solid #eaeaea;
+  text-transform: capitalize;
 }
 @keyframes spin {
   0% { transform: rotate(0deg); }
@@ -241,6 +252,11 @@ text-transform: capitalize;
   padding: 10px;
   padding-bottom: 0;
 }
+img#logo {
+  display: block;
+  margin: 10px auto;
+  filter: none
+}
 
 @media (prefers-color-scheme: dark) {
   body {
@@ -261,6 +277,14 @@ text-transform: capitalize;
     background-color: #007AFF;
     border-color: #007AFF;
   }
+  button:hover {
+    background-color: #4a4a4a;
+  }
+  button.ok:hover {
+    background-color: #009AFF;
+    border-color: #009AFF;
+  }
+
   #options-form fieldset {
     background-color: #2C2C2E;
     border-color: #3A3A3C;
@@ -304,4 +328,5 @@ text-transform: capitalize;
   button img {
     filter: invert(100%);
   }
+
 }

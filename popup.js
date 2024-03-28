@@ -249,8 +249,6 @@ function triggerAPI() {
             citationElement.innerHTML = citation;
             apiResponse.appendChild(citationElement);
 
-  // Call adjustPopupHeight after updating the content
-    //adjustPopupHeight();
           });
 
         }
@@ -311,35 +309,6 @@ function cleanMarkdown(content) {
   return content.replace(codeBlockRegex, '');
 }
 
-/**
- * Adjust the height of the popup based on the content.
- * This function calculates the total height of all elements that should be included in the popup's height
- * and sets the body height to the total height calculated, with some extra space if needed.
- * The extra space is added to prevent the popup from resizing when the content changes.
- * @returns {void}
- */
-function adjustPopupHeight() {
-  const elementsToInclude = [
-    document.getElementById('apiResponse'),
-    ...document.querySelectorAll('.button-container'),
-        //...document.querySelectorAll('.citation')
-    ];
-
-  let totalHeight = 0;
-  elementsToInclude.forEach(element => {
-    const style = window.getComputedStyle(element);
-    const marginTop = parseInt(style.marginTop, 10);
-    const marginBottom = parseInt(style.marginBottom, 10);
-    const paddingTop = parseInt(style.paddingTop, 10);
-    const paddingBottom = parseInt(style.paddingBottom, 10);
-    const elementHeight = element.scrollHeight + marginTop + marginBottom + paddingTop + paddingBottom;
-    totalHeight += elementHeight;
-  });
-
-  // Set the body height to the exact total height needed
-  document.body.style.height = `${totalHeight}px`;
-}
-
 // Add an event listener to the resume button to trigger the API call
 document.getElementById('resume').addEventListener('click', triggerAPI);
 
@@ -360,14 +329,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let initialText = browser.i18n.getMessage('initialText');
 
-  getConfiguration().then(config => {
+  getConfiguration()
+  .then(config => {
     // Check if the API key is the default value
     if (!config.apiKey || config.apiKey === 'pplx-xxxxxxxxxxx') {
       initialText = browser.i18n.getMessage('apiKeyErrorMessage');
-      document.getElementById('initialText').innerText = initialText;
+    }
+    document.getElementById('initialText').innerText = initialText;
+  })
+  .catch(error => {
+    console.error(`Error getting configuration: ${error}`);
+    document.getElementById('initialText').innerText = initialText;
+  });
 
-    }}
-    );
 
 });
 
