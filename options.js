@@ -27,22 +27,26 @@ function saveOptions(e) {
 
 function showInfoBadge() {
   const infoBadge = document.getElementById('saveSuccess');
-  infoBadge.textContent = browser.i18n.getMessage('saveSuccessMessage');
-  infoBadge.style.opacity = '1';
-  setTimeout(() => {
-    infoBadge.style.opacity = '0';
-    setTimeout(() => infoBadge.remove(), 500);
-  }, 2000);
+  if (infoBadge) {
+    infoBadge.textContent = browser.i18n.getMessage('saveSuccessMessage');
+    infoBadge.style.opacity = '1';
+    setTimeout(() => {
+      infoBadge.style.opacity = '0';
+      setTimeout(() => infoBadge.remove(), 500);
+    }, 2000);
+  }
 }
 
 function showErrorBadge() {
   const errorBadge = document.getElementById('saveError');
-  errorBadge.textContent = browser.i18n.getMessage('saveErrorMessage');
-  errorBadge.style.opacity = '1';
-  setTimeout(() => {
-    errorBadge.style.opacity = '0';
-    setTimeout(() => infoBadge.remove(), 500);
-  }, 2000);
+  if (errorBadge) {
+    errorBadge.textContent = browser.i18n.getMessage('saveErrorMessage');
+    errorBadge.style.opacity = '1';
+    setTimeout(() => {
+      errorBadge.style.opacity = '0';
+      setTimeout(() => errorBadge.remove(), 500);
+    }, 2000);
+  }
 }
 
 /**

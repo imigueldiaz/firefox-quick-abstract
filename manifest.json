@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
-  "version": "0.1",
+  "version": "0.3",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
   "permissions": [
@@ -19,8 +19,7 @@
     }
   },
   "options_ui": {
-    "page": "options.html",
-    "open_in_tab": true
+    "page": "options.html"
   },
   "background": {
     "scripts": ["background.js"]

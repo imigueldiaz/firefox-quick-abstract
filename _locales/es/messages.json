@@ -118,7 +118,7 @@
     "description": "Mensaje de error para guardar ajustes."
   },
   "startHereLabel": {
-    "message": "Empieza aquí",
+    "message": "Empezar",
     "description": "Etiqueta para el enlace de inicio."
   }
 }

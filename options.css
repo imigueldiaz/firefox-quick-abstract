@@ -1,0 +1,92 @@
+/* Reset default browser styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+
+  padding: 20px;
+}
+
+form {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  border: none;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="password"],
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+
+.button-text {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+#saveImg {
+  vertical-align: middle;
+}
+
+button {
+  padding: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+
+
+/* Cross-browser support for appearance property */
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type="password"],
+  input[type="text"],
+  input[type="number"],
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+
+@media (prefers-color-scheme: dark)  {
+  body {background-color: rgb(42, 42, 46); color: rgb(249, 249, 250);
+
+    button {background-color: #0A84FF; color: #FFFFFF; border-color: #0A84FF;}
+    button.ok img, button.active img {filter: invert(100%);}
+    input[type="password"],
+    input[type="text"],
+    input[type="number"] {background-color: rgb(72, 72, 72); color: rgb(249, 249, 250);}
+    fieldset {border: 1px solid #D7D7DB; padding: 10px}
+  }

@@ -118,7 +118,7 @@
     "description": "Message d'erreur pour l'enregistrement des paramètres."
   },
   "startHereLabel": {
-    "message": "Commencez ici",
+    "message": "Commencez",
     "description": "Libellé pour le lien de démarrage."
   }
 }

@@ -7,18 +7,13 @@ body {
   line-height: 1.5;
   width: 550px;
   height: 600px;
-
-
 }
-
 body#popup {
   padding: 5px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
-
-
 #apiResponse {
   margin: 5px auto;
   padding: 5px;
@@ -26,31 +21,20 @@ body#popup {
   border: 0px solid #D7D7DB;
   border-radius: 4px;
   color: #0C0C0D;
-  
   width: 95%;
   text-align: left;
   overflow-y: auto;
   font-size: 13px;
-  /* Add ARIA live region for dynamic content updates */
-  aria-live: "polite";
-  aria-atomic: "true";
 }
-
 #button-container {
   display: flex;
   justify-content: space-between;
   margin-top: 5px auto;
-  /* Add ARIA role for button group */
-  role: "group";
-  /* Add ARIA label for button group */
-  aria-label: "Action buttons";
 }
-
 #button-container button {
  padding: 2px;
  margin: 0 2px;
 }
-
 button {
   width: calc(30% - 10px);
   padding: 3px;
@@ -63,65 +47,45 @@ button {
   align-items: center;
   justify-content: left;
   font-size: 11px;
-  /* Add ARIA role for button */
-  role: "button";
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Adjust the space between the image and the text */
+  gap: 5px; 
 }
-
 button img {
-  /* Add alternative text for button image */
-  alt: "Button icon";
   height: 30px;
   width: 30px;
-  filter: none; /* Remove if you have any filter applied */
-  margin: 0; /* Ensure no additional margin is applied */
+  filter: none; 
+  margin: 0; 
   margin-right: 5px;
 }
-
 #button-container button img {
- 
-  object-fit: contain!important; /* Ensure the image scales correctly within the dimensions */
+  object-fit: contain!important; 
 }
-
 button.ok {
   background-color: #0A84FF;
   color: #FFFFFF;
   border-color: #0A84FF;
 }
-
-
 button.ok img, button.active img {
   filter: invert(100%);
 }
-
 button:focus {
   outline: 0;
   font-weight: bold;
 }
-
 #options-form {
-
   margin: 16px auto;
-  /* Add ARIA role for form */
-  role: "form";
-  /* Add ARIA label for form */
-  aria-label: "Extension settings form";
   height: 100%;
 }
-
 #options-form label {
   display: block;
   margin-bottom: 8px;
   color: #0C0C0D;
   font-size: 13px;
   font-weight: bold;
-  /* Add ARIA label for input fields */
   for: "input-id";
 }
-
 #options-form fieldset {
   padding: 16px;
   margin-bottom: 16px;
@@ -130,13 +94,11 @@ button:focus {
   border-radius: 4px;
   color: #0C0C0D;
 }
-
 #options-form legend {
   font-size: 13px;
   font-weight: bold;
   color: #0C0C0D;
 }
-
 #options-form input[type="text"],
 #options-form input[type="number"],
 #options-form input[type="password"] {
@@ -149,10 +111,8 @@ button:focus {
   color: #0C0C0D;
   outline: none;
   font-size: 13px;
-  /* Add unique ID for input fields */
   id: "input-id";
 }
-
 .abstract {
   background-color: #FFFFFF;
   color: #0C0C0D;
@@ -163,35 +123,25 @@ button:focus {
   text-align: justify;
   hyphens: auto;
   font-size: 13px;
-  /* Add ARIA role for abstract section */
-  role: "region";
-  /* Add ARIA label for abstract section */
-  aria-label: "Abstract";
   max-height: 320px;
   min-height:  320px;
-  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-y: auto; 
 }
-
 .abstract p {
   text-indent: 30px;
   margin: 0.3em auto;
 }
-
 .keywords {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
   align-items: center;
   gap: 3px;
-  /* Add ARIA role for keyword list */
-  role: "list";
 }
-
 .keyword {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-/*  background-color: #F0F0F4;*/
 color: #0e0e0e;
 padding: 4px;
 border-radius: 8px;
@@ -199,29 +149,21 @@ font-size: 11px;
 font-style: italic;
 border: 1px solid #eaeaea;
 text-transform: capitalize;
-/* Add ARIA role for keyword list item */
-role: "listitem";
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 #responseContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  role: "region";
-  /* Add ARIA label for response container */
-  aria-label: "API response";
   max-height: 500px;
   min-height: 500px;
   overflow-y: hidden;
   margin: 0 auto;
   margin-bottom: 5px;
 }
-
 #spinner {
   border: 4px solid #D7D7DB;
   border-top: 4px solid #0A84FF;
@@ -229,12 +171,7 @@ role: "listitem";
   width: 40px;
   height: 40px;
   animation: spin 2s linear infinite;
-  /* Add ARIA role for spinner */
-  role: "status";
-  /* Add ARIA label for spinner */
-  aria-label: "Loading";
 }
-
 #initialText {
   display: block;
   text-align: center;
@@ -243,22 +180,17 @@ role: "listitem";
   margin: 16px 0;
   font-size: 13px;
 }
-
 .citation {
   padding: 5px;
   background-color: #fafafa;
   border-radius: 8px;
   font-size: 11px;
 }
-
 .citation a {
-
  color: #666;
  font-weight: bold;
  text-decoration: none;
-
 }
-
 .citation p {
   margin: 0;
   text-align: left;
@@ -283,30 +215,93 @@ role: "listitem";
   text-align: center;
   margin-top: 10px;
 }
-
 #tabs {
   display: flex;
   justify-content: left;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
   border-bottom: 1px solid #D7D7DB
 }
-
 .tabLink {
-  padding: 5px auto;
+  padding: 3px auto;
   background-color: #f1f1f1;
-  border: none;
+  border: 1px solid #D7D7DB;
   cursor: pointer;
+  border-radius: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-top: 1px;
+  margin-left: 3px;
 }
-
 .tabLink.active {
   background-color: #0a84ff;
   color: #FFFFFF;
   font-weight: bold;
 }
-
 .tabContent {
   padding: 10px;
   padding-bottom: 0;
 }
 
-
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1C1C1E;
+    color: #F2F2F7;
+  }
+  #apiResponse {
+    background-color: #2C2C2E;
+    border-color: #3A3A3C;
+    color: #F2F2F7;
+  }
+  button {
+    background-color: #2C2C2E;
+    color: #F2F2F7;
+    border-color: #3A3A3C;
+  }
+  button.ok {
+    background-color: #007AFF;
+    border-color: #007AFF;
+  }
+  #options-form fieldset {
+    background-color: #2C2C2E;
+    border-color: #3A3A3C;
+    color: #F2F2F7;
+  }
+  #options-form legend {
+    color: #F2F2F7;
+  }
+  #options-form input[type="text"],
+  #options-form input[type="number"],
+  #options-form input[type="password"] {
+    background-color: #1C1C1E;
+    border-color: #3A3A3C;
+    color: #F2F2F7;
+  }
+  .abstract {
+    background-color: #2C2C2E;
+    color: #F2F2F7;
+  }
+  .keyword {
+    color: #F2F2F7;
+    border-color: #3A3A3C;
+  }
+  #spinner {
+    border-color: #3A3A3C;
+    border-top-color: #007AFF;
+  }
+  .citation {
+    background-color: #2C2C2E;
+  }
+  .citation a {
+    color: #8E8E93;
+  }
+  .tabLink {
+    background-color: #3f3f3f;
+    border-color: #3A3A3C;
+  }
+  .tabLink.active {
+    background-color: #007AFF;
+  }
+  button img {
+    filter: invert(100%);
+  }
+}
