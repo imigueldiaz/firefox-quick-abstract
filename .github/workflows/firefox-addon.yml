@@ -1,28 +1,43 @@
-name: 'Firefox Add-on'
+name: Build, Sign, and Release Firefox Extension
+
 on:
   push:
     branches:
-      - main
+      - main  
 jobs:
-  build:
+  build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: trmcnvn/firefox-addon@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          uuid: 'imigueldiaz@gmail.com'
-          manifest: 'manifest.json'
-          src: '/'
-          dist: 'dist/'
-          package: 'true'
-      - name: 'Sign Add-on'
+          node-version: '20'  
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install web-ext
+        run: npm install --global web-ext
+
+      - name: Build and sign the extension
+        run: web-ext sign --artifacts-dir ./artifacts --api-key ${{ secrets.AMO_JWT_ISSUER }} --api-secret ${{ secrets.AMO_JWT_SECRET }}
         env:
-          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
-          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
-        run: |
-          npm install -g web-ext
-          web-ext sign --source-dir dist/ --api-key $AMO_JWT_ISSUER --api-secret $AMO_JWT_SECRET
-      - uses: actions/upload-artifact@v3
+          WEB_EXT_API_KEY: ${{ secrets.JWT_ISSUER }}
+          WEB_EXT_API_SECRET: ${{ secrets.JWT_SECRET }}
+                
+      - name: Find signed XPI file name
+        id: find-xpi
+        run: echo "::set-output name=xpi_name::$(ls ./artifacts/*.xpi)"
+        
+      - name: Upload signed XPI as a release
+        uses: softprops/action-gh-release@v1
         with:
-          name: addon
-          path: dist/
+          files: ${{ steps.find-xpi.outputs.xpi_name }}
+          tag_name: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          draft: false
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
