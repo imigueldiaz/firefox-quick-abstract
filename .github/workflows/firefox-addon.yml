@@ -91,13 +91,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload signed XPI as quick_abstract.xpi
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: ./artifacts/quick_abstract.xpi
           name: quick_abstract-${{ steps.extract-version.outputs.version }}
-          tag_name: ${{ steps.extract-version.outputs.version }}
+          tag_name: v${{ steps.extract-version.outputs.version }}
           draft: false
           prerelease: true
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
