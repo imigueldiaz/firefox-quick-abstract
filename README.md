@@ -12,7 +12,15 @@ A Firefox extension that generates a professional abstract and keywords for the 
 - **New:** Allows copying the generated abstract, keywords, and citation in Markdown, HTML, or plain text format with the click of a button
 - Allows customization of API key, model, and temperature through the options page
 
+## Installation from repository
+
 ## Installation
+
+Install the latest version of this add-on by clicking the link below:
+
+[![Install Add-on](https://img.shields.io/badge/Install-Add--on-brightgreen?style=for-the-badge)](https://github.com/imigueldiaz/firefox-perplexity-abstract/releases/latest/download/quick_abstract.xpi)
+
+## Installation from source code
 1. Clone this repository or download the source code
 2. Open Firefox and go to `about:debugging`
 3. Click on "This Firefox" in the left sidebar
