@@ -26,10 +26,10 @@ jobs:
           CHANGED_FILES=$(git diff --name-only HEAD^ HEAD)
           if ! echo "$CHANGED_FILES" | grep -q "manifest.json"; then
             echo "manifest.json has not changed"
-            echo "::set-output name=manifest_changed::false"
+             echo "manifest_changed=false" >> $GITHUB_OUTPUT
           else
             echo "manifest.json has changed"
-            echo "::set-output name=manifest_changed::true"
+             echo "manifest_changed=true" >> $GITHUB_OUTPUT
           fi
 
     outputs:
@@ -59,14 +59,16 @@ jobs:
 
       - name: Find signed XPI file name
         id: find-xpi
-        run: echo "::set-output name=xpi_name::$(ls ./artifacts/*.xpi)"
+        run: |
+          XPI_FILE=$(ls ./artifacts/*.xpi)
+          echo "xpi_name=$(basename "$XPI_FILE" .xpi)" >> $GITHUB_OUTPUT
 
       - name: Extract version for tag and release name
         id: extract-version
         run: |
           XPI_NAME="${{ steps.find-xpi.outputs.xpi_name }}"
           VERSION_PART=$(echo "$XPI_NAME" | cut -d '-' -f 2)
-          echo "::set-output name=version::$VERSION_PART"
+          echo "version=$VERSION_PART" >> $GITHUB_OUTPUT
 
       - name: Copy signed XPI to real name
         id: copy-xpi
