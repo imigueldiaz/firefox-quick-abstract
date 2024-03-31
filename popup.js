@@ -131,9 +131,15 @@ function fetchTabContent() {
             // Fallback to using the whole body if no main content is found
           if (!mainContent) mainContent = document.body;
 
-          console.log('Main content:', mainContent);
+          let fragment = document.createDocumentFragment();
 
-            // Remove known ad, header, lists, toc, footer, and navigation selectors
+           // Clone the main content element and its children into the document fragment
+          const clonedMainContent = mainContent.cloneNode(true);
+          fragment.appendChild(clonedMainContent);
+
+          console.log('Cloned main content:', clonedMainContent);
+
+            // Remove known ad, header, lists, toc, footer, and navigation selectors from the cloned content
           const unwantedSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement',
             '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', 'figure', 'figurecaption',
             '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header',
@@ -141,16 +147,20 @@ function fetchTabContent() {
             '.left-menu', '.left-sidebar', '.left-column', '.navigation', '.menu', '#menu'];
 
           unwantedSelectors.forEach(selector => {
-            const elements = mainContent.querySelectorAll(selector);
+            const elements = clonedMainContent.querySelectorAll(selector);
             elements.forEach(el => el.remove());
           });
 
-            // Remove script and style tags, empty paragraphs and line breaks
-          const scriptAndStyleTags = mainContent.querySelectorAll('script, style, p:empty, br');
+            // Remove script and style tags, empty paragraphs and line breaks from the cloned content
+          const scriptAndStyleTags = clonedMainContent.querySelectorAll('script, style, p:empty, br');
           scriptAndStyleTags.forEach(el => el.remove());
 
-            // Clean the text content of the main element
-          const cleanedText = DOMPurify.sanitize(mainContent.innerText).replace(/\s+/g, ' ').trim();
+            // Clean the text content of the cloned main element
+          const cleanedText = DOMPurify.sanitize(clonedMainContent.innerText).replace(/\s+/g, ' ').trim();
+
+            // Remove the cloned main content and the document fragment from memory
+          fragment.removeChild(clonedMainContent);
+          fragment.textContent = '';
 
           return {
             content: cleanedText,
@@ -273,7 +283,6 @@ function triggerAPI() {
  * If the URL is not available, the citation does not include it.
  * The citation is formatted as a string with HTML tags.
  */
-
 function generateAPACitation(title, author, date) {
   const locale = navigator.language;
   const formattedDate = date ? new Date(date).toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }) : 'n.d.';
@@ -283,18 +292,31 @@ function generateAPACitation(title, author, date) {
     browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
       const currentTabUrl = tabs[0].url;
 
-      const citation = `
-      <section class="citation">
-      <p>
-      ${formattedAuthor}. (${formattedDate}). <em>${title}</em>. ${browser.i18n.getMessage('retrievedLabel')} ${new Date().toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })} ${browser.i18n.getMessage('fromLabel')} <a href="${currentTabUrl}" target="_blank">${currentTabUrl}</a>
-      </p>
-      </section>
-      `;
+      const citationElement = document.createElement('section');
+      citationElement.classList.add('citation');
 
-      resolve(citation);
+      const paragraphElement = document.createElement('p');
+      paragraphElement.textContent = `${formattedAuthor}. (${formattedDate}). ${title}.`;
+
+      const retrievedElement = document.createElement('span');
+      retrievedElement.textContent = `${browser.i18n.getMessage('retrievedLabel')} ${new Date().toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}`;
+
+      const linkElement = document.createElement('a');
+      linkElement.href = currentTabUrl;
+      linkElement.target = '_blank';
+      linkElement.textContent = currentTabUrl;
+
+      paragraphElement.appendChild(retrievedElement);
+      paragraphElement.appendChild(document.createTextNode(' '));
+      paragraphElement.appendChild(linkElement);
+
+      citationElement.appendChild(paragraphElement);
+
+      resolve(citationElement.outerHTML);
     });
   });
 }
+
 
 /**
  * Clean the markdown content by removing code blocks.
