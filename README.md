@@ -60,6 +60,8 @@ You can change these settings on the options page.
 - [ ] Improve error handling and user feedback
 - [ ] Add more customization options and features
 - [ ] Improve the UI/UX of the extension popup and options page
+- [ ] Write a suitable CONTRIBUTING.md file for the project :wink:
+
 
 ## Files
 
@@ -127,4 +129,4 @@ This project is open-source and available under the MIT License. Feel free to us
 ### Thanks to
 - [Perplexity AI](https://www.perplexity.ai/) for providing the AI API used in this extension.
 - [Mozilla](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons) for the extensive documentation and resources on developing Firefox extensions.
-- [DOMPurify](https://github.com/cure53/DOMPurify) by @Cure53 for the HTML sanitization library used in the extension.
+- [DOMPurify](https://github.com/cure53/DOMPurify) by [@Cure53](https://github.com/cure53) for the HTML sanitization library used in the extension.
