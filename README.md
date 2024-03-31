@@ -1,4 +1,4 @@
-# Perplexity Abstract Creator
+# Quick Abstract
 
 A Firefox extension that generates a professional abstract and keywords for the current tab's content using the Perplexity AI API.
 
@@ -33,27 +33,50 @@ Install the latest version of this add-on by clicking the link below, by now as 
 2. Click on the extension icon in the Firefox toolbar
 3. Click the "Resume" button in the popup to fetch the page content and send it to the Perplexity API
 4. The generated abstract, keywords, and APA citation will be displayed in the popup textarea
-5. **New:** Click on the "Copy Markdown", "Copy HTML", or "Copy Text" button to copy the generated content in the desired format
+5. Click on the "Copy Markdown", "Copy HTML", or "Copy Text" button to copy the generated content in the desired format
 6. To change settings like your API key, model, or temperature, click the "Settings" button to open the options page
 
 ## Configuration
 The extension uses the following default configuration:
-- API Key: 'pplx-xxxxxxxxxxx' (replace with your own or it won't work)
+- API Key: 'pplx-xxxxxxxxxxx' (**replace with your own or it won't work**)
 - Model: 'sonar-medium-chat'
 - Temperature: 1
 
 You can change these settings on the options page.
 
+## TODO
+
+- [x] Add support for internationalization (i18n)
+- [x] Add support for generating abstracts from selected text on the page
+- [x] Add support for generating keywords from the content
+- [x] Add support for generating APA citations for the page
+- [x] Add support for copying the generated abstract, keywords, and citation in different formats
+- [ ] Recover and save last abstract and keywords generated for a given page
+- [ ] Add support to export lists of abstracts and keywords to clipboard
+- [ ] Add support to write the abstract and keywords to a new tab
+- [ ] Add support for generating abstracts from multiple tabs at once
+- [ ] Add support for more API models and parameters
+- [ ] Add more languages to the supported locales
+- [ ] Improve error handling and user feedback
+- [ ] Add more customization options and features
+- [ ] Improve the UI/UX of the extension popup and options page
+
 ## Files
 
 - `manifest.json`: The extension manifest file defining metadata, permissions, and scripts
-- `popup.html`: The HTML structure for the extension popup
+- `extension.html`: The HTML structure for the extension popup
+- `extension.js`: JavaScript for handling tabs interactions
 - `popup.js`: JavaScript handling popup interactions and API calls
 - `background.js`: Background script for handling API requests and responses
 - `options.html`: Options page for configuring API key, model, and temperature
 - `options.js`: JavaScript for handling options page interactions and storage
 - `style.css`: Stylesheet for the extension
 - `icons/`: Directory containing the extension icons in various sizes
+- `_locales/`: Directory containing language-specific message files
+- `LICENSE`: License file for the project
+- `README.md`: Readme file with information about the extension
+- `lib/`: Directory containing third-party libraries used in the extension (DOMPurify by now)
+
 
 ## Dependencies
 
@@ -101,3 +124,7 @@ With the i18n support, the Perplexity Abstract Creator extension can now reach a
 ### License
 This project is open-source and available under the MIT License. Feel free to use, modify, and distribute the code as you see fit.
 
+### Thanks to
+- [Perplexity AI](https://www.perplexity.ai/) for providing the AI API used in this extension.
+- [Mozilla](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons) for the extensive documentation and resources on developing Firefox extensions.
+- [DOMPurify](https://github.com/cure53/DOMPurify) by @Cure53 for the HTML sanitization library used in the extension.
