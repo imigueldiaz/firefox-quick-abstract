@@ -86,7 +86,7 @@ jobs:
           tag_name: v${{ steps.extract-version.outputs.version }}
           draft: false
           prerelease: false
-          latest: true
+          make_latest: true
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

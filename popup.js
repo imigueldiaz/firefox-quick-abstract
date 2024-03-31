@@ -144,7 +144,7 @@ function fetchTabContent() {
             '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', 'figure', 'figurecaption',
             '.ad-slot', '.ad-block', '.sidebar', '#sidebar', 'header', '.header', '#header',
             'ul', 'ol', '.toc', '#toc', 'nav', '.right-menu', '.right-sidebar', '.right-column', 'aside',
-            '.left-menu', '.left-sidebar', '.left-column', '.navigation', '.menu', '#menu'];
+            '.left-menu', '.left-sidebar', '.left-column', '.navigation', '.menu', '#menu', 'audio', 'video', 'source', 'track'];
 
           unwantedSelectors.forEach(selector => {
             const elements = clonedMainContent.querySelectorAll(selector);
