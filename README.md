@@ -18,9 +18,9 @@ A Firefox extension that generates a professional abstract and keywords for the 
 
 ## Installation
 
-Install the latest version of this add-on by clicking the link below, by now as a prerealease version the link is mantained manually, but if it is not updated you can download the latest version from the releases page.
+Install the latest version of this add-on by clicking the link below, or you can download the latest version from the releases page.
 
-[![Install Add-on](https://img.shields.io/badge/Install-Add--on-brightgreen?style=for-the-badge)](https://github.com/imigueldiaz/firefox-perplexity-abstract/releases/download/0.3.8.xpi/quick_abstract.xpi)
+[![Install Add-on](https://img.shields.io/badge/Install-Add--on-brightgreen?style=for-the-badge)](https://github.com/imigueldiaz/firefox-quick-abstract/releases/latest/download/quick_abstract.xpi)
 
 ## Installation from source code
 1. Clone this repository or download the source code
