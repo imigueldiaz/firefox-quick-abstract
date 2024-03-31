@@ -73,7 +73,7 @@ jobs:
       - name: Copy signed XPI to real name
         id: copy-xpi
         run: |
-          cp ${{ steps.find-xpi.outputs.xpi_name }} ./artifacts/quick_abstract.xpi
+          cp ./artifacts/${{ steps.find-xpi.outputs.xpi_name }}.xpi ./artifacts/quick_abstract.xpi
 
       - name: Configure Git
         run: |
