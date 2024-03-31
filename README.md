@@ -1,5 +1,7 @@
 # Quick Abstract
 
+
+<p align="center"><img src="icons/icon.png" width="400" height="400" ></p>
 A Firefox extension that generates a professional abstract and keywords for the current tab's content using the Perplexity AI API.
 
 > **Disclaimer**: _This is an alpha version extension created for self-learning purposes. It is not a professional, full-featured extension. Maintenance and updates will be provided as possible during the developer's limited free time._
@@ -51,6 +53,7 @@ You can change these settings on the options page.
 - [x] Add support for generating keywords from the content
 - [x] Add support for generating APA citations for the page
 - [x] Add support for copying the generated abstract, keywords, and citation in different formats
+- [x] Write a suitable CONTRIBUTING.md file for the project :wink:
 - [ ] Recover and save last abstract and keywords generated for a given page
 - [ ] Add support to export lists of abstracts and keywords to clipboard
 - [ ] Add support to write the abstract and keywords to a new tab
@@ -60,7 +63,7 @@ You can change these settings on the options page.
 - [ ] Improve error handling and user feedback
 - [ ] Add more customization options and features
 - [ ] Improve the UI/UX of the extension popup and options page
-- [ ] Write a suitable CONTRIBUTING.md file for the project :wink:
+
 
 
 ## Files
