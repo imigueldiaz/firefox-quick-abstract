@@ -54,6 +54,7 @@ You can change these settings on the options page.
 - [x] Add support for generating APA citations for the page
 - [x] Add support for copying the generated abstract, keywords, and citation in different formats
 - [x] Write a suitable CONTRIBUTING.md file for the project :wink:
+- [x] Add a tab for About and Credits
 - [ ] Recover and save last abstract and keywords generated for a given page
 - [ ] Add support to export lists of abstracts and keywords to clipboard
 - [ ] Add support to write the abstract and keywords to a new tab
