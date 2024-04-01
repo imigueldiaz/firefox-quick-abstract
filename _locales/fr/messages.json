@@ -120,5 +120,9 @@
   "startHereLabel": {
     "message": "Commencez",
     "description": "Libellé pour le lien de démarrage."
+  },
+  "aboutLabel": {
+    "message": "À propos",
+    "description": "Libellé pour l'onglet À propos."
   }
 }

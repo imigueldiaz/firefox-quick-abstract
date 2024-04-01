@@ -14,6 +14,11 @@
       <img src="icons/settings.svg" alt="Settings icon"/>
       <span class="button-text"></span> 
     </button>
+    <button id="aboutTab" class="tabLink" role="tab" aria-selected="false" aria-controls="aboutContent">
+      <img src="icons/info.svg" alt="About icon"/>
+      <span class="button-text"></span>
+    </button>
+
   </div>
   <div id="tabContent">
     <div id="popupContent" class="tabContent" role="tabpanel" aria-labelledby="popupTab">
@@ -62,6 +67,15 @@
           <div id="saveError" class="error-badge" role="alert"></div>
         </form>
       </div>
+      <div id="aboutContent" class="tabContent" role="tabpanel" aria-labelledby="aboutTab" style="display: none;">
+        <img src="icons/icon128.png" alt="Extension Logo" class="about-logo" />
+
+        <a href="https://github.com/imigueldiaz" target="_blank" rel="noopener noreferrer"><h2>Ignacio de Miguel Diaz</h2></a>
+        <h3><a href="https://github.com/imigueldiaz/firefox-quick-abstract" target="_blank" rel="noopener noreferrer"><span id="extensionName"></span></a></h3>
+        <p><a href="" id="versionLink" target="_blank" rel="noopener noreferrer">Version <span id="version"></span></a></p>
+        <a href="LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>
+      </div>
+
     </div>
     <script type="text/javascript" src="lib/purify.min.js"></script>
     <script type="text/javascript" src="extension.js"></script>

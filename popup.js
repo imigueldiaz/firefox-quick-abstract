@@ -342,11 +342,19 @@ document.addEventListener("DOMContentLoaded", function() {
   // Set the text of the buttons and the title of the popup
   document.querySelector('#popupTab .button-text').textContent = browser.i18n.getMessage('startHereLabel');
   document.querySelector('#optionsTab .button-text').textContent = browser.i18n.getMessage('settingsLabel');
+  document.querySelector('#aboutTab .button-text').textContent = browser.i18n.getMessage('aboutLabel');
 
   document.querySelector('#copyMarkdown .button-text').textContent = browser.i18n.getMessage('copyMarkdownLabel');
   document.querySelector('#copyHtml .button-text').textContent = browser.i18n.getMessage('copyHtmlLabel');
   document.querySelector('#copyText .button-text').textContent = browser.i18n.getMessage('copyTextLabel');
   document.querySelector('#resume .button-text').textContent = browser.i18n.getMessage('summarizeLabel');
+
+
+   const version = browser.runtime.getManifest().version;
+  document.getElementById('version').textContent = version;
+  document.getElementById('versionLink').href = `https://github.com/imigueldiaz/firefox-quick-abstract/releases/tag/v${version}`;
+  document.getElementById('extensionName').innerText = browser.i18n.getMessage('extensionName');
+
   document.title = browser.i18n.getMessage('extensionName');
 
   loadInitialText();

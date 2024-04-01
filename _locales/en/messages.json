@@ -120,6 +120,10 @@
 "startHereLabel": {
   "message": "Start",
   "description": "Label for the start here button."
+},
+"aboutLabel": {
+  "message": "About",
+  "description": "Label for the about button."
 }
 
 }

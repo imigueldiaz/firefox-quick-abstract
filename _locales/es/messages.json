@@ -120,5 +120,9 @@
   "startHereLabel": {
     "message": "Empezar",
     "description": "Etiqueta para el enlace de inicio."
+  },
+  "aboutLabel": {
+    "message": "Acerca de",
+    "description": "Etiqueta para la pestaña 'Acerca de'."
   }
 }

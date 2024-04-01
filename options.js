@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('modelLabel').textContent = browser.i18n.getMessage('modelLabel');
   document.getElementById('tempLabel').textContent = browser.i18n.getMessage('temperatureLabel');
   document.querySelector('#save .button-text').textContent = browser.i18n.getMessage('saveLabel');
-
   // Set the window title
   window.title = browser.i18n.getMessage('extensionName');
 });

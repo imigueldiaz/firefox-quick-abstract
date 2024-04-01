@@ -7,6 +7,8 @@ body {
   line-height: 1.5;
   width: 550px;
   height: 600px;
+  display: flex;
+  flex-direction: column;
 }
 body#popup {
   padding: 5px;
@@ -56,11 +58,12 @@ button img {
   height: 30px;
   width: 30px;
   filter: none; 
-  margin: 0; 
+  margin: 0;
+  padding: 0;
+  object-fit: contain!important;
+  object-position: center;
 }
-#button-container button img {
-  object-fit: contain!important; 
-}
+
 button.ok {
   background-color: #0A84FF;
   color: #FFFFFF;
@@ -232,6 +235,13 @@ button.ok:hover {
   margin-bottom: 3px;
   border-bottom: 1px solid #D7D7DB
 }
+
+#tabContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 .tabLink {
   padding: 3px auto;
   background-color: #f1f1f1;
@@ -257,6 +267,55 @@ img#logo {
   margin: 10px auto;
   filter: none
 }
+
+.about-logo {
+  display: block;
+  margin: 20px auto;
+  width: 128px;
+  height: 128px;
+}
+
+#aboutContent {
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 330px;
+  width:  330px;
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+#aboutContent h2, #aboutContent h3 {
+  margin: 10px 0;
+}
+
+#aboutContent a {
+  color: #0A84FF;
+  text-decoration: none;
+}
+
+#aboutContent a:hover {
+  text-decoration: underline;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 @media (prefers-color-scheme: dark) {
   body {
@@ -328,5 +387,20 @@ img#logo {
   button img {
     filter: invert(100%);
   }
+   #aboutContent a {
+    color: #007AFF;
+  }
+
+  #options-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #F2F2F7;
+  font-size: 13px;
+  font-weight: bold;
+}
+#aboutContent {
+  background: linear-gradient(45deg, #2c2c2e, #1c1c1e);
+  border: 1px solid #333;
+}
 
 }
