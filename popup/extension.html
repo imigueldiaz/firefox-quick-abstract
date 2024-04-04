@@ -2,20 +2,20 @@
 <html>
 <head>
   <title>Perplexity Abstract Creator</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
   <div id="tabs" role="tablist">
     <button id="popupTab" class="tabLink active" role="tab" aria-selected="true" aria-controls="popupContent">
-      <img src="icons/resume.svg" alt="Resume icon"/>
+      <img src="../icons/resume.svg" alt="Resume icon"/>
       <span class="button-text"></span>
     </button>
     <button id="optionsTab" class="tabLink" role="tab" aria-selected="false" aria-controls="optionsContent">
-      <img src="icons/settings.svg" alt="Settings icon"/>
+      <img src="../icons/settings.svg" alt="Settings icon"/>
       <span class="button-text"></span> 
     </button>
     <button id="aboutTab" class="tabLink" role="tab" aria-selected="false" aria-controls="aboutContent">
-      <img src="icons/info.svg" alt="About icon"/>
+      <img src="../icons/info.svg" alt="About icon"/>
       <span class="button-text"></span>
     </button>
 
@@ -25,25 +25,25 @@
       <div id="responseContainer">
         <div id="apiResponse" aria-live="polite">
 
-          <img src="icons/icon.png" id="logo" width="256" height="256" />
+          <img src="../icons/icon.png" id="logo" width="256" height="256" />
           <span id="initialText"></span></div>
           <div id="spinner" aria-hidden="true" style="display:none;"></div>
         </div>
         <div id="button-container">
           <button id="copyMarkdown">
-            <img src="icons/copy-md.svg" alt="Copy markdown icon"/>
+            <img src="../icons/copy-md.svg" alt="Copy markdown icon"/>
             <span class="button-text"></span>
           </button>
           <button id="copyHtml">
-            <img src="icons/copy-html.svg" alt="Copy HTML icon"/>
+            <img src="../icons/copy-html.svg" alt="Copy HTML icon"/>
             <span class="button-text"></span>
           </button>
           <button id="copyText">
-            <img src="icons/copy.svg" alt="Copy text icon"/>
+            <img src="../icons/copy.svg" alt="Copy text icon"/>
             <span class="button-text"></span>
           </button>
           <button id="resume" class="ok" aria-controls="responseContainer" aria-expanded="false">
-            <img src="icons/resume.svg" alt="Resume icon"/>
+            <img src="../icons/resume.svg" alt="Resume icon"/>
             <span class="button-text"></span>
           </button>
         </div>
@@ -60,7 +60,7 @@
             <input type="number" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="true"><br><br>
             <button type="submit" class="ok" id="save">
               <span class="button-text"></span>
-              <img src="icons/save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
+              <img src="../icons/save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
             </button>
           </fieldset>
           <div id="saveSuccess" class="info-badge" role="status"></div>
@@ -68,7 +68,7 @@
         </form>
       </div>
       <div id="aboutContent" class="tabContent" role="tabpanel" aria-labelledby="aboutTab" style="display: none;">
-        <img src="icons/icon128.png" alt="Extension Logo" class="about-logo" />
+        <img src="../icons/icon128.png" alt="Extension Logo" class="about-logo" />
 
         <a href="https://github.com/imigueldiaz" target="_blank" rel="noopener noreferrer"><h2>Ignacio de Miguel Diaz</h2></a>
         <h3><a href="https://github.com/imigueldiaz/firefox-quick-abstract" target="_blank" rel="noopener noreferrer"><span id="extensionName"></span></a></h3>
@@ -79,9 +79,9 @@
       </div>
 
     </div>
-    <script type="text/javascript" src="lib/purify.min.js"></script>
+    <script type="text/javascript" src="../lib/purify.min.js"></script>
     <script type="text/javascript" src="extension.js"></script>
     <script type="text/javascript" src="popup.js"></script>
-    <script type="text/javascript" src="options.js"></script>
+    <script type="text/javascript" src="../options/options.js"></script>
   </body>
   </html>
