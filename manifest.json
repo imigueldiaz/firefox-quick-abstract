@@ -10,7 +10,8 @@
     "activeTab",
     "storage",
     "tabs",
-    "scripting"
+    "scripting",
+    "menus"
   ],
   "action": {
     "default_popup": "popup/extension.html",
@@ -28,7 +29,7 @@
     "page": "options/options.html"
   },
   "background": {
-    "scripts": ["background/background.js"]
+    "scripts": ["background/background.js", "background/menus.js"]
   },
   "browser_specific_settings": {
     "gecko": {
