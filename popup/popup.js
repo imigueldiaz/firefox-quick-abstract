@@ -354,6 +354,8 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('version').textContent = version;
   document.getElementById('versionLink').href = `https://github.com/imigueldiaz/firefox-quick-abstract/releases/tag/v${version}`;
   document.getElementById('extensionName').innerText = browser.i18n.getMessage('extensionName');
+  document.getElementById('perplexityAttribution').innerText = browser.i18n.getMessage('perplexityAttributionLabel');
+  document.getElementById('perplexityTrademark').innerText = browser.i18n.getMessage('perplexityTrademarkLabel');
 
   document.title = browser.i18n.getMessage('extensionName');
 

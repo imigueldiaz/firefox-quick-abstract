@@ -124,5 +124,13 @@
   "aboutLabel": {
     "message": "À propos",
     "description": "Libellé pour l'onglet À propos."
+  },
+  "perplexityAttributionLabel": {
+    "message": "Cette extension utilise ",
+    "description": "Libellé pour l'attribution de Perplexity AI."
+  },
+  "perplexityTrademarkLabel": {
+    "message": "Perplexity AI est une marque déposée de Perplexity Inc.",
+    "description": "Libellé pour la marque Perplexity AI."
   }
 }

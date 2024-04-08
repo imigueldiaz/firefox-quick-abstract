@@ -124,6 +124,14 @@
 "aboutLabel": {
   "message": "About",
   "description": "Label for the about button."
+},
+"perplexityAttributionLabel": {
+  "message": "This extension uses ",
+  "description": "Label for the Perplexity AI attribution."
+},
+"perplexityTrademarkLabel": {
+  "message": "Perplexity AI is a trademark of Perplexity AI, Inc.",
+  "description": "Label for the Perplexity AI trademark."
 }
 
 }
