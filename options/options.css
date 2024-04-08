@@ -44,7 +44,18 @@ input[type="number"] {
   border-radius: 4px;
   margin-bottom: 10px;
 }
-
+/* Light Mode */
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #FFFFFF;
+  border: 1px solid #D7D7DB;
+  border-radius: 4px;
+  color: #0C0C0D;
+  outline: none;
+  font-size: 13px;
+}
 
 .button-text {
   display: inline-block;
@@ -88,4 +99,10 @@ button {
   input[type="text"],
   input[type="number"] {background-color: rgb(72, 72, 72); color: rgb(249, 249, 250);}
   fieldset {border: 1px solid #D7D7DB; padding: 10px}
+  select {
+    background-color: #1C1C1E;
+    border-color: #3A3A3C;
+    color: #F2F2F7;
+  }
+
 }

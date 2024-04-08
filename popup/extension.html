@@ -55,7 +55,20 @@
             <label for="apiKey" id="apiKeyLabel"></label>
             <input type="password" id="apiKey" name="apiKey" value="pplx-xxxxxxxxxxx" aria-required="true"><br><br>
             <label for="model" id="modelLabel"></label>
-            <input type="text" id="model" name="model" value="sonar-medium-chat" aria-required="true"><br><br>
+            <select id="model" name="model" aria-required="true">
+              <optgroup label="Perplexity Models">
+                <option value="sonar-small-chat">sonar-small-chat (7B)</option>
+                <option value="sonar-small-online">sonar-small-online (7B)</option>
+                <option value="sonar-medium-chat" selected>sonar-medium-chat (8x7B)</option>
+                <option value="sonar-medium-online">sonar-medium-online (8x7B)</option>
+              </optgroup>
+              <optgroup label="Open-Source Models">
+                <option value="codellama-70b-instruct">codellama-70b-instruct (70B)</option>
+                <option value="mistral-7b-instruct">mistral-7b-instruct (7B)</option>
+                <option value="mixtral-8x7b-instruct">mixtral-8x7b-instruct (8x7B)</option>
+              </optgroup>
+            </select>
+
             <label for="temperature" id="tempLabel"></label>
             <input type="number" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="true"><br><br>
             <button type="submit" class="ok" id="save">
