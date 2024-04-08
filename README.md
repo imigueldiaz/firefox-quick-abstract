@@ -48,40 +48,88 @@ You can change these settings on the options page.
 
 ## TODO
 
-- [x] Add support for internationalization (i18n)
-- [x] Add support for generating abstracts from selected text on the page
-- [x] Add support for generating keywords from the content
-- [x] Add support for generating APA citations for the page
-- [x] Add support for copying the generated abstract, keywords, and citation in different formats
-- [x] Write a suitable CONTRIBUTING.md file for the project :wink:
-- [x] Add a tab for About and Credits
-- [ ] Recover and save last abstract and keywords generated for a given page
-- [ ] Add support to export lists of abstracts and keywords to clipboard
-- [ ] Add support to write the abstract and keywords to a new tab
-- [ ] Add support for generating abstracts from multiple tabs at once
-- [ ] Add support for more API models and parameters
-- [ ] Add more languages to the supported locales
-- [ ] Improve error handling and user feedback
-- [ ] Add more customization options and features
-- [ ] Improve the UI/UX of the extension popup and options page
+- [x] :white_check_mark: Add support for internationalization (i18n)
+- [x] :white_check_mark: Add support for generating abstracts from selected text on the page
+- [x] :white_check_mark: Add support for generating keywords from the content
+- [x] :white_check_mark: Add support for generating APA citations for the page
+- [x] :white_check_mark: Add support for copying the generated abstract, keywords, and citation in different formats
+- [x] :white_check_mark: Write a suitable CONTRIBUTING.md file for the project :wink:
+- [x] :white_check_mark: Add a tab for About and Credits
+- [ ] :construction: Improve the UI/UX of the extension popup and options page
+- [ ] :construction: Add more customization options and features
+- [ ] :soon: Recover and save last abstract and keywords generated for a given page
+- [ ] :soon: Add support to export lists of abstracts and keywords to clipboard
+- [ ] :soon: Add support to write the abstract and keywords to a new tab
+- [ ] :soon: Add support for generating abstracts from multiple tabs at once
+- [ ] :soon: Add support for more API models and parameters
+- [ ] :soon: Add more languages to the supported locales
+- [ ] :soon: Improve error handling and user feedback
 
+## Main structure
+```bash
+quick-abstract/
+│
+├── icons/
+│   ├── icon-16.png
+│   ├── icon-32.png
+│   ├── icon-48.png
+│   ├── icon-64.png
+│   ├── icon-96.png
+│   ├── icon-128.png
+│   └── icon.png
+│
+├── _locales/
+│   ├── en/
+│   │   └── messages.json
+│   ├── es/
+│   │   └── messages.json
+│   └── fr/
+│       └── messages.json
+│
+├── lib/
+│   └── purify.min.js
+│
+├── background/
+│   └── background.js
+│
+├── options/
+│   ├── options.html
+│   ├── options.js
+│   └── options.css
+│
+├── popup/
+│   ├── extension.html
+│   ├── extension.js
+│   └── popup.js
+│
+├── style/
+│   └── style.css
+│
+├── CONTRIBUTING.md
+├── LICENSE
+├── manifest.json
+└── README.md
+```
 
 
 ## Files
 
 - `manifest.json`: The extension manifest file defining metadata, permissions, and scripts
-- `extension.html`: The HTML structure for the extension popup
-- `extension.js`: JavaScript for handling tabs interactions
-- `popup.js`: JavaScript handling popup interactions and API calls
-- `background.js`: Background script for handling API requests and responses
-- `options.html`: Options page for configuring API key, model, and temperature
-- `options.js`: JavaScript for handling options page interactions and storage
-- `style.css`: Stylesheet for the extension
-- `icons/`: Directory containing the extension icons in various sizes
-- `_locales/`: Directory containing language-specific message files
 - `LICENSE`: License file for the project
 - `README.md`: Readme file with information about the extension
+- `CONTRIBUTING.md`: Contributing guidelines for the project
+- `popup/extension.html`: The HTML structure for the extension popup
+- `popup/extension.js`: JavaScript for handling tabs interactions
+- `popup/popup.js`: JavaScript handling popup interactions and API calls
+- `background/background.js`: Background script for handling API requests and responses
+- `options/options.html`: Options page for configuring API key, model, and temperature
+- `options/options.js`: JavaScript for handling options page interactions and storage
+- `options/options.css`: Stylesheet for the options page
+- `style/style.css`: Stylesheet for the extension
+- `icons/`: Directory containing the extension icons in various sizes
+- `_locales/`: Directory containing language-specific message files
 - `lib/`: Directory containing third-party libraries used in the extension (DOMPurify by now)
+
 
 
 ## Dependencies
