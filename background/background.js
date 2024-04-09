@@ -2,6 +2,11 @@
  * @param {string} apiKey
  * @param {string} model
  * @param {number} temperature
+ * @param {number} topk
+ * @param {number} topp
+ * @param {number} frequencyPenalty
+ * @param {number} presencePenalty
+ * @param {number} maxTokens
  * @param {string} content
  * @param {string} language
  * @returns {Promise<any>}
@@ -9,6 +14,7 @@
  * Return a promise that resolves with the API response.
  */
 function callPerplexityAPI(apiKey, model, temperature, topk, topp, frequencyPenalty, presencePenalty, maxTokens,  content, language) {
+  const API_ENDPOINT = 'https://api.perplexity.ai/chat/completions';
   const systemPrompt = `You are an AI assistant that generates concise, high-quality abstracts and keywords for webpage content.
 
   Instructions:
@@ -54,7 +60,7 @@ if (maxTokens !== null) body.max_tokens = maxTokens;
 options.body = JSON.stringify(body);
 
 
-  return fetch('https://api.perplexity.ai/chat/completions', options)
+  return fetch(API_ENDPOINT, options)
   .then(response => response.json())
   .catch(err => console.error(err));
 }
