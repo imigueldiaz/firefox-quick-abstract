@@ -116,7 +116,7 @@ button.ok:hover {
 #options-form input[type="text"],
 #options-form input[type="number"],
 #options-form input[type="password"] {
-  width: 95%;
+  width: 90%;
   padding: 8px;
   margin-bottom: 8px;
   background-color: #FFFFFF;
@@ -137,6 +137,22 @@ button.ok:hover {
   color: #0C0C0D;
   outline: none;
   font-size: 13px;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.input-group {
+  width: 48%;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
 }
 
 

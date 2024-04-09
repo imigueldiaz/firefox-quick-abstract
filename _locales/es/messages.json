@@ -132,5 +132,13 @@
   "perplexityTrademarkLabel": {
     "message": "Perplexity AI es una marca registrada de Perplexity Inc.",
     "description": "Etiqueta de marca registrada para Perplexity AI."
+  },
+  "errorFrequencyPresence": {
+    "message": "frequencyPenalty y presencePenalty son mutuamente exclusivos.",
+    "description": "Mensaje de error para la frecuencia de presencia de la palabra clave."
+  },
+  "errorTopkTopp": {
+    "message": "topK y topP son mutuamente exclusivos.",
+    "description": "Mensaje de error para topK y topP."
   }
 }
