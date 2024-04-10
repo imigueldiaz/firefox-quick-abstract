@@ -13,7 +13,7 @@
  * Call the Perplexity API with the provided parameters.
  * Return a promise that resolves with the API response.
  */
-function callPerplexityAPI(apiKey, model, temperature, topk, topp, frequencyPenalty, presencePenalty, maxTokens,  content, language) {
+async function callPerplexityAPI(apiKey, model, temperature, topk, topp, frequencyPenalty, presencePenalty, maxTokens,  content, language) {
   const API_ENDPOINT = 'https://api.perplexity.ai/chat/completions';
   const systemPrompt = `You are an AI assistant that generates concise, high-quality abstracts and keywords for webpage content.
 
@@ -60,13 +60,16 @@ if (maxTokens !== null) body.max_tokens = maxTokens;
 options.body = JSON.stringify(body);
 
 
-  return fetch(API_ENDPOINT, options)
-  .then(response => response.json())
-  .catch(err => console.error(err));
+  try {
+        const response = await fetch(API_ENDPOINT, options);
+        return await response.json();
+    } catch (err) {
+        return console.error(err);
+    }
 }
 
 // Listen for messages from the popup
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message.type === 'CALL_API') {
     callPerplexityAPI(message.apiKey, message.model, message.temperature, message.topk, message.topp, message.frequencyPenalty, message.presencePenalty, message.maxTokens, message.content).then(response => {
       sendResponse({data: response});

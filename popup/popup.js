@@ -17,7 +17,7 @@ const MAX_WORDS = 14000;
 * The default model is 'sonar-medium-chat'. 
 * The default temperature is 1.
 */
-function getConfiguration() {
+async function getConfiguration() {
   return browser.storage.local.get({
     apiKey: 'pplx-xxxxxxxxxxx', // Default API key
     model: 'sonar-medium-chat', // Default model
@@ -148,8 +148,6 @@ function fetchTabContent() {
           const clonedMainContent = mainContent.cloneNode(true);
           fragment.appendChild(clonedMainContent);
 
-          console.log('Cloned main content:', clonedMainContent);
-
             // Remove known ad, header, lists, toc, footer, and navigation selectors from the cloned content
           const unwantedSelectors = ['.ad', 'footer', '.footer', '#footer', '.ads', '.advertisement',
             '.ad-container', '.ad-wrapper', '.ad-banner', '.ad-wrapper', 'figure', 'figurecaption',
@@ -214,7 +212,6 @@ function triggerAPI() {
   const responseDiv = document.getElementById('apiResponse');
   const spinner = document.getElementById('spinner');
   const lang = document.documentElement.lang;
-  const container = document.getElementById('responseContainer');
 
   getConfiguration().then(config => {
     // Check if the API key is the default value
@@ -347,37 +344,7 @@ function cleanMarkdown(content) {
   return content.replace(codeBlockRegex, '');
 }
 
-// Add an event listener to the resume button to trigger the API call
-document.getElementById('resume').addEventListener('click', triggerAPI);
 
-// Add an event listener to the popup's elements
-document.addEventListener("DOMContentLoaded", function() { 
-  // Set the focus on the resume button
-  document.getElementById('resume').focus();
-  
-  // Set the text of the buttons and the title of the popup
-  document.querySelector('#popupTab .button-text').textContent = browser.i18n.getMessage('startHereLabel');
-  document.querySelector('#optionsTab .button-text').textContent = browser.i18n.getMessage('settingsLabel');
-  document.querySelector('#aboutTab .button-text').textContent = browser.i18n.getMessage('aboutLabel');
-
-  document.querySelector('#copyMarkdown .button-text').textContent = browser.i18n.getMessage('copyMarkdownLabel');
-  document.querySelector('#copyHtml .button-text').textContent = browser.i18n.getMessage('copyHtmlLabel');
-  document.querySelector('#copyText .button-text').textContent = browser.i18n.getMessage('copyTextLabel');
-  document.querySelector('#resume .button-text').textContent = browser.i18n.getMessage('summarizeLabel');
-
-
-   const version = browser.runtime.getManifest().version;
-  document.getElementById('version').textContent = version;
-  document.getElementById('versionLink').href = `https://github.com/imigueldiaz/firefox-quick-abstract/releases/tag/v${version}`;
-  document.getElementById('extensionName').innerText = browser.i18n.getMessage('extensionName');
-  document.getElementById('perplexityAttribution').innerText = browser.i18n.getMessage('perplexityAttributionLabel');
-  document.getElementById('perplexityTrademark').innerText = browser.i18n.getMessage('perplexityTrademarkLabel');
-
-  document.title = browser.i18n.getMessage('extensionName');
-
-  loadInitialText();
-
-});
 
 // Add event listeners for copy buttons
 document.getElementById('copyHtml').addEventListener('click', copyHtml);
@@ -410,14 +377,15 @@ function copyText() {
 }
 
 // Function to copy text to clipboard
-function copyToClipboard(text) {
-  const tempTextarea = document.createElement('textarea');
-  tempTextarea.value = text;
-  document.body.appendChild(tempTextarea);
-  tempTextarea.select();
-  document.execCommand('copy');
-  document.body.removeChild(tempTextarea);
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log('Text copied to clipboard');
+  } catch (err) {
+    console.error('Failed to copy text: ', err);
+  }
 }
+
 
 function loadInitialText() {
   let initialText = browser.i18n.getMessage('initialText');
@@ -437,4 +405,38 @@ function loadInitialText() {
 
 }
 
+// Add an event listener to the resume button to trigger the API call.
+document.getElementById('resume').addEventListener('click', triggerAPI);
+
+// Add event listeners to the tabs to load the initial text.
 document.querySelector("#popupTab").addEventListener("click", loadInitialText);
+
+// Add an event listener to the popup's elements.
+document.addEventListener("DOMContentLoaded", function() { 
+  // Set the focus on the resume button
+  document.getElementById('resume').focus();
+  
+  // Set the text of the buttons and the title of the popup.
+  document.querySelector('#popupTab .button-text').textContent = browser.i18n.getMessage('startHereLabel');
+  document.querySelector('#optionsTab .button-text').textContent = browser.i18n.getMessage('settingsLabel');
+  document.querySelector('#aboutTab .button-text').textContent = browser.i18n.getMessage('aboutLabel');
+
+  document.querySelector('#copyMarkdown .button-text').textContent = browser.i18n.getMessage('copyMarkdownLabel');
+  document.querySelector('#copyHtml .button-text').textContent = browser.i18n.getMessage('copyHtmlLabel');
+  document.querySelector('#copyText .button-text').textContent = browser.i18n.getMessage('copyTextLabel');
+  document.querySelector('#resume .button-text').textContent = browser.i18n.getMessage('summarizeLabel');
+
+  // Set the version number and link to the GitHub releases page
+  const version = browser.runtime.getManifest().version;
+  document.getElementById('version').textContent = version;
+  document.getElementById('versionLink').href = `https://github.com/imigueldiaz/firefox-quick-abstract/releases/tag/v${version}`;
+  document.getElementById('extensionName').innerText = browser.i18n.getMessage('extensionName');
+  document.getElementById('perplexityAttribution').innerText = browser.i18n.getMessage('perplexityAttributionLabel');
+  document.getElementById('perplexityTrademark').innerText = browser.i18n.getMessage('perplexityTrademarkLabel');
+
+  document.title = browser.i18n.getMessage('extensionName');
+
+  loadInitialText();
+
+});
+

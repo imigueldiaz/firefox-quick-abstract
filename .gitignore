@@ -1,2 +1,7 @@
 web-ext-artifacts
 .web-extension-id
+.je-project-settings
+*.sublime-project
+package.json
+
+
