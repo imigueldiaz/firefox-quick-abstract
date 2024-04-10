@@ -1,28 +1,28 @@
 # Quick Abstract
 
-
 <p align="center"><img src="icons/icon.png" width="400" height="400" ></p>
 A Firefox extension that generates a professional abstract and keywords for the current tab's content using the Perplexity AI API.
-
-> **Disclaimer**: _This is an alpha version extension created for self-learning purposes. It is not a professional, full-featured extension. Maintenance and updates will be provided as possible during the developer's limited free time._
 
 ## Features
 - Fetches the text content of the active tab
 - Sends the content to the Perplexity API for abstract and keyword generation 
 - Displays the generated abstract and keywords in the extension popup
 - Generates an APA citation for the webpage based on the title, author, and publication date
-- **New:** Allows copying the generated abstract, keywords, and citation in Markdown, HTML, or plain text format with the click of a button
-- Allows customization of API key, model, and temperature through the options page
+- Allows copying the generated abstract, keywords, and citation in Markdown, HTML, or plain text format with the click of a button
+- Allows customization of API key, model, and temperature through the options page.
+- Supports internationalization (i18n) for English, Spanish, and French languages.
+- Allows fine-tuning the abstract generation by adjusting the top-p, top-k, max-tokens, frequency-penalty, and presence-penalty parameters.
 
 ## Installation from repository
 
-## Installation
+### Installation from XPI file (direct download)
 
 Install the latest version of this add-on by clicking the link below, or you can download the latest version from the releases page.
 
 [![Install Add-on](https://img.shields.io/badge/Install-Add--on-brightgreen?style=for-the-badge)](https://github.com/imigueldiaz/firefox-quick-abstract/releases/latest/download/quick_abstract.xpi)
 
-## Installation from source code
+### Installation from source code (manual)
+
 1. Clone this repository or download the source code
 2. Open Firefox and go to `about:debugging`
 3. Click on "This Firefox" in the left sidebar
@@ -43,6 +43,9 @@ The extension uses the following default configuration:
 - API Key: 'pplx-xxxxxxxxxxx' (**replace with your own or it won't work**)
 - Model: 'sonar-medium-chat'
 - Temperature: 1
+- All other parameters are _undefined_ by default.
+- Please take account that top-k can't be defined at the same time as top-p, and vice versa. 
+- Same with presence-penalty and frequency-penalty. 
 
 You can change these settings on the options page.
 
@@ -134,7 +137,7 @@ quick-abstract/
 
 ## Dependencies
 
-This extension relies on the Perplexity AI API. You need to sign up for an API key at [https://www.perplexity.ai/](https://www.perplexity.ai/) to use this extension.
+This extension relies on the Perplexity AI API. You need to sign up for an API key at [https://www.perplexity.ai/](https://www.perplexity.ai/) to use this extension. You can read the API documentation [here](https://docs.perplexity.ai/).
 
 ## Internationalization (i18n)
 
@@ -143,6 +146,8 @@ This extension now supports internationalization, allowing users to interact wit
 - English (default)
 - Spanish
 - French
+
+To add support for more languages, follow the steps outlined in the "Adding New Languages" section below.
 
 ### Language Files
 
