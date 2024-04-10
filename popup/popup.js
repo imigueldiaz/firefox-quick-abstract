@@ -21,13 +21,24 @@ function getConfiguration() {
   return browser.storage.local.get({
     apiKey: 'pplx-xxxxxxxxxxx', // Default API key
     model: 'sonar-medium-chat', // Default model
-    temperature: 1 // Default temperature
+    temperature: 1, // Default temperature
+    topk: null,
+    topp: null,
+    frequencyPenalty: null,
+    presencePenalty: null,
+    maxTokens: null
   }).catch(error => {
     console.error(`Error getting configuration: ${error}`);
     return {
       apiKey: 'pplx-xxxxxxxxxxx', // Default API key
       model: 'sonar-medium-chat', // Default model
-      temperature: 1 // Default temperature
+      temperature: 1, // Default temperature
+      topk: null,
+      topp: null,
+      frequencyPenalty: null,
+      presencePenalty: null,
+      maxTokens: null
+
     };
   });
 }
@@ -229,6 +240,11 @@ function triggerAPI() {
         apiKey: config.apiKey,
         model: config.model,
         temperature: config.temperature,
+        topk: config.topk,
+        topp: config.topp,
+        frequencyPenalty: config.frequencyPenalty,
+        presencePenalty: config.presencePenalty,
+        maxTokens: config.maxTokens,
         content: content,
         language: lang || 'en'
       }).then(response => {

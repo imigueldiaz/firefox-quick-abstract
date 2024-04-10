@@ -44,7 +44,23 @@ input[type="number"] {
   border-radius: 4px;
   margin-bottom: 10px;
 }
-/* Light Mode */
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.input-group {
+  width: 48%;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
 select {
   width: 100%;
   padding: 8px;

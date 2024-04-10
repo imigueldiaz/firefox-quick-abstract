@@ -132,6 +132,14 @@
 "perplexityTrademarkLabel": {
   "message": "Perplexity AI is a trademark of Perplexity AI, Inc.",
   "description": "Label for the Perplexity AI trademark."
+},
+"errorFrequencyPresence": {
+  "message": "frequencyPenalty and presencePenalty are mutually exclusive.",
+  "description": "Error message when frequency and presence are not between 0 and 1."
+},
+"errorTopkTopp": {
+  "message": "topK and topP are mutually exclusive.",
+  "description": "Error message when topK and topP are not between 0 and 1."
 }
 
 }

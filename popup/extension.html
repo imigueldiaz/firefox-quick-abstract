@@ -53,7 +53,7 @@
           <fieldset role="group" aria-labelledby="api-settings">
             <legend id="api-settings"></legend>
             <label for="apiKey" id="apiKeyLabel"></label>
-            <input type="password" id="apiKey" name="apiKey" value="pplx-xxxxxxxxxxx" aria-required="true"><br><br>
+            <input type="password" id="apiKey" name="apiKey" value="pplx-xxxxxxxxxxx" aria-required="true"><br>
             <label for="model" id="modelLabel"></label>
             <select id="model" name="model" aria-required="true">
               <optgroup label="Perplexity Models">
@@ -69,12 +69,42 @@
               </optgroup>
             </select>
 
-            <label for="temperature" id="tempLabel"></label>
-            <input type="number" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="true"><br><br>
-            <button type="submit" class="ok" id="save">
-              <span class="button-text"></span>
-              <img src="save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
-            </button>
+            <div class="input-row">
+              <div class="input-group">
+                <label for="temperature" id="tempLabel"></label>
+                <input type="number" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="true">
+              </div>
+              <div class="input-group">
+                <label for="maxTokens" id="maxTokensLabel">Max Tokens</label>
+                <input type="number" id="maxTokens" name="maxTokens" value="" step="1" min="1" max="2048" aria-required="true">
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label for="topP" id="topPLabel">Top-p</label>
+                <input type="number" id="topP" name="topP" value="" step="0.01" min="0" max="1" aria-required="true">
+              </div>
+              <div class="input-group">
+                <label for="topK" id="topKLabel">Top-k</label>
+                <input type="number" id="topK" name="topK" value="" step="1" min="1" max="2048" aria-required="true">
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label for="frequencyPenalty" id="frequencyPenaltyLabel">Frequency penalty</label>
+                <input type="number" id="frequencyPenalty" name="frequencyPenalty" value="" step="0.1" min="-2" max="2" aria-required="true">
+              </div>
+              <div class="input-group">
+                <label for="presencePenalty" id="presencePenaltyLabel">Presence penalty</label>
+                <input type="number" id="presencePenalty" name="presencePenalty" value="" step="0.1" min="0" max="2" aria-required="true">
+              </div>
+            </div>
+            <div class="button-row">
+              <button type="submit" class="ok" id="save">
+                <span class="button-text"></span>
+                <img src="save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
+              </button>
+            </div>
           </fieldset>
           <div id="saveSuccess" class="info-badge" role="status"></div>
           <div id="saveError" class="error-badge" role="alert"></div>

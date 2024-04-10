@@ -12,18 +12,59 @@
 
 function saveOptions(e) {
   e.preventDefault(); // Prevent the form from submitting normally
+
+  const topk = parseFloatOrDefault(document.querySelector("#topK").value);
+  const topp = parseFloatOrDefault(document.querySelector("#topP").value);
+  const frequencyPenalty = parseFloatOrDefault(document.querySelector("#frequencyPenalty").value);
+  const presencePenalty = parseFloatOrDefault(document.querySelector("#presencePenalty").value);
+
+  if (topk !== null && topp !== null) {
+    console.error("Error: topk and topp are mutually exclusive. Please only set one of them.");
+    showErrorBadge(browser.i18n.getMessage('errorTopkTopp'));
+    return;
+  }
+  if (frequencyPenalty !== null && presencePenalty !== null) {
+    console.error("Error: frequencyPenalty and presencePenalty are mutually exclusive. Please only set one of them.");
+    showErrorBadge(browser.i18n.getMessage('errorFrequencyPresence'))
+    return;
+  }
+
   browser.storage.local.set({
     apiKey: document.querySelector("#apiKey").value,
     model: document.querySelector("#model").value,
-    temperature: parseFloat(document.querySelector("#temperature").value)
+    temperature: parseFloatOrDefault(document.querySelector("#temperature").value),
+    topk: topk,
+    topp: topp,
+    frequencyPenalty: frequencyPenalty,
+    presencePenalty: presencePenalty,
+    maxTokens: parseFloatOrDefault(document.querySelector("#maxTokens").value),
   }).then(() => {
     console.log("Settings saved");
     showInfoBadge();
   }, (error) => {
     console.error(`Error saving settings: ${error}`);
-    showErrorBadge();
+    showErrorBadge(`Error saving settings: ${error}`);
   });
 }
+
+function showErrorBadge(message) {
+  const errorBadge = document.getElementById('saveError');
+  if (errorBadge) {
+    errorBadge.textContent = message || browser.i18n.getMessage('saveErrorMessage');
+    errorBadge.style.opacity = '1';
+    setTimeout(() => {
+      errorBadge.style.opacity = '0';
+      setTimeout(() => errorBadge.remove(), 500);
+    }, 2000);
+  }
+}
+
+
+function parseFloatOrDefault(value) {
+  const parsedValue = parseFloat(value);
+  return isNaN(parsedValue) ? null : parsedValue;
+}
+
 
 function showInfoBadge() {
   const infoBadge = document.getElementById('saveSuccess');
@@ -37,17 +78,6 @@ function showInfoBadge() {
   }
 }
 
-function showErrorBadge() {
-  const errorBadge = document.getElementById('saveError');
-  if (errorBadge) {
-    errorBadge.textContent = browser.i18n.getMessage('saveErrorMessage');
-    errorBadge.style.opacity = '1';
-    setTimeout(() => {
-      errorBadge.style.opacity = '0';
-      setTimeout(() => errorBadge.remove(), 500);
-    }, 2000);
-  }
-}
 
 /**
  * Restore the options to their saved state
@@ -60,6 +90,11 @@ function restoreOptions() {
     document.querySelector("#apiKey").value = result.apiKey || 'pplx-xxxxxxxxxxx';
     document.querySelector("#model").value = result.model || 'sonar-medium-chat';
     document.querySelector("#temperature").value = result.temperature || 1;
+    document.querySelector("#topK").value = result.topk || '';
+    document.querySelector("#topP").value = result.topp || '';
+    document.querySelector("#frequencyPenalty").value = result.frequencyPenalty || '';
+    document.querySelector("#presencePenalty").value = result.presencePenalty || '';
+    document.querySelector("#maxTokens").value = result.maxTokens || '';
   }
 
 /**
@@ -72,7 +107,7 @@ function restoreOptions() {
     console.log(browser.i18n.getMessage('errorLabel') + `: ${error}`);
   }
 
-  let getting = browser.storage.local.get(["apiKey", "model", "temperature"]);
+  let getting = browser.storage.local.get(["apiKey", "model", "temperature", "topk", "topp", "frequencyPenalty", "presencePenalty", "maxTokens"]);
   getting.then(setCurrentChoice, onError);
 }
 
