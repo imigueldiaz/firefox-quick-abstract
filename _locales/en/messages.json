@@ -140,6 +140,38 @@
 "errorTopkTopp": {
   "message": "topK and topP are mutually exclusive.",
   "description": "Error message when topK and topP are not between 0 and 1."
+},
+"apiKeyTip": {
+  "message": "Your Perplexity API key can be found in your account settings.",
+  "description": "Tip for the API key input field."
+},
+"modelTip": {
+  "message": "The model to use for generating the abstract.",
+  "description": "Tip for the model input field."
+},
+"temperatureTip": {
+  "message": "The temperature to use for generating the abstract. Higher values will result in more creative text, while lower values will result in more conservative text.",
+  "description": "Tip for the temperature input field."
+},
+"frequencyPenaltyTip": {
+  "message": "The frequency penalty to use for generating the abstract. Higher values will result in more diverse text, while lower values will result in more repetitive text.",
+  "description": "Tip for the frequency penalty input field."
+},
+"presencePenaltyTip": {
+  "message": "The presence penalty to use for generating the abstract. Higher values will result in more focused text, while lower values will result in more general text.",
+  "description": "Tip for the presence penalty input field."
+},
+"topkTip": {
+  "message": "The top-k value to use for generating the abstract. Higher values will result in more focused text, while lower values will result in more general text.",
+  "description": "Tip for the top-k input field."
+},
+"toppTip": {
+  "message": "The top-p value to use for generating the abstract. Higher values will result in more focused text, while lower values will result in more general text.",
+  "description": "Tip for the top-p input field."
+},
+"maxTokensTip": {
+  "message": "The maximum number of tokens to generate for the abstract. Higher values will result in longer text, while lower values will result in shorter text.",
+  "description": "Tip for the max tokens input field."
 }
 
 }

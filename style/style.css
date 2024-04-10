@@ -9,7 +9,7 @@ body {
   height: 620px;
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 body#popup {
   padding: 5px;
@@ -116,7 +116,7 @@ button.ok:hover {
 #options-form input[type="text"],
 #options-form input[type="number"],
 #options-form input[type="password"] {
-  width: 90%;
+  width: 80%;
   padding: 8px;
   margin-bottom: 8px;
   background-color: #FFFFFF;
@@ -125,6 +125,10 @@ button.ok:hover {
   color: #0C0C0D;
   outline: none;
   font-size: 13px;
+}
+
+#apiKey {
+  width: 90%!important;
 }
 
 #options-form select {
@@ -345,6 +349,50 @@ img#logo {
   }
 }
 
+.help-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #007AFF;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 2px;
+  cursor: help;
+  position: relative;
+}
+
+.help-icon::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-95%);
+  padding: 8px;
+  background-color: #2C2C2E;
+  color: #F2F2F7;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: pre-wrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 1;
+  width: 200px;
+  border : 1px solid #4a4a4a;
+  box-shadow: 0 0 10px 0 #4a4a4a
+
+
+}
+
+.help-icon:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* Dark Mode */
 
 @media (prefers-color-scheme: dark) {
@@ -446,5 +494,13 @@ img#logo {
     background-color: #2c2c2e;
     border-bottom: 1px solid #007AFF55;
 
+  }
+    .help-icon {
+    background-color: #4A90E2;
+  }
+
+  .help-icon::before {
+    background-color: #1C1C1E;
+    color: #F2F2F7;
   }
 }

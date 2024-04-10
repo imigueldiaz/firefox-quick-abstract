@@ -140,5 +140,38 @@
   "errorTopkTopp": {
     "message": "topK y topP son mutuamente exclusivos.",
     "description": "Mensaje de error para topK y topP."
+  },
+  "apiKeyTip": {
+    "message": "Tu clave de Perplexity API se puede encontrar en la página de ajustes de tu cuenta de Perplexity.",
+    "description": "Consejo para obtener una clave API de Perplexity."
+  },
+  "modelTip": {
+    "message": "El modelo de Perplexity AI que se utilizará para generar el resumen.",
+    "description": "Consejo para seleccionar un modelo."
+  },
+  "temperatureTip": {
+    "message": "La temperatura de muestreo para la generación de texto. Un valor más alto da como resultado texto más diverso.",
+    "description": "Consejo para seleccionar una temperatura."
+  },
+  "frequencyPenaltyTip": {
+    "message": "Un valor más alto penaliza las palabras clave que aparecen con demasiada frecuencia.",
+    "description": "Consejo para seleccionar una penalización de frecuencia."
+  },
+  "presencePenaltyTip": {
+    "message": "Un valor más alto penaliza las palabras clave que no aparecen en el texto.",
+    "description": "Consejo para seleccionar una penalización de presencia."
+  },
+  "topkTip": {
+    "message": "Un valor más alto da como resultado una mayor diversidad de palabras clave.",
+    "description": "Consejo para seleccionar un valor topK."
+  },
+  "toppTip": {
+    "message": "Un valor más alto da como resultado una mayor diversidad de palabras clave.",
+    "description": "Consejo para seleccionar un valor topP."
+  },
+  "maxTokensTip": {
+    "message": "El número máximo de tokens en el resumen.",
+    "description": "Consejo para seleccionar el número máximo de tokens."
   }
+
 }

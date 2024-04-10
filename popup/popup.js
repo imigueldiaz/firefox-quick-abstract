@@ -386,7 +386,7 @@ async function copyToClipboard(text) {
   }
 }
 
-
+// Load the initial text in the popup
 function loadInitialText() {
   let initialText = browser.i18n.getMessage('initialText');
 
@@ -410,6 +410,14 @@ document.getElementById('resume').addEventListener('click', triggerAPI);
 
 // Add event listeners to the tabs to load the initial text.
 document.querySelector("#popupTab").addEventListener("click", loadInitialText);
+
+// Loop the help icons and set the tooltip text
+document.querySelectorAll('.help-icon').forEach(icon => {
+  const tooltipKey = icon.getAttribute('data-tooltip-i18n');
+  const tooltipMessage = browser.i18n.getMessage(tooltipKey);
+  icon.setAttribute('data-tooltip', tooltipMessage);
+});
+
 
 // Add an event listener to the popup's elements.
 document.addEventListener("DOMContentLoaded", function() { 

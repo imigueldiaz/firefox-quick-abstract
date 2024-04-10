@@ -140,5 +140,39 @@
   "errorTopkTopp": {
     "message": "top_k et top_p ne peuvent pas être définis en même temps.",
     "description": "Message d'erreur pour top_k et top_p."
+  },
+  "apiKeyTip": {
+    "message": "Vous pouvez obtenir tu clé API Perplexity sur ton compte Perplexity AI.",
+    "description": "Conseil pour obtenir une clé API."
+  },
+  "modelTip": {
+    "message": "Le modèle à utiliser pour générer le résumé.",
+    "description": "Conseil pour le modèle."
+  },
+  "temperatureTip": {
+    "message": "La température à utiliser pour générer le résumé.",
+    "description": "Conseil pour la température."
+  },
+  "frequencyPenaltyTip": {
+    "message": "La fréquence des mots-clés à utiliser pour générer le résumé.",
+    "description": "Conseil pour la fréquence des mots-clés."
+  },
+  "presencePenaltyTip": {
+    "message": "La présence des mots-clés à utiliser pour générer le résumé.",
+    "description": "Conseil pour la présence des mots-clés."
+  },
+  "topkTip": {
+    "message": "Le nombre de mots-clés à utiliser pour générer le résumé.",
+    "description": "Conseil pour le nombre de mots-clés."
+  },
+  "toppTip": {
+    "message": "La probabilité cumulative des mots-clés à utiliser pour générer le résumé.",
+    "description": "Conseil pour la probabilité cumulative des mots-clés."
+  },
+  "maxTokensTip": {
+    "message": "Le nombre maximum de jetons à générer pour le résumé.",
+    "description": "Conseil pour le nombre maximum de jetons."
   }
+
+
 }
