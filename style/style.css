@@ -6,9 +6,10 @@ body {
   font-size: 13px;
   line-height: 1.5;
   width: 550px;
-  height: 600px;
+  height: 620px;
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
 }
 body#popup {
   padding: 5px;
@@ -98,7 +99,6 @@ button.ok:hover {
   color: #0C0C0D;
   font-size: 13px;
   font-weight: bold;
-  for: "input-id";
 }
 #options-form fieldset {
   padding: 16px;
