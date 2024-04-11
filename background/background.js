@@ -51,11 +51,11 @@ async function callPerplexityAPI(apiKey, model, temperature, topk, topp, frequen
   temperature: temperature
 };
 
-if (topk !== null) body.top_k = topk;
-if (topp !== null) body.top_p = topp;
-if (frequencyPenalty !== null) body.frequency_penalty = frequencyPenalty;
-if (presencePenalty !== null) body.presence_penalty = presencePenalty;
-if (maxTokens !== null) body.max_tokens = maxTokens;
+if (topk !== 0) body.top_k = topk;
+if (topp !== 0) body.top_p = topp;
+if (frequencyPenalty !== -2) body.frequency_penalty = frequencyPenalty;
+if (presencePenalty !== 0) body.presence_penalty = presencePenalty;
+if (maxTokens !== 0) body.max_tokens = maxTokens;
 
 options.body = JSON.stringify(body);
 

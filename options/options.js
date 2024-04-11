@@ -13,17 +13,17 @@
 function saveOptions(e) {
   e.preventDefault(); // Prevent the form from submitting normally
 
-  const topk = parseFloatOrDefault(document.querySelector("#topK").value);
-  const topp = parseFloatOrDefault(document.querySelector("#topP").value);
-  const frequencyPenalty = parseFloatOrDefault(document.querySelector("#frequencyPenalty").value);
-  const presencePenalty = parseFloatOrDefault(document.querySelector("#presencePenalty").value);
+  const topk = parseFloatOrDefault(document.querySelector("#topK").value, 0);
+  const topp = parseFloatOrDefault(document.querySelector("#topP").value, 0);
+  const frequencyPenalty = parseFloatOrDefault(document.querySelector("#frequencyPenalty").value,-2);
+  const presencePenalty = parseFloatOrDefault(document.querySelector("#presencePenalty").value,0);
 
-  if (topk !== null && topp !== null) {
+  if (topk !== 0 && topp !== 0) {
     console.error("Error: topk and topp are mutually exclusive. Please only set one of them.");
     showErrorBadge(browser.i18n.getMessage('errorTopkTopp'));
     return;
   }
-  if (frequencyPenalty !== null && presencePenalty !== null) {
+  if (frequencyPenalty !== -2 && presencePenalty !== 0) {
     console.error("Error: frequencyPenalty and presencePenalty are mutually exclusive. Please only set one of them.");
     showErrorBadge(browser.i18n.getMessage('errorFrequencyPresence'))
     return;
@@ -32,12 +32,12 @@ function saveOptions(e) {
   browser.storage.local.set({
     apiKey: document.querySelector("#apiKey").value,
     model: document.querySelector("#model").value,
-    temperature: parseFloatOrDefault(document.querySelector("#temperature").value),
+    temperature: parseFloatOrDefault(document.querySelector("#temperature").value, 1),
     topk: topk,
     topp: topp,
     frequencyPenalty: frequencyPenalty,
     presencePenalty: presencePenalty,
-    maxTokens: parseFloatOrDefault(document.querySelector("#maxTokens").value),
+    maxTokens: parseFloatOrDefault(document.querySelector("#maxTokens").value, 0),
   }).then(() => {
     console.log("Settings saved");
     showInfoBadge();
@@ -60,9 +60,9 @@ function showErrorBadge(message) {
 }
 
 
-function parseFloatOrDefault(value) {
+function parseFloatOrDefault(value,defaultVal) {
   const parsedValue = parseFloat(value);
-  return isNaN(parsedValue) ? null : parsedValue;
+  return isNaN(parsedValue) ? defaultVal : parsedValue;
 }
 
 
@@ -90,11 +90,11 @@ function restoreOptions() {
     document.querySelector("#apiKey").value = result.apiKey || 'pplx-xxxxxxxxxxx';
     document.querySelector("#model").value = result.model || 'sonar-medium-chat';
     document.querySelector("#temperature").value = result.temperature || 1;
-    document.querySelector("#topK").value = result.topk || '';
-    document.querySelector("#topP").value = result.topp || '';
-    document.querySelector("#frequencyPenalty").value = result.frequencyPenalty || '';
-    document.querySelector("#presencePenalty").value = result.presencePenalty || '';
-    document.querySelector("#maxTokens").value = result.maxTokens || '';
+    document.querySelector("#topK").value = result.topk || 0;
+    document.querySelector("#topP").value = result.topp || 0;
+    document.querySelector("#frequencyPenalty").value = result.frequencyPenalty || -2;
+    document.querySelector("#presencePenalty").value = result.presencePenalty || 0;
+    document.querySelector("#maxTokens").value = result.maxTokens || 0;
   }
 
 /**

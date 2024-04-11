@@ -22,22 +22,22 @@ async function getConfiguration() {
     apiKey: 'pplx-xxxxxxxxxxx', // Default API key
     model: 'sonar-medium-chat', // Default model
     temperature: 1, // Default temperature
-    topk: null,
-    topp: null,
-    frequencyPenalty: null,
-    presencePenalty: null,
-    maxTokens: null
+    topk: 0,
+    topp: 0,
+    frequencyPenalty: -2,
+    presencePenalty: 0,
+    maxTokens: 0
   }).catch(error => {
     console.error(`Error getting configuration: ${error}`);
     return {
       apiKey: 'pplx-xxxxxxxxxxx', // Default API key
       model: 'sonar-medium-chat', // Default model
       temperature: 1, // Default temperature
-      topk: null,
-      topp: null,
-      frequencyPenalty: null,
-      presencePenalty: null,
-      maxTokens: null
+      topk: 0,
+      topp: 0,
+      frequencyPenalty: -2,
+      presencePenalty: 0,
+      maxTokens: 0
 
     };
   });
@@ -405,6 +405,30 @@ function loadInitialText() {
 
 }
 
+/**
+ * Change the output value of the range input
+ * when the input value changes.
+ * @param {Event} event - The input event.
+ * @returns {void}
+ **/
+function changeRangeOutput(event) {
+  const output = event.target.nextElementSibling;
+  output.textContent = event.target.value;
+}
+
+/**
+ * Set the initial range output value
+ * when the popup is loaded.
+ * @param {Element} element - The range input element.
+ * @returns {void}
+ **/
+function setInitialRangeOutput(element) {
+  const output = document.querySelector(`output[for='${element.id}'`);
+  output.textContent = element.value;
+}
+
+
+
 // Add an event listener to the resume button to trigger the API call.
 document.getElementById('resume').addEventListener('click', triggerAPI);
 
@@ -416,6 +440,15 @@ document.querySelectorAll('.help-icon').forEach(icon => {
   const tooltipKey = icon.getAttribute('data-tooltip-i18n');
   const tooltipMessage = browser.i18n.getMessage(tooltipKey);
   icon.setAttribute('data-tooltip', tooltipMessage);
+});
+
+// Add event listeners to the range inputs to change the output value.
+document.querySelectorAll("input[type='range']").forEach(range => {
+  range.addEventListener('input', changeRangeOutput);
+});
+
+document.querySelectorAll("input[type='range']").forEach(range => {
+  setInitialRangeOutput(range);
 });
 
 

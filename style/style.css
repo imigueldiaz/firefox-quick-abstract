@@ -114,10 +114,10 @@ button.ok:hover {
   color: #0C0C0D;
 }
 #options-form input[type="text"],
-#options-form input[type="number"],
+#options-form input[type="range"],
 #options-form input[type="password"] {
-  width: 80%;
-  padding: 8px;
+  width: 50%;
+  padding: 5px;
   margin-bottom: 8px;
   background-color: #FFFFFF;
   border: 1px solid #D7D7DB;
@@ -151,6 +151,29 @@ button.ok:hover {
 
 .input-group {
   width: 48%;
+}
+
+.range-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+  background-color: #4a4a4a44;
+  border-radius: 6px;
+  padding: 2px 5px;
+  border: 1px solid #444;
+}
+
+output {
+  display: inline-block;
+  margin: 0 8px;
+  font-size: 12px;
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle
+  border: 1px solid #D7D7DB;
+  border-radius: 4px;
 }
 
 .button-row {
@@ -261,6 +284,8 @@ button.ok:hover {
   transition: opacity 0.5s ease-in-out;
   text-align: center;
   margin-top: 10px;
+  position: relative;
+  top: -35px;
 }
 #tabs {
   display: flex;
@@ -320,9 +345,9 @@ img#logo {
   text-align: center;
   border: 1px solid #0a84ff33;
   border-radius: 16px;
-  background: linear-gradient(45deg, #f0f0f0, #fafafa);
+  background: linear-gradient(45deg, #e1e1e1, #fcfcfc);
   background-size: 400% 400%;
-  animation: gradientAnimation 15s ease-in-out infinite;
+  animation: gradientAnimation 5s ease-in-out infinite;
   color: #0a84ff
 }
 
@@ -380,7 +405,7 @@ img#logo {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.8s ease-in-out;
-  z-index: 1;
+  z-index: 10;
   width: 200px;
   border : 1px solid #4a4a4a;
   box-shadow: 0 0 10px 0 #4a4a4a
@@ -431,7 +456,7 @@ img#logo {
     color: #F2F2F7;
   }
   #options-form input[type="text"],
-  #options-form input[type="number"],
+  #options-form input[type="range"],
   #options-form input[type="password"] {
     background-color: #1C1C1E;
     border-color: #3A3A3C;
@@ -483,10 +508,10 @@ img#logo {
     font-weight: bold;
   }
   #aboutContent {
-    background: linear-gradient(45deg, #2c2c2e, #1c1c1e);
+    background: linear-gradient(45deg, #3c3c3c, #1c1c1e);
     border: 1px solid #007AFF55;
     background-size: 400% 400%;
-    animation: gradientAnimation 15s ease-in-out infinite;
+    animation: gradientAnimation 5s ease-in-out infinite;
   }
   #aboutContent a {
     color: #007AFF;
