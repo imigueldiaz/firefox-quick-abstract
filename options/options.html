@@ -6,63 +6,92 @@
 </head>
 <body>
   <form id="options-form">
-    <fieldset role="group" aria-labelledby="api-settings">
-      <legend id="api-settings"></legend>
-      <label for="apiKey" id="apiKeyLabel"></label>
-      <input type="password" id="apiKey" name="apiKey" value="pplx-xxxxxxxxxxx" aria-required="true"><br>
-      <label for="model" id="modelLabel"></label>
-      <select id="model" name="model" aria-required="true">
-        <optgroup label="Perplexity Models">
-          <option value="sonar-small-chat">sonar-small-chat (7B)</option>
-          <option value="sonar-small-online">sonar-small-online (7B)</option>
-          <option value="sonar-medium-chat" selected>sonar-medium-chat (8x7B)</option>
-          <option value="sonar-medium-online">sonar-medium-online (8x7B)</option>
-        </optgroup>
-        <optgroup label="Open-Source Models">
-          <option value="codellama-70b-instruct">codellama-70b-instruct (70B)</option>
-          <option value="mistral-7b-instruct">mistral-7b-instruct (7B)</option>
-          <option value="mixtral-8x7b-instruct">mixtral-8x7b-instruct (8x7B)</option>
-        </optgroup>
-      </select>
+          <fieldset role="group" aria-labelledby="api-settings">
+            <legend id="api-settings"></legend>
+            <label for="apiKey" id="apiKeyLabel"></label>
 
-      <div class="input-row">
-        <div class="input-group">
-          <label for="temperature" id="tempLabel"></label>
-          <input type="number" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="true">
-        </div>
-        <div class="input-group">
-          <label for="maxTokens" id="maxTokensLabel">Max Tokens</label>
-          <input type="number" id="maxTokens" name="maxTokens" value="" step="1" min="1" max="2048" aria-required="true">
-        </div>
-      </div>
-      <div class="input-row">
-        <div class="input-group">
-          <label for="topP" id="topPLabel">Top-p</label>
-          <input type="number" id="topP" name="topP" value="" step="0.01" min="0" max="1" aria-required="true">
-        </div>
-        <div class="input-group">
-          <label for="topK" id="topKLabel">Top-k</label>
-          <input type="number" id="topK" name="topK" value="" step="1" min="1" max="2048" aria-required="true">
-        </div>
-      </div>
-      <div class="input-row">
-        <div class="input-group">
-          <label for="frequencyPenalty" id="frequencyPenaltyLabel">Frequency penalty</label>
-          <input type="number" id="frequencyPenalty" name="frequencyPenalty" value="" step="0.1" min="-2" max="2" aria-required="true">
-        </div>
-        <div class="input-group">
-          <label for="presencePenalty" id="presencePenaltyLabel">Presence penalty</label>
-          <input type="number" id="presencePenalty" name="presencePenalty" value="" step="0.1" min="0" max="2" aria-required="true">
-        </div>
-      </div>
-      <div class="button-row">
-        <button type="submit" class="ok" id="save">
-          <span class="button-text"></span>
-          <img src="save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
-        </button>
-      </div>
-    </fieldset>
-  </form>
+            <input type="password" id="apiKey" name="apiKey" value="pplx-xxxxxxxxxxx" aria-required="true">
+            
+            <label for="model" id="modelLabel"></label>
+            <select id="model" name="model" aria-required="true">
+              <optgroup label="Perplexity Models">
+                <option value="sonar-small-chat">sonar-small-chat (7B)</option>
+                <option value="sonar-small-online">sonar-small-online (7B)</option>
+                <option value="sonar-medium-chat" selected>sonar-medium-chat (8x7B)</option>
+                <option value="sonar-medium-online">sonar-medium-online (8x7B)</option>
+              </optgroup>
+              <optgroup label="Open-Source Models">
+                <option value="codellama-70b-instruct">codellama-70b-instruct (70B)</option>
+                <option value="mistral-7b-instruct">mistral-7b-instruct (7B)</option>
+                <option value="mixtral-8x7b-instruct">mixtral-8x7b-instruct (8x7B)</option>
+              </optgroup>
+            </select>
+
+            <div class="input-row">
+              <div class="input-group">
+                <label for="temperature" id="tempLabel"></label>
+                <div class="range-container">
+                  <input type="range" id="temperature" name="temperature" value="1" step="0.01" min="0" max="2" aria-required="false">
+                  <output for="temperature" id="temperatureOutput"></output>
+                  
+                </div>
+
+              </div>
+              <div class="input-group">
+                <label for="maxTokens" id="maxTokensLabel">Max Tokens</label>
+                <div class="range-container">
+                  <input type="range" id="maxTokens" name="maxTokens" value="0" step="1" min="0" max="2048" aria-required="false">
+                  <output for="maxTokens" id="maxTokensOutput"></output>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label for="topP" id="topPLabel">Top-p</label>
+                <div class="range-container">
+                  <input type="range" id="topP" name="topP" value="0" step="0.01" min="0" max="1" aria-required="false">
+                  <output for="topP" id="topPOutput"></output>
+                  
+                </div>
+              </div>
+              <div class="input-group">
+                <label for="topK" id="topKLabel">Top-k</label>
+                <div class="range-container">
+                  <input type="range" id="topK" name="topK" value="0" step="1" min="0" max="2048" aria-required="false">
+                  <output for="topK" id="topKOutput"></output>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label for="frequencyPenalty" id="frequencyPenaltyLabel">Frequency penalty</label>
+                <div class="range-container">
+                  <input type="range" id="frequencyPenalty" name="frequencyPenalty" value="-2" step="0.1" min="-2" max="2" aria-required="false">
+                  <output for="frequencyPenalty" id="frequencyPenaltyOutput"></output>
+                  
+                </div>
+              </div>
+              <div class="input-group">
+                <label for="presencePenalty" id="presencePenaltyLabel">Presence penalty</label>
+                <div class="range-container">
+                  <input type="range" id="presencePenalty" name="presencePenalty" value="0" step="0.1" min="0" max="2" aria-required="false">
+                  <output for="presencePenalty" id="presencePenaltyOutput"></output>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="button-row">
+              <button type="submit" class="ok" id="save">
+                <span class="button-text"></span>
+                <img src="save.svg" alt="Save icon" width="20" height="20" id="saveImg"/>
+              </button>
+            </div>
+          </fieldset>
+          <div id="saveSuccess" class="info-badge" role="status"></div>
+          <div id="saveError" class="error-badge" role="alert"></div>
+        </form>
 
   <script src="options.js"></script>
 </body>
