@@ -54,7 +54,7 @@ function showErrorBadge(message) {
     errorBadge.style.opacity = '1';
     setTimeout(() => {
       errorBadge.style.opacity = '0';
-      setTimeout(() => errorBadge.remove(), 500);
+      
     }, 2000);
   }
 }
@@ -73,7 +73,7 @@ function showInfoBadge() {
     infoBadge.style.opacity = '1';
     setTimeout(() => {
       infoBadge.style.opacity = '0';
-      setTimeout(() => infoBadge.remove(), 500);
+      
     }, 2000);
   }
 }
